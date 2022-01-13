@@ -10,7 +10,13 @@ This game started to become
 in December 2021.
 
 One of my friends pointed out that they have identified a really good set of starting
-words that helps them get to a solution in (often) 4 guesses or less.
+words that helps them get to a solution in (often) 5 guesses.  He suggested to always
+make these your first 4 guesses:
+
+- EATEN
+- SHORE
+- LUCID
+- COMFY
 
 This made me think about a program I wrote (in C++) in
 [1995](https://github.com/mckoss/startpad/blob/6d30b86ae81bb74c551a3116e75527110ca5c7be/labs/cpp/Mastermind/Mstrmind.cpp)
