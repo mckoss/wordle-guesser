@@ -57,3 +57,10 @@ was to play two colors of two marbles each).
 - What is the hardest word to guess using this algorithm and how many guesses
   are needed?
 
+# Using this repo
+
+```
+$ npm install
+$ build
+$ npm test
+```
