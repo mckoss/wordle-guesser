@@ -1,0 +1,24 @@
+{
+  "name": "wordle-guesser",
+  "version": "1.0.0",
+  "description": "Optimal guessing strategies for Wordle",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mckoss/wordle-guesser.git"
+  },
+  "keywords": [
+    "wordle",
+    "puzzles",
+    "mastermind"
+  ],
+  "author": "Mike Koss",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mckoss/wordle-guesser/issues"
+  },
+  "homepage": "https://github.com/mckoss/wordle-guesser#readme"
+}
