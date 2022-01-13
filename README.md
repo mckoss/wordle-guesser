@@ -1,4 +1,4 @@
-# worlde-guesser
+# wordle-guesser
 
 Rehashing my old mastermind solver to play wordle.
 
