@@ -4,6 +4,7 @@ import { readFile } from 'fs/promises';
 import process from 'process';
 
 import { analyze } from '../wordle-guess.js';
+import { Wordle } from '../wordle.js';
 
 suite("Wordle Guess", () => {
   let dict: string[];
@@ -17,14 +18,22 @@ suite("Wordle Guess", () => {
     const guesses = analyze(dict, 10);
     console.log(`Optimal first guess is '${guesses[0].guess}' with at most ` +
       `${guesses[0].maxSet.size} words remaining`);
-    for (let i = 0; i < guesses.length; i++) {
-      const guess = guesses[i];
-      assert.equal(guess.maxSet.words!.length, guess.maxSet.size);
-      guess.maxSet.words = guess.maxSet.words!.slice(0, 10);
-      guess.maxSet.words.push('...');
-    }
-    console.log(JSON.stringify(guesses, null, 2));
-    assert.equal(guesses[0].guess, 'snare');
-    assert.equal(guesses[0].maxSet.size, 270);
+    console.log(guesses);
+    assert.equal(guesses[0].guess, 'arose');
+    assert.equal(guesses[0].maxSet.size, 235);
   }).timeout(120000);
+
+  test("failing test case", () => {
+    const wordle = new Wordle(dict);
+
+    const subset = new Set<string>(['abbey', 'alley', 'babel', 'fahey', 'haaek',
+      'hamey', 'hayek', 'hazel', 'label', 'lapel', 'paleo', 'zabel']);
+    const guess = 'nobly';
+    const clue = 'xx!x!';
+
+    const words = wordle.possibleWords(guess, clue, subset);
+    console.log(words);
+    assert.equal(words.length, 1);
+    assert.equal(words[0], 'abbey');
+  });
 });

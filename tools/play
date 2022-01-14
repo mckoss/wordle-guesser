@@ -1,0 +1,4 @@
+#/bin/bash
+# play --- run the play command as build by this repo
+
+node public/scripts/play.js "$@"

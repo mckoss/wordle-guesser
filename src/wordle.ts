@@ -1,12 +1,22 @@
 import { MultiSet } from './multiset.js';
 
-export { Wordle, Clue };
+export { Wordle, Clue, isValidClue };
 
 // 5 characters from
 // X - not in answer
 // ! - correct letter in correct position
 // ? - correct letter in wrong position
 type Clue = string;
+
+function isValidClue(clue: Clue): boolean {
+  if (clue.length !== 5) {
+    return false;
+  }
+  if (clue.match(/[^?!X]/)) {
+    return false;
+  }
+  return true;
+}
 
 class Wordle {
   dict: string[];
@@ -45,6 +55,9 @@ class Wordle {
 
     // Find matches in wrong position (don't double count!)
     for (let i = 0; i < guess.length; i++) {
+      if (response[i] === '!') {
+        continue;
+      }
       const letter = guess[i];
       if (remaining.has(letter)) {
         response[i] = '?';
@@ -58,6 +71,7 @@ class Wordle {
   // Return all the words from subset that are candidates that match the clue
   // for a given guess.
   possibleWords(guess: string, clue: Clue, subset: Set<string>): string[] {
+    clue = clue.toUpperCase();
     const words = [];
     for (let word of subset) {
       this.setWordFast(word);

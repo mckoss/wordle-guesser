@@ -12,8 +12,8 @@ mkdir -p "$PROJ_DIR/bin"
 #
 # Add build tools to PATH
 #
-PATH="$(remove-dup-paths.mjs "$PROJ_DIR/bin:$(cd $PROJ_DIR; npm bin):$PATH")"
-CDPATH="$(remove-dup-paths.mjs "$CDPATH:$PROJ_DIR/themes:$PROJ_DIR/themes/ra-theme")"
+PATH="$(remove-dup-paths.mjs "$PROJ_DIR/bin:$PROJ_DIR/public/scripts:$(cd $PROJ_DIR; npm bin):$PATH")"
+CDPATH="$(remove-dup-paths.mjs "$CDPATH:$PROJ_DIR/public")"
 
 #
 # Non-interactive shells - exit here.
