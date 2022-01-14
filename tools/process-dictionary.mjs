@@ -2,7 +2,7 @@
 // process-dictionary --- Read in dictionary file and output just 5 letter words to json file.
 
 import { readFile, writeFile } from 'fs/promises';
-let dict = (await readFile('data/dict.txt', 'utf-8')).split('\n');
+let dict = (await readFile('data/english3.txt', 'utf-8')).split('\n');
 
 console.log(`${dict.length} words in dictionary`);
 
