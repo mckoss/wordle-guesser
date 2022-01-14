@@ -1,28 +1,28 @@
 import { Clue, Wordle } from './wordle.js';
 import { MultiSet } from './multiset.js';
+import { Top } from './top.js';
 
-export { getGuess };
+export { analyze };
 
 interface SetRep {
-  size: number;
   clue: Clue;
+  size: number;
+  words?: string[];
 }
 
 interface GuessStats {
   guess: string;
-  minSet: SetRep;
   maxSet: SetRep;
 }
 
-// Return the word guess that has the fewest number of possible words
-// in the set of remaining words based on a response to the word.
-function getGuess(dict: string[], subset?: Set<string>): GuessStats {
+// Return the top guesses and stats for the possible words.
+function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
   if (!subset) {
     subset = new Set(dict);
   }
 
   const wordle = new Wordle(dict);
-  let best: GuessStats | undefined = undefined;
+  const topGuesses = new Top<GuessStats, number>(top, stat => stat.maxSet.size);
 
   // We can guess any word in the larger dictionary despite how big
   // the current subset may be.
@@ -37,22 +37,16 @@ function getGuess(dict: string[], subset?: Set<string>): GuessStats {
       clueSets.add(clue);
     }
 
-    const [ min, max ] = clueSets.minmax();
+    const [ _, max ] = clueSets.minmax();
 
-    if (best === undefined || clueSets.count(max) < best.maxSet.size) {
-      best = {
-        guess,
-        minSet: {
-          size: clueSets.count(min),
-          clue: min
-        },
-        maxSet: {
-          size: clueSets.count(max),
-          clue: max
-        }
-      };
-    }
+    topGuesses.add({
+      guess,
+      maxSet: {
+        clue: max,
+        size: clueSets.count(max),
+      }
+    });
   }
 
-  return best!;
+  return topGuesses.getResults();
 }

@@ -1,23 +1,24 @@
 import { assert } from 'chai';
 import { suite, suiteSetup, setup, test } from 'mocha';
-import { readFileSync } from 'fs';
+import { readFile } from 'fs/promises';
 import process from 'process';
 
-import { getGuess } from '../wordle-guess.js';
+import { analyze } from '../wordle-guess.js';
 
 suite("Wordle Guess", () => {
   let dict: string[];
 
-  suiteSetup(() => {
+  suiteSetup(async () => {
     console.log(process.cwd());
-    const data = readFileSync('public/scripts/dict.json').toString();
-    dict = JSON.parse(data);
+    dict = JSON.parse(await readFile('public/scripts/dict.json', 'utf8'));
   });
 
-  test("getGuess", () => {
-    const guess = getGuess(dict);
-    console.log(guess);
-    assert.equal(guess.minSet.size, 1);
-    assert.equal(guess.maxSet.size, 271);
+  test("get best", () => {
+    const guesses = analyze(dict, 10);
+    console.log(`Optimal first guess is '${guesses[0].guess}' with at most ` +
+      `${guesses[0].maxSet.size} words remaining`);
+    console.log(guesses);
+    assert.equal(guesses[0].guess, 'snare');
+    assert.equal(guesses[0].maxSet.size, 270);
   }).timeout(120000);
 });

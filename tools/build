@@ -9,6 +9,9 @@ cd $PROJ_DIR
 
 rm -rf public
 mkdir -p public/scripts
-process-dictionary.cjs
+
+process-dictionary.mjs
+
 tsc
+
 tree public

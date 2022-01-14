@@ -54,4 +54,15 @@ class Wordle {
 
     return response.join('');
   }
+
+  // Return all the words from subset that are candidates that match the clue.
+  possibleWords(clue: Clue, subset: Set<string>): string[] {
+    const words = [];
+    for (let word of subset) {
+      if (this.makeGuess(word) === clue) {
+        words.push(word);
+      }
+    }
+    return words;
+  }
 }
