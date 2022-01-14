@@ -24,7 +24,7 @@ suite("Wordle", () => {
     assert.equal(wordle.word.length, 5);
   });
 
-  test("guess responses", () => {
+  test("guess clues", () => {
     wordle.setWord('maker');
 
     const tests = [

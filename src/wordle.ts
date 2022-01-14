@@ -1,10 +1,12 @@
-export { Wordle, Response };
+import { MultiSet } from './multiset.js';
+
+export { Wordle, Clue };
 
 // 5 characters from
 // X - not in answer
 // ! - correct letter in correct position
 // ? - correct letter in wrong position
-type Response = string;
+type Clue = string;
 
 class Wordle {
   dict: string[];
@@ -22,7 +24,11 @@ class Wordle {
     this.word = word;
   }
 
-  makeGuess(guess: string): Response {
+  setWordFast(word: string) {
+    this.word = word;
+  }
+
+  makeGuess(guess: string): Clue {
     guess = guess.toLowerCase();
     let response: string[] = new Array(5).fill('X');
     const remaining = new MultiSet<string>();
@@ -47,32 +53,5 @@ class Wordle {
     }
 
     return response.join('');
-  }
-}
-
-class MultiSet<T> {
-  elements:Map<T, number> = new Map();
-
-  constructor() {
-  }
-
-  add(element: T) {
-    if (this.elements.has(element)) {
-      this.elements.set(element, this.elements.get(element)! + 1);
-    } else {
-      this.elements.set(element, 1);
-    }
-  }
-
-  remove(element: T) {
-    if (this.elements.has(element)) {
-      this.elements.set(element, this.elements.get(element)! - 1);
-    } else {
-      throw new Error(`Non-existent ${element} cannot be removed.`);
-    }
-  }
-
-  has(element: T) {
-    return this.elements.has(element) && this.elements.get(element)! > 0;
   }
 }
