@@ -12,6 +12,7 @@ interface SetRep {
 
 interface GuessStats {
   guess: string;
+  numSets: number;
   maxSet: SetRep;
 }
 
@@ -41,12 +42,22 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
 
     topGuesses.add({
       guess,
+      numSets: clueSets.size(),
       maxSet: {
         clue: max,
+
         size: clueSets.count(max),
       }
     });
   }
 
-  return topGuesses.getResults();
+  const results = topGuesses.getResults();
+
+  // Append a word list to each of the top guesses.
+  for (let i = 0; i < results.length; i++) {
+    const guess = results[i];
+    guess.maxSet.words = wordle.possibleWords(guess.guess, guess.maxSet.clue, subset);
+  }
+
+  return results;
 }

@@ -28,6 +28,10 @@ class MultiSet<T> {
     }
   }
 
+  size(): number {
+    return this.elements.size;
+  }
+
   has(element: T): boolean {
     return this.count(element) > 0;
   }

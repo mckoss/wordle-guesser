@@ -17,7 +17,13 @@ suite("Wordle Guess", () => {
     const guesses = analyze(dict, 10);
     console.log(`Optimal first guess is '${guesses[0].guess}' with at most ` +
       `${guesses[0].maxSet.size} words remaining`);
-    console.log(guesses);
+    for (let i = 0; i < guesses.length; i++) {
+      const guess = guesses[i];
+      assert.equal(guess.maxSet.words!.length, guess.maxSet.size);
+      guess.maxSet.words = guess.maxSet.words!.slice(0, 10);
+      guess.maxSet.words.push('...');
+    }
+    console.log(JSON.stringify(guesses, null, 2));
     assert.equal(guesses[0].guess, 'snare');
     assert.equal(guesses[0].maxSet.size, 270);
   }).timeout(120000);

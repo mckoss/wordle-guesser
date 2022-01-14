@@ -55,11 +55,13 @@ class Wordle {
     return response.join('');
   }
 
-  // Return all the words from subset that are candidates that match the clue.
-  possibleWords(clue: Clue, subset: Set<string>): string[] {
+  // Return all the words from subset that are candidates that match the clue
+  // for a given guess.
+  possibleWords(guess: string, clue: Clue, subset: Set<string>): string[] {
     const words = [];
     for (let word of subset) {
-      if (this.makeGuess(word) === clue) {
+      this.setWordFast(word);
+      if (this.makeGuess(guess) === clue) {
         words.push(word);
       }
     }
