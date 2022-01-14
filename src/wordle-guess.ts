@@ -22,11 +22,29 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
     subset = new Set(dict);
   }
 
+  // The word is determined already.
+  if (subset.size === 1) {
+    const guess = Array.from(subset)[0];
+    return [{
+      guess,
+      numSets: 1,
+      maxSet: {
+        clue: '!!!!!',
+        size: 1,
+        words: [guess]
+      }
+    }];
+  }
+
   const wordle = new Wordle(dict);
   const topGuesses = new Top<GuessStats, number>(top, stat => stat.maxSet.size);
 
   // We can guess any word in the larger dictionary despite how big
   // the current subset may be.
+  // TODO: Should be choose words from subset instead?
+  // I tried and it increased the number of guesses by 1.
+  // I think because the words that remain may not offer as much
+  // discrimination.
   for (let guess of dict) {
     const clueSets = new MultiSet<Clue>();
 
@@ -40,12 +58,15 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
 
     const [ _, max ] = clueSets.minmax();
 
+    if (clueSets.count(max) === 0) {
+      continue;
+    }
+
     topGuesses.add({
       guess,
       numSets: clueSets.size(),
       maxSet: {
         clue: max,
-
         size: clueSets.count(max),
       }
     });

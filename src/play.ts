@@ -16,8 +16,8 @@ console.log("X - not in answer (Gray in Wordle)");
 console.log("! - correct letter in correct position (Green in Wordle)");
 console.log("? - correct letter in wrong position (Yellow in Wordle)");
 
-let guess = 'snare';
-console.log(`I guess '${guess}'`);
+let guess = 'arose';
+console.log(`I guess '${guess}.'`);
 let guesses = 1;
 
 while (true) {
@@ -39,6 +39,7 @@ while (true) {
   subset = new Set(words);
 
   const bestGuess = analyze(dict, 1, subset);
+  console.log(JSON.stringify(bestGuess));
 
   guess = bestGuess[0].guess;
   guesses++;

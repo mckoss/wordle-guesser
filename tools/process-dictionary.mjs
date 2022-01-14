@@ -6,10 +6,10 @@ let dict = (await readFile('data/dict.txt', 'utf-8')).split('\n');
 
 console.log(`${dict.length} words in dictionary`);
 
-dict = dict.map(w => w.toLowerCase().replace(/[^a-z]/g, ''));
+dict = dict.filter(word => word.length === 5);
+dict = dict.map(w => w.toLowerCase());
+dict = dict.filter(word => /^[a-z]+$/.test(word));
 
-const subset = dict.filter(word => word.length === 5);
+console.log(`${dict.length} words in 5-character subset`);
 
-console.log(`${subset.length} words in 5-character subset`);
-
-await writeFile('public/scripts/dict.json', JSON.stringify(subset));
+await writeFile('public/scripts/dict.json', JSON.stringify(dict));
