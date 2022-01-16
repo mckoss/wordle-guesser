@@ -71,4 +71,16 @@ class MultiSet<T> {
     return sumSquare / sum;
   }
 
+  countOfSize(size: number): number {
+    let result = 0;
+
+    for (let [_, count] of this.elements) {
+      if (count === size) {
+        result++;
+      }
+    }
+
+    return result;
+  }
+
 }

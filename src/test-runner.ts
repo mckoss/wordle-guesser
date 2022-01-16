@@ -33,7 +33,7 @@ for (const word of tests) {
   while (true) {
     const clue = wordle.makeGuess(guess);
     guessCount++;
-    guesses.push(guess);
+    guesses.push(guess + (subset.has(guess) ? '!' : ''));
 
     if (clue === '!!!!!') {
       console.log([word, guesses.join('-'), guessCount].join(','));
@@ -41,13 +41,16 @@ for (const word of tests) {
     }
 
     const words = wordle.possibleWords(guess, clue, subset);
-    guesses.push(`${words.length}`);
 
     // console.log(`${word} guess ${guess} => ${clue}(${words.length})`);
     subset = new Set(words);
-    const guessStats = analyze(dict, 1, subset);
-    guess = guessStats[0].guess;
-    guesses.push(`V${guessStats[0].expected.toFixed(1)}`);
+    const guessStats = analyze(dict, 1, subset)[0];
+    guess = guessStats.guess;
+
+    // Embed stats about the current state of knowlege.
+    // (universe, expected, max, singletons)
+    guesses.push(`(${words.length}-E${guessStats.expected.toFixed(1)}-` +
+      `M${guessStats.maxSet.size}-I${guessStats.isolates})`);
   }
 }
 

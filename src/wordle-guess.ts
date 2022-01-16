@@ -12,10 +12,11 @@ interface SetRep {
 }
 
 interface GuessStats {
-  guess: string;
-  inSubset: boolean;
-  numSets: number;
-  expected: number;
+  guess: string;      // The recommended guessed word.
+  inSubset: boolean;  // Is the guessed word in the possible solution set.
+  numSets: number;    // Number of partitions of remaining words.
+  expected: number;   // Expected size of a randomly guessed word's partition.
+  isolates: number;   // Number of single-element paritions.
   maxSet: SetRep;
 }
 
@@ -50,6 +51,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
       inSubset: true,
       numSets: 1,
       expected: 1,
+      isolates: 1,
       maxSet: {
         clue: '!!!!!',
         size: 1,
@@ -85,21 +87,23 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
       continue;
     }
 
-    const expected = clueSets.expectedSize();
-    if (showTelemetry && Math.random() < 0.001) {
-      console.log(`${guess}, ${expected}`);
-    }
-
-    topGuesses.add({
+    const guessStats: GuessStats = {
       guess,
       inSubset: subset.has(guess),
       numSets: clueSets.size(),
-      expected,
+      expected: clueSets.expectedSize(),
+      isolates: clueSets.countOfSize(1),
       maxSet: {
         clue,
         size: clueSets.count(clue),
       }
-    });
+    };
+
+    if (showTelemetry && Math.random() < 0.001) {
+      console.log(JSON.stringify(guessStats));
+    }
+
+    topGuesses.add(guessStats);
   }
 
   const results = topGuesses.getResults();
