@@ -6,12 +6,18 @@ import { Wordle, isValidClue } from './wordle.js';
 import { analyze } from './wordle-guess.js';
 
 const dict = JSON.parse(await readFile('data/words.json', 'utf8')) as string[];
+const soln = JSON.parse(await readFile('data/solutions.json', 'utf8')) as string[];
 const tests = JSON.parse(await readFile('data/test-words.json', 'utf8')) as string[];
 
 const wordle = new Wordle(dict);
 
 for (const word of tests) {
-  let subset = new Set(dict);
+  let subset = new Set(soln);
+
+  if (!subset.has(word)) {
+    console.log([word, 'not-in-solution-set', '#N/A'].join(','));
+    continue;
+  }
 
   try {
     wordle.setWord(word);
@@ -20,7 +26,7 @@ for (const word of tests) {
     continue;
   }
 
-  let guess = 'tares';
+  let guess = 'raise';
   let guesses = [];
   let guessCount = 0;
 

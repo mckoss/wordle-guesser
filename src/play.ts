@@ -6,9 +6,10 @@ import { Wordle, isValidClue } from './wordle.js';
 import { analyze } from './wordle-guess.js';
 
 const dict = JSON.parse(await readFile('public/data/words.json', 'utf8')) as string[];
+const soln = JSON.parse(await readFile('public/data/solutions.json', 'utf8')) as string[];
 
 const wordle = new Wordle(dict);
-let subset = new Set(dict);
+let subset = new Set(soln);
 
 console.log("Let's play Wordle!\n");
 console.log("When prompted for a clue type a 5-letter string of the form:");
@@ -16,7 +17,9 @@ console.log("X - not in answer (Gray in Wordle)");
 console.log("! - correct letter in correct position (Green in Wordle)");
 console.log("? - correct letter in wrong position (Yellow in Wordle)");
 
-let guess = 'tares';
+// Note optimal from expected size (that would be 'roate', 60.4 vs 61) - but
+// has better max size (168 vs 195).
+let guess = 'raise';
 console.log(`I guess '${guess}.'`);
 let guesses = 1;
 

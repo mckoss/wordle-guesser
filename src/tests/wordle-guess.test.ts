@@ -18,12 +18,12 @@ suite("Wordle Guess", () => {
   });
 
   test("get best initial guess", () => {
-    const guesses = analyze(dict, 10);
+    const guesses = analyze(dict, 10, new Set(solutions));
     console.log(`Optimal first guess is '${guesses[0].guess}' with at most ` +
       `${guesses[0].maxSet.size} words remaining`);
     console.log(guesses);
-    assert.equal(guesses[0].guess, 'tares');
-    assert.equal(guesses[0].maxSet.size, 337);
+    assert.equal(guesses[0].guess, 'roate');
+    assert.equal(guesses[0].maxSet.size, 195);
   }).timeout(120000);
 
   test("possibleWords", () => {
