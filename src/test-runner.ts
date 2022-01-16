@@ -21,23 +21,26 @@ for (const word of tests) {
   }
 
   let guess = 'arose';
-  let guesses = [guess];
+  let guesses = [];
+  let guessCount = 0;
 
   while (true) {
     const clue = wordle.makeGuess(guess);
+    guessCount++;
+    guesses.push(guess);
 
     if (clue === '!!!!!') {
-      console.log([word, guesses.join('-'), guesses.length].join(','));
+      console.log([word, guesses.join('-'), guessCount].join(','));
       break;
     }
 
     const words = wordle.possibleWords(guess, clue, subset);
+    guesses.push(`${words.length}`);
 
     // console.log(`${word} guess ${guess} => ${clue}(${words.length})`);
     subset = new Set(words);
     const guessStats = analyze(dict, 1, subset);
     guess = guessStats[0].guess;
-    guesses.push(`${guess}<${words.length}>`);
   }
 }
 

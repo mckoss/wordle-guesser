@@ -15,12 +15,13 @@ interface GuessStats {
   guess: string;
   inSubset: boolean;
   numSets: number;
+  variance: number;
   maxSet: SetRep;
 }
 
 // Smaller is "better"
 function rankStat(a: GuessStats, b: GuessStats): boolean {
-  if (a.maxSet.size < b.maxSet.size) {
+  if (a.variance < b.variance) {
     return true;
   }
   if (a.inSubset && !b.inSubset) {
@@ -42,6 +43,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
       guess,
       inSubset: true,
       numSets: 1,
+      variance: 1,
       maxSet: {
         clue: '!!!!!',
         size: 1,
@@ -72,15 +74,18 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
 
     const clue = clueSets.mostFrequent();
 
-    // Impossible guess
+    // Impossible guess - no set has words in it.
     if (clueSets.count(clue) === 0) {
       continue;
     }
+
+    const variance = clueSets.variance();
 
     topGuesses.add({
       guess,
       inSubset: subset.has(guess),
       numSets: clueSets.size(),
+      variance,
       maxSet: {
         clue,
         size: clueSets.count(clue),

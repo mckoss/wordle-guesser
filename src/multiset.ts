@@ -58,4 +58,17 @@ class MultiSet<T> {
 
     return elt!;
   }
+
+  // The Variance is also the expected frequency of a randomly choses
+  // element (since Pr(i) * size(i) = size(i)/N * size(i).
+  variance(): number {
+    let sum = 0;
+    let count = 0;
+    for (let size of this.elements.values()) {
+      sum += size ** 2;
+      count++;
+    }
+    return sum / count;
+  }
+
 }
