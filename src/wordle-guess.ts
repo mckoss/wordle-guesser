@@ -26,15 +26,17 @@ function telemetry(show: boolean) {
   showTelemetry = show;
 }
 
-// Smaller is "better"
+// Return true if a "is better" than b.
 function rankStat(a: GuessStats, b: GuessStats): boolean {
-  if (a.expected < b.expected) {
-    return true;
+  if (a.inSubset === b.inSubset) {
+    return a.expected < b.expected;
   }
-  if (a.inSubset && !b.inSubset) {
-    return true;
+
+  if (a.inSubset) {
+    return a.expected < b.expected + 1;
+  } else {
+    return a.expected + 1 < b.expected;
   }
-  return false;
 }
 
 // Return the top guesses and stats for the possible words.
