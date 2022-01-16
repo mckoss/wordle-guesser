@@ -44,24 +44,18 @@ class MultiSet<T> {
     }
   }
 
-  // Return the min and max elements (by count)
-  minmax(): [T, T] {
-    let min : number | undefined = undefined;
-    let max : number | undefined = undefined;
-    let minElt: T | undefined = undefined;
-    let maxElt: T | undefined = undefined;
+  // Return the element that occurs most frequently in the multi-set.
+  mostFrequent(): T {
+    let maxCount : number | undefined = undefined;
+    let elt: T | undefined = undefined;
 
     for (let [t, count] of this.elements) {
-      if (min === undefined || count < min) {
-        min = count;
-        minElt = t;
-      }
-      if (max === undefined || count > max) {
-        max = count;
-        maxElt = t;
+      if (maxCount === undefined || count > maxCount) {
+        maxCount = count;
+        elt = t;
       }
     }
 
-    return [minElt!, maxElt!];
+    return elt!;
   }
 }

@@ -16,7 +16,7 @@ for (const word of tests) {
   try {
     wordle.setWord(word);
   } catch(e) {
-    console.log(`${word}, not-in-dict, #N/A`);
+    console.log([word, 'not-in-dict', '#N/A'].join(','));
     continue;
   }
 
@@ -27,7 +27,7 @@ for (const word of tests) {
     const clue = wordle.makeGuess(guess);
 
     if (clue === '!!!!!') {
-      console.log(`${word}, ${guesses.join('-')}, ${guesses.length}`);
+      console.log([word, guesses.join('-'), guesses.length].join(','));
       break;
     }
 

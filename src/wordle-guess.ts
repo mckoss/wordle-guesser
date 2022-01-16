@@ -70,9 +70,10 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
       clueSets.add(clue);
     }
 
-    const [ _, max ] = clueSets.minmax();
+    const clue = clueSets.mostFrequent();
 
-    if (clueSets.count(max) === 0) {
+    // Impossible guess
+    if (clueSets.count(clue) === 0) {
       continue;
     }
 
@@ -81,8 +82,8 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
       inSubset: subset.has(guess),
       numSets: clueSets.size(),
       maxSet: {
-        clue: max,
-        size: clueSets.count(max),
+        clue,
+        size: clueSets.count(clue),
       }
     });
   }
