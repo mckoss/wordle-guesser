@@ -41,6 +41,7 @@ for (const word of tests) {
     subset = new Set(words);
     const guessStats = analyze(dict, 1, subset);
     guess = guessStats[0].guess;
+    guesses.push(`V${guessStats[0].variance.toFixed(1)}`);
   }
 }
 
