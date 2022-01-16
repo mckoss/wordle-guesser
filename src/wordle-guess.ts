@@ -3,7 +3,7 @@ import { MultiSet } from './multiset.js';
 import { Top } from './top.js';
 import { stat } from 'fs';
 
-export { analyze };
+export { analyze, telemetry };
 
 interface SetRep {
   clue: Clue;
@@ -15,13 +15,19 @@ interface GuessStats {
   guess: string;
   inSubset: boolean;
   numSets: number;
-  variance: number;
+  expected: number;
   maxSet: SetRep;
+}
+
+let showTelemetry = false;
+
+function telemetry(show: boolean) {
+  showTelemetry = show;
 }
 
 // Smaller is "better"
 function rankStat(a: GuessStats, b: GuessStats): boolean {
-  if (a.variance < b.variance) {
+  if (a.expected < b.expected) {
     return true;
   }
   if (a.inSubset && !b.inSubset) {
@@ -43,7 +49,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
       guess,
       inSubset: true,
       numSets: 1,
-      variance: 1,
+      expected: 1,
       maxSet: {
         clue: '!!!!!',
         size: 1,
@@ -79,13 +85,16 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
       continue;
     }
 
-    const variance = clueSets.variance();
+    const expected = clueSets.expectedSize();
+    if (showTelemetry && Math.random() < 0.001) {
+      console.log(`${guess}, ${expected}`);
+    }
 
     topGuesses.add({
       guess,
       inSubset: subset.has(guess),
       numSets: clueSets.size(),
-      variance,
+      expected,
       maxSet: {
         clue,
         size: clueSets.count(clue),

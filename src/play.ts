@@ -5,7 +5,7 @@ import { exit } from 'process';
 import { Wordle, isValidClue } from './wordle.js';
 import { analyze } from './wordle-guess.js';
 
-const dict = JSON.parse(await readFile('public/scripts/words.json', 'utf8')) as string[];
+const dict = JSON.parse(await readFile('public/data/words.json', 'utf8')) as string[];
 
 const wordle = new Wordle(dict);
 let subset = new Set(dict);
@@ -16,7 +16,7 @@ console.log("X - not in answer (Gray in Wordle)");
 console.log("! - correct letter in correct position (Green in Wordle)");
 console.log("? - correct letter in wrong position (Yellow in Wordle)");
 
-let guess = 'arose';
+let guess = 'tares';
 console.log(`I guess '${guess}.'`);
 let guesses = 1;
 

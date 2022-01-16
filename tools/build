@@ -11,6 +11,8 @@ rm -rf public
 
 tsc
 
-cp data/words.json public/scripts
+mkdir -p public/data
+
+cp data/*.json public/data
 
 tree public
