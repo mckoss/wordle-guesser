@@ -1,6 +1,7 @@
 import { Clue, Wordle } from './wordle.js';
 import { MultiSet } from './multiset.js';
 import { Top } from './top.js';
+import { stat } from 'fs';
 
 export { analyze };
 
@@ -12,8 +13,15 @@ interface SetRep {
 
 interface GuessStats {
   guess: string;
+  inSubset: boolean;
   numSets: number;
   maxSet: SetRep;
+}
+
+// Smaller is "better"
+function rankStat(stat: GuessStats): number {
+  return stat.maxSet.size;
+  // return stat.maxSet.size * 2 + (stat.inSubset ? 0 : 1);
 }
 
 // Return the top guesses and stats for the possible words.
@@ -27,6 +35,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
     const guess = Array.from(subset)[0];
     return [{
       guess,
+      inSubset: true,
       numSets: 1,
       maxSet: {
         clue: '!!!!!',
@@ -37,7 +46,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
   }
 
   const wordle = new Wordle(dict);
-  const topGuesses = new Top<GuessStats, number>(top, stat => stat.maxSet.size);
+  const topGuesses = new Top<GuessStats, number>(top, rankStat);
 
   // We can guess any word in the larger dictionary despite how big
   // the current subset may be.
@@ -64,6 +73,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
 
     topGuesses.add({
       guess,
+      inSubset: subset.has(guess),
       numSets: clueSets.size(),
       maxSet: {
         clue: max,
