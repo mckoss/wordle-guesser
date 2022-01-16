@@ -20,7 +20,7 @@ for (const word of tests) {
     continue;
   }
 
-  let guess = 'arose';
+  let guess = 'tares';
   let guesses = [];
   let guessCount = 0;
 

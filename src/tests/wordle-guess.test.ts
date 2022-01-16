@@ -19,11 +19,11 @@ suite("Wordle Guess", () => {
     console.log(`Optimal first guess is '${guesses[0].guess}' with at most ` +
       `${guesses[0].maxSet.size} words remaining`);
     console.log(guesses);
-    assert.equal(guesses[0].guess, 'arose');
-    assert.equal(guesses[0].maxSet.size, 187);
+    assert.equal(guesses[0].guess, 'tares');
+    assert.equal(guesses[0].maxSet.size, 337);
   }).timeout(120000);
 
-  test("failing test case", () => {
+  test("possibleWords", () => {
     const wordle = new Wordle(dict);
 
     const subset = new Set<string>(['abbey', 'alley', 'babel', 'fahey', 'haaek',
