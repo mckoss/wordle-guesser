@@ -1,5 +1,6 @@
 import { assert } from 'chai';
 import { suite, suiteSetup, setup, test } from 'mocha';
+import { toNamespacedPath } from 'path/posix';
 
 import { Top } from '../top.js';
 
@@ -26,4 +27,29 @@ suite('Top', () => {
     assert.deepEqual(top.getResults(), ['boy', 'does', 'every']);
   });
 
+  test('find lowest', () => {
+    for (let i = 0; i < 100; i++) {
+      let a = natural(1000);
+      shuffle(a);
+
+      let t = new Top<number>(1, (a, b) => a < b);
+      for (let j = 0; j < a.length; j++) {
+        t.add(a[j]);
+      }
+      assert.equal(t.getResults()[0], 0);
+    }
+  });
+
 });
+
+function shuffle<T>(arr: T[]) {
+  for (let i = 0; i < arr.length; i++) {
+    const j = Math.floor(Math.random() * arr.length);
+    // Swap ith and jth elements.
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
+function natural(n: number): number[] {
+  return Array.from({length: n}).map((_, i) => i);
+}
