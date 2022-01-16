@@ -21521,6 +21521,7 @@ laryngeal
 las
 lascar
 lascivious
+laser
 lash
 lashed
 lashes
@@ -32691,6 +32692,7 @@ russia
 russian
 russians
 rust
+rusts
 rusted
 rustic
 rusting

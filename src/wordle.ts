@@ -71,6 +71,7 @@ class Wordle {
   // Return all the words from subset that are candidates that match the clue
   // for a given guess.
   possibleWords(guess: string, clue: Clue, subset: Set<string>): string[] {
+    const saveWord = this.word;
     clue = clue.toUpperCase();
     const words = [];
     for (let word of subset) {
@@ -79,6 +80,7 @@ class Wordle {
         words.push(word);
       }
     }
+    this.word = saveWord;
     return words;
   }
 }

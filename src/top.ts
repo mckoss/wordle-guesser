@@ -6,7 +6,7 @@ type CmpLT<T> = (a: T, b: T) => boolean;
 
 class Top<T> {
   top: number;
-  cmpLT: CmpLT;
+  cmpLT: CmpLT<T>;
   results: T[];
 
   constructor(top = 10, cmpLT: CmpLT<T>) {
@@ -39,10 +39,10 @@ function binarySearch<T>(t: T, arr: T[], cmpLT: CmpLT<T>): number {
   while (low <= high) {
     mid = Math.floor((low + high) / 2);
 
-    if (score(t) > score(arr[mid])) {
-      low = mid + 1;
-    } else {
+    if (cmpLT(t, arr[mid])) {
       high = mid - 1;
+    } else {
+      low = mid + 1;
     }
   }
 

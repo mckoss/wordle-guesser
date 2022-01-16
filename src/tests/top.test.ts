@@ -5,13 +5,13 @@ import { Top } from '../top.js';
 
 suite('Top', () => {
   test('constructor', () => {
-    const top = new Top<number, number>(10, n => n);
+    const top = new Top<number>(10, (a, b) => a < b);
     assert.equal(top.top, 10);
     assert.equal(top.results.length, 0);
   });
 
   test('add', () => {
-    const top = new Top<number, number>(10, n => n);
+    const top = new Top<number>(10, (a, b) => a < b);
     for (let i = 20; i >=0; i--) {
       top.add(i);
     }
@@ -19,7 +19,7 @@ suite('Top', () => {
   });
 
   test('add text', () => {
-    const top = new Top<string, string>(3, s => s);
+    const top = new Top<string>(3, (a, b) => a < b);
     for (const word of ['every', 'good', 'boy', 'does', 'fine']) {
       top.add(word);
     }

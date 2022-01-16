@@ -19,9 +19,14 @@ interface GuessStats {
 }
 
 // Smaller is "better"
-function rankStat(stat: GuessStats): number {
-  return stat.maxSet.size;
-  // return stat.maxSet.size * 2 + (stat.inSubset ? 0 : 1);
+function rankStat(a: GuessStats, b: GuessStats): boolean {
+  if (a.maxSet.size < b.maxSet.size) {
+    return true;
+  }
+  if (a.inSubset && !b.inSubset) {
+    return true;
+  }
+  return false;
 }
 
 // Return the top guesses and stats for the possible words.
@@ -46,7 +51,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
   }
 
   const wordle = new Wordle(dict);
-  const topGuesses = new Top<GuessStats, number>(top, rankStat);
+  const topGuesses = new Top<GuessStats>(top, rankStat);
 
   // We can guess any word in the larger dictionary despite how big
   // the current subset may be.

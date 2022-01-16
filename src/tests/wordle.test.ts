@@ -37,6 +37,18 @@ suite("Wordle", () => {
     }
   });
 
+  test("Failing possible words", () => {
+    wordle.setWord('widow');
+
+    const tests = [
+      ['arose', 'XX?XX'],
+      ['youth', 'X?XXX'],
+    ];
+    for (let t of tests) {
+      assert.equal(wordle.makeGuess(t[0]), t[1]);
+    }
+  });
+
   test("setWord not in dictionary", () => {
     assert.throws(() => wordle.setWord('xxxxx'));
   });
