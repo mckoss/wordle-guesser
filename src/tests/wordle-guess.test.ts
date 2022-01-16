@@ -11,7 +11,7 @@ suite("Wordle Guess", () => {
 
   suiteSetup(async () => {
     console.log(process.cwd());
-    dict = JSON.parse(await readFile('public/scripts/dict.json', 'utf8'));
+    dict = JSON.parse(await readFile('public/scripts/words.json', 'utf8'));
   });
 
   test("get best", () => {
@@ -20,7 +20,7 @@ suite("Wordle Guess", () => {
       `${guesses[0].maxSet.size} words remaining`);
     console.log(guesses);
     assert.equal(guesses[0].guess, 'arose');
-    assert.equal(guesses[0].maxSet.size, 235);
+    assert.equal(guesses[0].maxSet.size, 187);
   }).timeout(120000);
 
   test("failing test case", () => {

@@ -11,7 +11,7 @@ suite("Wordle", () => {
 
   suiteSetup(() => {
     console.log(process.cwd());
-    const data = readFileSync('public/scripts/dict.json').toString();
+    const data = readFileSync('public/scripts/words.json').toString();
     dict = JSON.parse(data);
   });
 

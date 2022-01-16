@@ -8,10 +8,9 @@ source $TOOLS_DIR/use
 cd $PROJ_DIR
 
 rm -rf public
-mkdir -p public/scripts
-
-process-dictionary.mjs
 
 tsc
+
+cp data/words.json public/scripts
 
 tree public
