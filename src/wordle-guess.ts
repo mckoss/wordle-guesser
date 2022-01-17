@@ -45,6 +45,10 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
     subset = new Set(dict);
   }
 
+  if (subset.size === 0) {
+    throw new Error("I don't have any possible words in my dictionary!");
+  }
+
   // The word is determined already.
   if (subset.size === 1) {
     const guess = Array.from(subset)[0];
