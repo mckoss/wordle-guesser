@@ -5,13 +5,13 @@ import process from 'process';
 
 import { Wordle } from '../wordle.js';
 
-suite("Wordle", () => {
+suite("Wordle!", () => {
   let dict: string[];
   let wordle: Wordle;
 
   suiteSetup(() => {
     console.log(process.cwd());
-    const data = readFileSync('data/words.json').toString();
+    const data = readFileSync('data/solutions.json').toString();
     dict = JSON.parse(data);
   });
 
@@ -57,5 +57,15 @@ suite("Wordle", () => {
     wordle.setWord('maker');
     const resp = wordle.makeGuess('maker');
     assert.equal(resp, '!!!!!');
+  });
+
+  test("not using word in set", () => {
+    let subset = new Set(dict);
+    wordle.setWord('slice');
+    const resp = wordle.makeGuess('raise');
+    let words = wordle.possibleWords('raise', resp, subset);
+    subset = new Set(words);;
+    assert.isFalse(subset.has('raise'), 'raise cannot be in it');
+    assert.isFalse(subset.has('plant'));
   });
 });

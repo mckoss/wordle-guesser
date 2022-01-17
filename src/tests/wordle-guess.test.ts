@@ -22,8 +22,8 @@ suite("Wordle Guess", () => {
     console.log(`Optimal first guess is '${guesses[0].guess}' with at most ` +
       `${guesses[0].maxSet.size} words remaining`);
     console.log(guesses);
-    assert.equal(guesses[0].guess, 'roate');
-    assert.equal(guesses[0].maxSet.size, 195);
+    assert.equal(guesses[0].guess, 'raise');
+    assert.equal(guesses[0].maxSet.size, 168);
   }).timeout(120000);
 
   test("possibleWords", () => {

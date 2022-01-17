@@ -16,7 +16,7 @@ interface GuessStats {
   inSubset: boolean;  // Is the guessed word in the possible solution set.
   numSets: number;    // Number of partitions of remaining words.
   expected: number;   // Expected size of a randomly guessed word's partition.
-  isolates: number;   // Number of single-element paritions.
+  singletons: number;   // Number of single-element paritions.
   maxSet: SetRep;
 }
 
@@ -53,7 +53,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
       inSubset: true,
       numSets: 1,
       expected: 1,
-      isolates: 1,
+      singletons: 1,
       maxSet: {
         clue: '!!!!!',
         size: 1,
@@ -94,7 +94,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
       inSubset: subset.has(guess),
       numSets: clueSets.size(),
       expected: clueSets.expectedSize(),
-      isolates: clueSets.countOfSize(1),
+      singletons: clueSets.countOfSize(1),
       maxSet: {
         clue,
         size: clueSets.count(clue),

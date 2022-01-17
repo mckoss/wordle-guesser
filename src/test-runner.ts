@@ -1,29 +1,61 @@
 import { prompt } from './prompt.js';
 import { readFile } from 'fs/promises';
-import { exit } from 'process';
+import { exit, argv } from 'process';
 
 import { Wordle, isValidClue } from './wordle.js';
 import { analyze } from './wordle-guess.js';
 
 const dict = JSON.parse(await readFile('data/words.json', 'utf8')) as string[];
 const soln = JSON.parse(await readFile('data/solutions.json', 'utf8')) as string[];
-const tests = JSON.parse(await readFile('data/test-words.json', 'utf8')) as string[];
+
+let args = argv.slice(2);
+let testWordsFilename = 'test-words';
+
+let sample = false;
+let sampleSize = 100;
+if (args[0] === '--sample') {
+  sample = true;
+  args = args.slice(1);
+  if (/^[0-9]+$/.test(args[0])) {
+    sampleSize = parseInt(args[0]);
+    args = args.slice(1);
+  }
+}
+
+if (args[0] !== undefined) {
+  testWordsFilename = args[0];
+  args = args.slice(1);
+}
+
+const tests = JSON.parse(await readFile(`data/${testWordsFilename}.json`, 'utf8')) as string[];
 
 const wordle = new Wordle(dict);
 
-for (const word of tests) {
-  let subset = new Set(soln);
-
-  if (!subset.has(word)) {
-    console.log([word, 'not-in-solution-set', '#N/A'].join(','));
-    continue;
+if (sample) {
+  while (sampleSize > 0) {
+    let i = Math.floor(Math.random() * tests.length);
+    testWord(tests[i]);
+    sampleSize--;
   }
+} else {
+  for (const word of tests) {
+    testWord(word);
+  }
+}
 
+function testWord(word: string) {
   try {
     wordle.setWord(word);
   } catch(e) {
     console.log([word, 'not-in-dict', '#N/A'].join(','));
-    continue;
+    return;
+  }
+
+  let subset = new Set(soln);
+
+  if (!subset.has(word)) {
+    console.log([word, 'not-in-solution-set', '#N/A'].join(','));
+    return;
   }
 
   let guess = 'raise';
@@ -50,7 +82,6 @@ for (const word of tests) {
     // Embed stats about the current state of knowlege.
     // (universe, expected, max, singletons)
     guesses.push(`(${words.length}-E${guessStats.expected.toFixed(1)}-` +
-      `M${guessStats.maxSet.size}-I${guessStats.isolates})`);
+      `M${guessStats.maxSet.size}-S${guessStats.singletons})`);
   }
 }
-
