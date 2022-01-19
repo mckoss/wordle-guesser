@@ -51,9 +51,14 @@ was to play two colors of two marbles each).
 # Questions I Hope to Answer
 
 - What is the best "first guess" for Wordle?
+  - **RAISE** - This is the best first guess given the Wordle dictionaries.
+    No matter the response, it leaves no more than 168 words in the possibility
+    set and and expected size of only 61 possible remaining words.
 - For each of the possible responses, what are the best 2nd guesses?
 - What is the expected number of guesses in a randomly selected Wordle
   puzzle using this algorithm?
+  - **3.5** - With the current tuning, this algorithm finds the hidden word
+  in an average of 3.5 guesses.  The worst case seems to be 6.
 - What is the hardest word to guess using this algorithm and how many guesses
   are needed?
 
