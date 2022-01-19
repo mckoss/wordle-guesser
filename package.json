@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tools/build",
-    "test": "mocha --ui tdd public/scripts/**/*.test.js",
+    "test": "mocha --ui tdd node/**/*.test.js",
     "test-debug": "mocha --debug-brk --ui tdd public/scripts/**/*.test.js"
   },
   "repository": {
