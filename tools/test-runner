@@ -3,4 +3,4 @@
 
 cd $PROJ_DIR
 
-node public/scripts/test-runner.js "$@"
+node node/test-runner.js "$@"

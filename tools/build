@@ -7,12 +7,31 @@ source $TOOLS_DIR/use
 
 cd $PROJ_DIR
 
-rm -rf public
+echo "Clearing previous build ... "
+rm -rf dist browser node
 
+echo "Compliling Typescript ..."
 tsc
 
-mkdir -p public/data
+echo "Packaging node (command-line) files ..."
+mkdir -p node
+cp dist/*.js node
+cp -R dist/node/* node
+cp -R dist/tests node/tests
 
-cp data/*.json public/data
+echo "Packaging browser files ... "
+mkdir -p browser
+cp -R dist/tests browser/tests
+cp -R static/* browser
+cp dist/*.js browser
+cp -R dist/browser/* browser
 
-tree public
+echo "Copying data files to browser and node ... "
+mkdir -p browser/data
+mkdir -p node/data
+cp -R data/*.json browser/data
+cp -R data/*.json node/data
+
+tree --dirsfirst node
+tree --dirsfirst browser
+

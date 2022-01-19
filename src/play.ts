@@ -5,8 +5,8 @@ import { exit } from 'process';
 import { Wordle, isValidClue } from './wordle.js';
 import { analyze } from './wordle-guess.js';
 
-const dict = JSON.parse(await readFile('public/data/words.json', 'utf8')) as string[];
-const soln = JSON.parse(await readFile('public/data/solutions.json', 'utf8')) as string[];
+const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[];
+const soln = JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[];
 
 const wordle = new Wordle(dict);
 let subset = new Set(soln);

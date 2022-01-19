@@ -5,14 +5,15 @@
     "module": "esnext",
     "rootDir": "src",
     "moduleResolution": "Node",
-    "outDir": "public/scripts",
+    "outDir": "dist",
     "sourceRoot": "src",
     "sourceMap": true,
     "inlineSources": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "declaration": true
   },
   "include": ["src/**/*"],
 }

@@ -1,4 +1,6 @@
-public/
+node/
+browser/
+dist/
 node_modules/
 .vscode
 .DS_Store
