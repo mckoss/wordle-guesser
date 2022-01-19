@@ -34,7 +34,7 @@ be the least-worst.
 
 The pseudo-code would go something like this:
 
-1. Start with the set of all possible hidden colors.
+1. Start with the set of all possible unknown colors.
 2. Choose a guess, so that *no matter the clue given* for that answer,
    the number of possibilities remaining would be minimized.
 3. For each possible guess, each possible clue would result in a set of
@@ -92,8 +92,11 @@ $ test-runner solutions              # Test against the whole solutions.json lis
 $ test-runner --sample 20 solutions  # Take a random sample of 20 words
 ```
 
-The output format is a CSV file with 3 columns: initial-word, guess-history,
-number-of-guesses-to-solve.
+The output format is a CSV file with 3 columns
+
+- Initial unknown word.
+- Guess history.
+- Number of guesses it took to find.
 
 ```
 welsh,raise!-(9-E1.9-M3-S4)-chess!-(1-E1.0-M1-S1)-welsh!,3
@@ -124,7 +127,7 @@ How to read each line:
 world,raise!-(103-E4.8-M11-S19)-cloot-(2-E1.0-M1-S2)-lorry!-(1-E1.0-M1-S1)-world!,4
 ```
 
-- `world` - The hidden word we are trying to guess.
+- `world` - The unknown word we are trying to guess.
 - `raise!` - The first guessed word (! and still possibly the "answer" word).
 - `103` - Number of words possible at the time of the previous guess.
 - `E4.8` - The *expected* size (4.8 words) of the number of remaining words
