@@ -106,26 +106,26 @@ The output format is a CSV file with 3 columns
 - Number of guesses it took to find.
 
 ```
-welsh,raise!-(9-E1.9-M3-S4)-chess!-(1-E1.0-M1-S1)-welsh!,3
-betas,not-in-solution-set,#N/A
-beefy,raise!-(121-E5.0-M14-S20)-betel!-(2-E1.0-M1-S2)-beech!-(1-E1.0-M1-S1)-beefy!,4
-feces,not-in-solution-set,#N/A
-fried,raise!-(12-E2.2-M4-S6)-fried!,2
-items,not-in-solution-set,#N/A
-razor,raise!-(9-E1.9-M3-S4)-randy!-(3-E1.0-M1-S3)-rajah!-(1-E1.0-M1-S1)-razor!,4
-clear,raise!-(34-E3.5-M7-S8)-tread!-(1-E1.0-M1-S1)-clear!,3
-sneak,raise!-(12-E1.7-M3-S7)-steak!-(2-E1.0-M1-S2)-sneak!,3
-trust,raise!-(13-E1.3-M2-S9)-crust!-(1-E1.0-M1-S1)-trust!,3
-petal,raise!-(69-E3.3-M6-S15)-cleat!-(3-E1.7-M2-S1)-fetal!-(2-E1.0-M1-S2)-metal!-(1-E1.0-M1-S1)-petal!,5
-build,raise!-(51-E3.6-M7-S10)-cling!-(4-E1.0-M1-S4)-built!-(1-E1.0-M1-S1)-build!,4
-ovule,not-in-solution-set,#N/A
-peach,raise!-(69-E3.3-M6-S15)-cleat!-(3-E1.0-M1-S3)-beach!-(1-E1.0-M1-S1)-peach!,4
-chews,not-in-solution-set,#N/A
-debug,raise!-(121-E5.0-M14-S20)-betel!-(1-E1.0-M1-S1)-debug!,3
-vista,raise!-(7-E1.0-M1-S7)-slain!-(1-E1.0-M1-S1)-vista!,3
-polls,not-in-solution-set,#N/A
-ships,not-in-solution-set,#N/A
-howdy,raise!-(168-E6.3-M15-S19)-could!-(8-E1.3-M2-S6)-dowdy!-(1-E1.0-M1-S1)-howdy!,4
+robin,raise!-(4-E1.0-M1-S4)-robin!,2
+friar,raise!-(4-E1.5-M2-S2)-briar!-(1-E1.0-M1-S1)-friar!,3
+mirth,raise!-(23-E1.9-M3-S12)-droit!-(3-E1.7-M2-S1)-birth!-(2-E1.0-M1-S2)-girth!-(1-E1.0-M1-S1)-mirth!,5
+quart,raise!-(78-E4.7-M9-S13)-tronc-(4-E1.0-M1-S4)-altar!-(1-E1.0-M1-S1)-quart!,4
+brake,raise!-(26-E3.8-M6-S4)-grace!-(6-E1.3-M2-S4)-drake!-(1-E1.0-M1-S1)-brake!,4
+cease,raise!-(8-E1.8-M2-S2)-cease!,2
+tried,raise!-(12-E2.2-M4-S6)-fried!-(4-E1.0-M1-S4)-capot-(1-E1.0-M1-S1)-tried!,4
+mover,raise!-(102-E8.7-M16-S15)-outer!-(16-E3.0-M5-S2)-chowk-(5-E1.0-M1-S5)-balmy-(1-E1.0-M1-S1)-mover!,5
+anger,raise!-(34-E3.5-M7-S8)-tread!-(7-E1.0-M1-S7)-learn!-(1-E1.0-M1-S1)-anger!,4
+rabid,raise!-(6-E1.3-M2-S4)-rabid!,2
+roast,raise!-(1-E1.0-M1-S1)-roast!,2
+burly,raise!-(103-E4.8-M11-S19)-cloot-(3-E1.0-M1-S3)-dryly!-(1-E1.0-M1-S1)-burly!,4
+paler,raise!-(28-E3.6-M7-S7)-empty-(2-E1.0-M1-S2)-paler!,3
+duvet,raise!-(121-E5.0-M14-S20)-betel!-(5-E1.0-M1-S5)-comet!-(1-E1.0-M1-S1)-duvet!,4
+offer,raise!-(102-E8.7-M16-S15)-outer!-(5-E1.8-M2-S1)-odder!-(2-E1.0-M1-S2)-offer!,4
+ripen,raise!-(8-E2.0-M3-S3)-riper!-(1-E1.0-M1-S1)-ripen!,3
+sally,raise!-(20-E2.3-M4-S8)-salon!-(3-E1.0-M1-S3)-sally!,3
+flown,raise!-(168-E6.3-M15-S19)-could!-(5-E1.0-M1-S5)-bloom!-(1-E1.0-M1-S1)-flown!,4
+group,raise!-(103-E4.8-M11-S19)-cloot-(11-E1.5-M2-S5)-frond!-(2-E1.0-M1-S2)-group!,4
+abide,raise!-(5-E1.4-M2-S3)-alike!-(2-E1.0-M1-S2)-abide!,3
 ```
 
 How to read each line:
