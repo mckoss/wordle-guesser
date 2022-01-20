@@ -54,7 +54,7 @@ was to play two colors of two marbles each).
   - **RAISE** - This is the best first guess given the Wordle dictionaries.
     No matter the response, it leaves no more than **168** words in the possibility
     set and and expected size of only **61** possible remaining words.  There
-    are **132* possible clue patterns that can be given in response (compare
+    are **132** possible clue patterns that can be given in response (compare
     to `3^5 = 243` possible theoretical patterns for any random string of 5
     letters).
 - For each of the possible responses, what are the best 2nd guesses?
