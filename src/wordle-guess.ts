@@ -26,6 +26,11 @@ function telemetry(show: boolean) {
   showTelemetry = show;
 }
 
+// A PURE ranking based on expected size of partitions.
+function rankExpected(a: GuessStats, b: GuessStats): boolean {
+  return a.expected < b.expected;
+}
+
 // Return true if a "is better" than b.
 function rankStat(a: GuessStats, b: GuessStats): boolean {
   if (a.inSubset === b.inSubset) {
@@ -67,7 +72,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
   }
 
   const wordle = new Wordle(dict);
-  const topGuesses = new Top<GuessStats>(top, rankStat);
+  const topGuesses = new Top<GuessStats>(top, rankExpected);
 
   // We can guess any word in the larger dictionary despite how big
   // the current subset may be.
