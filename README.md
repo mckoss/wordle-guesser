@@ -51,19 +51,23 @@ was to play two colors of two marbles each).
 # Questions I Hope to Answer
 
 - What is the best "first guess" for Wordle?
-  - **RAISE** - This is the best first guess given the Wordle dictionaries.
-    No matter the response, it leaves no more than **168** words in the possibility
+  - **RAISE** - This is the best first guess given the Wordle dictionaries. No
+    matter the response, it leaves no more than **168** words in the possibility
     set and and expected size of only **61** possible remaining words.  There
-    are **132** possible clue patterns that can be given in response (compare
-    to `3^5 = 243` possible theoretical patterns for any random string of 5
+    are **132** possible clue patterns that can be given in response (compare to
+    `3^5 = 243` possible theoretical patterns for any random string of 5
     letters).
 - For each of the possible responses, what are the best 2nd guesses?
 - What is the expected number of guesses in a randomly selected Wordle
   puzzle using this algorithm?
-  - **3.5** - With the current tuning, this algorithm finds the hidden word
+  - **3.53** - With the current tuning, this algorithm finds the hidden word
   in an average of 3.5 guesses.  The worst case seems to be 6.
 - What is the hardest word to guess using this algorithm and how many guesses
   are needed?
+  - gooey, greed, jolly, merry, pitch, power, punch, tight, vaunt, witty, wreak
+    (all requiring 6 guesses).
+- Without known the responses a-priori, what would be the best 2 or 3 words to
+  guess first.
 
 # Using this repo
 
@@ -149,6 +153,11 @@ world,raise!-(103-E4.8-M11-S19)-cloot-(2-E1.0-M1-S2)-lorry!-(1-E1.0-M1-S1)-world
 
 Data massaging for the input files for the JavaScript programs here is all done
 in Python - see the [Jupyter Notebook](./tools/notebook.ipynb).
+
+I experimented with several English dictionaries to source word lists until
+being told about [this respository](https://github.com/AllValley/WordleDictionary).
+It seems to match the Wordle web site with 2,315 possible solution words
+chosen from a larger legal-guess dictionary of 12,897 (5-letter) words.
 
 # Dual Targets
 
