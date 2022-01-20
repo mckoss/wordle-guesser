@@ -38,9 +38,9 @@ function rankStat(a: GuessStats, b: GuessStats): boolean {
   }
 
   if (a.inSubset) {
-    return a.expected < b.expected + 1;
+    return a.expected < b.expected + 0.5;
   } else {
-    return a.expected + 1 < b.expected;
+    return a.expected + 0.5 < b.expected;
   }
 }
 
@@ -72,7 +72,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
   }
 
   const wordle = new Wordle(dict);
-  const topGuesses = new Top<GuessStats>(top, rankExpected);
+  const topGuesses = new Top<GuessStats>(top, rankStat);
 
   // We can guess any word in the larger dictionary despite how big
   // the current subset may be.
