@@ -9,6 +9,11 @@ source $TOOLS_DIR/usefuncs
 # Ensure bin directory exists for installing dependencies
 mkdir -p "$PROJ_DIR/bin"
 
+if [ -d $PROJ_DIR/.env ]; then
+   echo "Using the local Python environment"
+   source $PROJ_DIR/.env/bin/activate
+fi
+
 #
 # Add build tools to PATH
 #

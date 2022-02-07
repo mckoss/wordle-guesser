@@ -78,6 +78,12 @@ unuse () {
     if [[ "$ENV_ALIASES" != "" ]]; then
         unalias $ENV_ALIASES
     fi
+
+    # Assume we want to un-use the Python VIRTUAL_ENV as well.
+    if [ -n $VIRTUAL_ENV ]; then
+        deactivate
+    fi
+
     unset ENV_ALIASES
 }
 
