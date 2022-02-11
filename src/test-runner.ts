@@ -9,7 +9,7 @@ const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[]
 const soln = JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[];
 
 let args = argv.slice(2);
-let testWordsFilename = 'test-words';
+let testWordsFilename = 'solutions';
 
 let sample = false;
 let sampleSize = 100;

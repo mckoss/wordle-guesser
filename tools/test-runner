@@ -1,5 +1,5 @@
 #/bin/bash
-# play --- run the play command as build by this repo
+# play --- run a series of tests and record the results
 
 cd $PROJ_DIR
 

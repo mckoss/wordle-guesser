@@ -24,7 +24,7 @@ mkdir -p browser
 cp -R dist/tests browser/tests
 cp -R static/* browser
 cp dist/*.js browser
-cp -R dist/browser/* browser
+# cp -R dist/browser/* browser
 
 echo "Copying data files to browser and node ... "
 mkdir -p browser/data
