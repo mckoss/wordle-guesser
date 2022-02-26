@@ -44,6 +44,11 @@ function rankStat(a: GuessStats, b: GuessStats): boolean {
   }
 }
 
+// Smallest worst-case size of a partition ranking is best.
+function rankWorst(a: GuessStats, b: GuessStats): boolean {
+  return a.maxSet.size < b.maxSet.size;
+}
+
 // Return the top guesses and stats for the possible words.
 function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
   if (!subset) {
@@ -72,7 +77,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
   }
 
   const wordle = new Wordle(dict);
-  const topGuesses = new Top<GuessStats>(top, rankStat);
+  const topGuesses = new Top<GuessStats>(top, rankWorst);
 
   // We can guess any word in the larger dictionary despite how big
   // the current subset may be.

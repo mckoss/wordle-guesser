@@ -9,11 +9,6 @@ source $TOOLS_DIR/usefuncs
 # Ensure bin directory exists for installing dependencies
 mkdir -p "$PROJ_DIR/bin"
 
-if [ -d $PROJ_DIR/.env ]; then
-   echo "Using the local Python environment"
-   source $PROJ_DIR/.env/bin/activate
-fi
-
 #
 # Add build tools to PATH
 #
@@ -33,7 +28,9 @@ if [ -z "$PS1" ]; then
    return
 fi
 
-# Interactive shells - show help message.
-if [ -n "$PS1" ]; then
-   show-commands
+# Interactive shells
+if [ -d $PROJ_DIR/.env ]; then
+   echo "Using the local Python environment"
+   source $PROJ_DIR/.env/bin/activate
 fi
+show-commands
