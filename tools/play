@@ -1,5 +1,5 @@
 #/bin/bash
-# play --- run the play command as build by this repo
+# play --- Play a game of Wordle
 
 cd $PROJ_DIR
 

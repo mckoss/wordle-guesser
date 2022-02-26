@@ -3,7 +3,7 @@ import { suite, suiteSetup, setup, test } from 'mocha';
 import { readFile } from 'fs/promises';
 import process from 'process';
 
-import { analyze, telemetry } from '../wordle-guess.js';
+import { analyze } from '../wordle-guess.js';
 import { Wordle } from '../wordle.js';
 
 suite("Wordle Guess", () => {
@@ -14,17 +14,7 @@ suite("Wordle Guess", () => {
     console.log(`Current dir: ${process.cwd()}`);
     dict = JSON.parse(await readFile('data/words.json', 'utf8'));
     solutions = JSON.parse(await readFile('data/solutions.json', 'utf8'));
-    telemetry(true);
   });
-
-  test("get best initial guess", () => {
-    const guesses = analyze(dict, 10, new Set(solutions));
-    console.log(`Optimal first guess is '${guesses[0].guess}' with at most ` +
-      `${guesses[0].maxSet.size} words remaining`);
-    console.log(guesses);
-    assert.equal(guesses[0].guess, 'raise');
-    assert.equal(guesses[0].maxSet.size, 168);
-  }).timeout(120000);
 
   test("possibleWords", () => {
     const wordle = new Wordle(dict);

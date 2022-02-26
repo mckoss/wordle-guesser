@@ -1,0 +1,6 @@
+#/bin/bash
+# best-guess --- Analyze the best first guess.
+
+cd $PROJ_DIR
+
+node node/best-guess.js "$@"

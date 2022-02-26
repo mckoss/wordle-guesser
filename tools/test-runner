@@ -1,5 +1,5 @@
 #/bin/bash
-# play --- run a series of tests and record the results
+# test-runnter --- Exhaustive test of all words - output results as csv.
 
 cd $PROJ_DIR
 
