@@ -5,12 +5,13 @@ import { readFile } from 'fs/promises';
 import { exit } from 'process';
 
 import { Wordle, isValidClue } from './wordle.js';
-import { analyze } from './wordle-guess.js';
+import { analyze, rankExpected, rankStat, rankWorst } from './wordle-guess.js';
 
 const DEFAULT_GUESS = 'raise';
 
 async function main(args: string[]) {
   let guess = DEFAULT_GUESS;
+  let rankFunction = rankStat;
 
   const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[];
   const soln = JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[];
@@ -20,6 +21,10 @@ async function main(args: string[]) {
       const [, name, value] = option.match(/^--([^=]+)=?(.*)$/) || [];
       if (name === 'help') {
         help();
+      } else if (name === 'expected') {
+        rankFunction = rankExpected;
+      } else if (name === 'worst') {
+        rankFunction = rankWorst;
       } else {
         help(`Unknown option: ${option}`);
       }
@@ -61,7 +66,7 @@ async function main(args: string[]) {
 
     subset = new Set(words);
 
-    const bestGuess = analyze(dict, 1, subset);
+    const bestGuess = analyze(dict, 1, subset, rankFunction);
     console.log(JSON.stringify(bestGuess));
 
     guess = bestGuess[0].guess;
@@ -88,6 +93,8 @@ Usage:
 
 Options:
   --help       Show this help message.
+  --expected   Rank guesses by expected size of partitions.
+  --worst      Rank guesses by worst-case size of partitions.
 `);
 
   exit(msg === undefined ? 0 : 1);

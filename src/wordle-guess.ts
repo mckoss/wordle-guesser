@@ -3,7 +3,7 @@ import { MultiSet } from './multiset.js';
 import { Top } from './top.js';
 import { stat } from 'fs';
 
-export { analyze, telemetry };
+export { analyze, telemetry, rankExpected, rankStat, rankWorst };
 
 interface SetRep {
   clue: Clue;
@@ -80,7 +80,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>,
   }
 
   const wordle = new Wordle(dict);
-  const topGuesses = new Top<GuessStats>(top, rankWorst);
+  const topGuesses = new Top<GuessStats>(top, rankFunction);
 
   // We can guess any word in the larger dictionary despite how big
   // the current subset may be.
