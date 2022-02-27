@@ -10,6 +10,11 @@ import { analyze } from './wordle-guess.js';
 const DEFAULT_GUESS = 'raise';
 
 async function main(args: string[]) {
+  let guess = DEFAULT_GUESS;
+
+  const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[];
+  const soln = JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[];
+
   for (const option of args) {
     if (option.startsWith('--')) {
       const [, name, value] = option.match(/^--([^=]+)=?(.*)$/) || [];
@@ -18,11 +23,13 @@ async function main(args: string[]) {
       } else {
         help(`Unknown option: ${option}`);
       }
+    } else {
+      guess = option;
+      if (dict.indexOf(guess) === -1) {
+        help(`Invalid guess: ${guess}`);
+      }
     }
   }
-
-  const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[];
-  const soln = JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[];
 
   const wordle = new Wordle(dict);
   let subset = new Set(soln);
@@ -33,7 +40,6 @@ async function main(args: string[]) {
   console.log("! - correct letter in correct position (Green in Wordle)");
   console.log("? - correct letter in wrong position (Yellow in Wordle)");
 
-  let guess = DEFAULT_GUESS;
   console.log(`I guess '${guess}.'`);
   let guesses = 1;
 
@@ -76,7 +82,9 @@ function help(msg?: string) {
 Program that plays Wordle.
 
 Usage:
-  play [options]
+  play [options] [start-guess]
+
+  Unless otherwise specified, the program will start with the guess "${DEFAULT_GUESS}".
 
 Options:
   --help       Show this help message.
