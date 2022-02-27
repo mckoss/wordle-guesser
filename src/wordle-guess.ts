@@ -48,6 +48,10 @@ function rankStat(a: GuessStats, b: GuessStats): boolean {
 
 // Smallest worst-case size of a partition ranking is best.
 function rankWorst(a: GuessStats, b: GuessStats): boolean {
+  if (a.maxSet.size === b.maxSet.size) {
+    return a.expected < b.expected;
+  }
+
   return a.maxSet.size < b.maxSet.size;
 }
 
