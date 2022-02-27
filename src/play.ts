@@ -12,6 +12,7 @@ const DEFAULT_GUESS = 'raise';
 async function main(args: string[]) {
   let guess = DEFAULT_GUESS;
   let rankFunction = rankStat;
+  let hardMode = false;
 
   const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[];
   const soln = JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[];
@@ -25,6 +26,8 @@ async function main(args: string[]) {
         rankFunction = rankExpected;
       } else if (name === 'worst') {
         rankFunction = rankWorst;
+      } else if (name === 'hard') {
+        hardMode = true;
       } else {
         help(`Unknown option: ${option}`);
       }
@@ -66,7 +69,7 @@ async function main(args: string[]) {
 
     subset = new Set(words);
 
-    const bestGuess = analyze(dict, 1, subset, rankFunction);
+    const bestGuess = analyze(dict, 1, subset, rankFunction, hardMode);
     console.log(JSON.stringify(bestGuess));
 
     guess = bestGuess[0].guess;
@@ -93,6 +96,7 @@ Usage:
 
 Options:
   --help       Show this help message.
+  --hard       In hard mode - only guess words that remain possible.
   --expected   Rank guesses by expected size of partitions.
   --worst      Rank guesses by worst-case size of partitions.
 `);

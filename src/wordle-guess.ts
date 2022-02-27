@@ -53,7 +53,8 @@ function rankWorst(a: GuessStats, b: GuessStats): boolean {
 
 // Return the top guesses and stats for the possible words.
 function analyze(dict: string[], top=10, subset?: Set<string>,
-  rankFunction: RankFunction = rankStat): GuessStats[] {
+  rankFunction: RankFunction = rankStat,
+  hardMode = false): GuessStats[] {
   if (!subset) {
     subset = new Set(dict);
   }
@@ -82,13 +83,14 @@ function analyze(dict: string[], top=10, subset?: Set<string>,
   const wordle = new Wordle(dict);
   const topGuesses = new Top<GuessStats>(top, rankFunction);
 
-  // We can guess any word in the larger dictionary despite how big
-  // the current subset may be.
-  // TODO: Should be choose words from subset instead?
-  // I tried and it increased the number of guesses by 1.
-  // I think because the words that remain may not offer as much
-  // discrimination.
-  for (let guess of dict) {
+  let choices: string[];
+  if (hardMode) {
+    choices = Array.from(subset.values());
+  } else {
+    choices = dict;
+  }
+
+  for (let guess of choices) {
     const clueSets = new MultiSet<Clue>();
 
     // Count up how many possible (remaining) words correspond with each
