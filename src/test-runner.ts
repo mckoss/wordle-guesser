@@ -3,85 +3,133 @@ import { readFile } from 'fs/promises';
 import { exit, argv } from 'process';
 
 import { Wordle, isValidClue } from './wordle.js';
-import { analyze } from './wordle-guess.js';
+import { analyze, rankExpected, rankStat, rankWorst } from './wordle-guess.js';
 
-const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[];
-const soln = JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[];
+const DEFAULT_GUESS = 'raise';
 
-let args = argv.slice(2);
-let testWordsFilename = 'solutions';
+async function main(args: string[]) {
+  let firstGuess = DEFAULT_GUESS;
+  let rankFunction = rankStat;
+  let hardMode = false;
+  let testWordsFilename = 'solutions';
+  let sample = false;
+  let sampleSize = 20;
 
-let sample = false;
-let sampleSize = 100;
-if (args[0] === '--sample') {
-  sample = true;
-  args = args.slice(1);
-  if (/^[0-9]+$/.test(args[0])) {
-    sampleSize = parseInt(args[0]);
-    args = args.slice(1);
-  }
-}
+  const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[];
+  const soln = JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[];
 
-if (args[0] !== undefined) {
-  testWordsFilename = args[0];
-  args = args.slice(1);
-}
-
-const tests = JSON.parse(await readFile(`data/${testWordsFilename}.json`, 'utf8')) as string[];
-
-const wordle = new Wordle(dict);
-
-if (sample) {
-  while (sampleSize > 0) {
-    let i = Math.floor(Math.random() * tests.length);
-    testWord(tests[i]);
-    sampleSize--;
-  }
-} else {
-  for (const word of tests) {
-    testWord(word);
-  }
-}
-
-function testWord(word: string) {
-  try {
-    wordle.setWord(word);
-  } catch(e) {
-    console.log([word, 'not-in-dict', '#N/A'].join(','));
-    return;
+  for (const option of args) {
+    if (option.startsWith('--')) {
+      const [, name, value] = option.match(/^--([^=]+)=?(.*)$/) || [];
+      if (name === 'help') {
+        help();
+      } else if (name === 'expected') {
+        rankFunction = rankExpected;
+      } else if (name === 'worst') {
+        rankFunction = rankWorst;
+      } else if (name === 'hard') {
+        hardMode = true;
+      } else if (name === 'start') {
+        firstGuess = value;
+      } else if (name === 'sample') {
+        sample = true;
+        if (value !== '') {
+          sampleSize = parseInt(value);
+          if (isNaN(sampleSize) || sampleSize < 1) {
+            help(`Invalid sample size: ${value}`);
+          }
+        }
+      } else {
+        help(`Unknown option: ${option}`);
+      }
+    } else {
+      testWordsFilename = option;
+    }
   }
 
-  let subset = new Set(soln);
+  const tests = JSON.parse(await readFile(`data/${testWordsFilename}.json`, 'utf8')) as string[];
 
-  if (!subset.has(word)) {
-    console.log([word, 'not-in-solution-set', '#N/A'].join(','));
-    return;
+  const wordle = new Wordle(dict);
+
+  if (sample) {
+    while (sampleSize > 0) {
+      let i = Math.floor(Math.random() * tests.length);
+      testWord(tests[i]);
+      sampleSize--;
+    }
+  } else {
+    for (const word of tests) {
+      testWord(word);
+    }
   }
 
-  let guess = 'raise';
-  let guesses = [];
-  let guessCount = 0;
-
-  while (true) {
-    const clue = wordle.makeGuess(guess);
-    guessCount++;
-    guesses.push(guess + (subset.has(guess) ? '!' : ''));
-
-    if (clue === '!!!!!') {
-      console.log([word, guesses.join('-'), guessCount].join(','));
-      break;
+  function testWord(word: string) {
+    try {
+      wordle.setWord(word);
+    } catch(e) {
+      console.log([word, 'not-in-dict', '#N/A'].join(','));
+      return;
     }
 
-    const words = wordle.possibleWords(guess, clue, subset);
+    let subset = new Set(soln);
 
-    // console.log(`${word} guess ${guess} => ${clue}(${words.length})`);
-    subset = new Set(words);
-    const guessStats = analyze(dict, 1, subset)[0];
-    guess = guessStats.guess;
+    if (!subset.has(word)) {
+      console.log([word, 'not-in-solution-set', '#N/A'].join(','));
+      return;
+    }
 
-    // Embed stats about the current state of knowlege.
-    // (universe, expected, max, singletons)
-    guesses.push(`(${words.length}-E${guessStats.expected.toFixed(1)}-` +
-      `M${guessStats.maxSet.size}-S${guessStats.singletons})`);
+    let guess = firstGuess;
+    let guesses = [];
+    let guessCount = 0;
+
+    while (true) {
+      const clue = wordle.makeGuess(guess);
+      guessCount++;
+      guesses.push(guess + (subset.has(guess) ? '!' : ''));
+
+      if (clue === '!!!!!') {
+        console.log([word, guesses.join('-'), guessCount].join(','));
+        break;
+      }
+
+      const words = wordle.possibleWords(guess, clue, subset);
+
+      // console.log(`${word} guess ${guess} => ${clue}(${words.length})`);
+      subset = new Set(words);
+      const guessStats = analyze(dict, 1, subset, rankFunction, hardMode)[0];
+      guess = guessStats.guess;
+
+      // Embed stats about the current state of knowledge.
+      // (universe, expected, max, singletons)
+      guesses.push(`(${words.length}-E${guessStats.expected.toFixed(1)}-` +
+        `M${guessStats.maxSet.size}-S${guessStats.singletons})`);
+    }
   }
 }
+
+function help(msg?: string) {
+  if (msg) {
+    console.error(msg + '\n');
+  }
+
+  console.log(`
+Exhaustive test of all words.
+
+Usage:
+  test-runner [options] [test-words-file]
+
+  test-words-file: JSON file containing a list of words to test as array.
+
+Options:
+  --help         Show this help message.
+  --hard         In hard mode - only guess words that remain possible.
+  --expected     Rank guesses by expected size of partitions.
+  --worst        Rank guesses by worst-case size of partitions.
+  --sample=N     Only use a sample subset of the test words (default 100).
+  --start=<word> Default first guess is ${{DEFAULT_GUESS}}.
+`);
+
+  exit(msg === undefined ? 0 : 1);
+}
+
+main(process.argv.slice(2));
