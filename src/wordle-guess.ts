@@ -26,6 +26,8 @@ function telemetry(show: boolean) {
   showTelemetry = show;
 }
 
+type RankFunction = (a: GuessStats, b: GuessStats) => boolean;
+
 // A PURE ranking based on expected size of partitions.
 function rankExpected(a: GuessStats, b: GuessStats): boolean {
   return a.expected < b.expected;
@@ -50,7 +52,8 @@ function rankWorst(a: GuessStats, b: GuessStats): boolean {
 }
 
 // Return the top guesses and stats for the possible words.
-function analyze(dict: string[], top=10, subset?: Set<string>): GuessStats[] {
+function analyze(dict: string[], top=10, subset?: Set<string>,
+  rankFunction: RankFunction = rankStat): GuessStats[] {
   if (!subset) {
     subset = new Set(dict);
   }
