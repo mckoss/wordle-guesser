@@ -65,7 +65,8 @@ was to play two colors of two marbles each).
 - What is the expected number of guesses in a randomly selected Wordle
   puzzle using this algorithm?
   - **3.49** - With the current tuning, this algorithm finds the hidden word
-  in an average of 3.49 guesses.  The worst case seems to be 6.
+  in an average of 3.49 guesses.  The worst case is 5 (and only for less than
+  2% of the words in the solution dictionary).
 - What is the hardest word to guess using this algorithm and how many guesses
   are needed?
   - There are only 39 words that require 5 guesses: brook, folly, funny, fuzzy,
