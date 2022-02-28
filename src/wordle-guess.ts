@@ -115,7 +115,7 @@ function analyze(dict: string[], top=10, subset?: Set<string>,
     const guessStats: GuessStats = {
       guess,
       inSubset: subset.has(guess),
-      numSets: clueSets.size(),
+      numSets: clueSets.size,
       expected: clueSets.expectedSize(),
       singletons: clueSets.countOfSize(1),
       maxSet: {

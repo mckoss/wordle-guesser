@@ -12,7 +12,9 @@ suite('MultiSet', () => {
 
   test('stats', () => {
     type TestCase<T> = [T[],
-      { most: T,
+      { size: number,
+        unique: number,
+        most: T,
         mostCount: number,
         expected: number,
         isolates: number,
@@ -20,9 +22,9 @@ suite('MultiSet', () => {
       ];
 
     const testCases: TestCase<number>[] = [
-      [[1], {most: 1, mostCount: 1, expected: 1, isolates: 1}],
-      [[1, 1, 1], {most: 1, mostCount: 3, expected: 3, isolates: 0}],
-      [[1, 1, 1, 2, 2, 3], {most: 1, mostCount: 3, expected: 2.333, isolates: 1}],
+      [[1], {size: 1, unique: 1, most: 1, mostCount: 1, expected: 1, isolates: 1}],
+      [[1, 1, 1], {size: 3, unique: 1, most: 1, mostCount: 3, expected: 3, isolates: 0}],
+      [[1, 1, 1, 2, 2, 3], {size: 6, unique: 3, most: 1, mostCount: 3, expected: 2.333, isolates: 1}],
     ];
 
     for (const t of testCases) {
@@ -32,6 +34,8 @@ suite('MultiSet', () => {
       }
       const eMost = m.mostFrequent();
 
+      assert.equal(m.size, t[1].size);
+      assert.equal(m.unique, t[1].unique);
       assert.equal(eMost, t[1].most);
       assert.equal(m.count(eMost), t[1].mostCount);
       assert.approximately(m.expectedSize(), t[1].expected, 0.001);

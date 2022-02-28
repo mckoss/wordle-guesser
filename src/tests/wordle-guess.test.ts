@@ -11,7 +11,6 @@ suite("Wordle Guess", () => {
   let solutions: string[];
 
   suiteSetup(async () => {
-    console.log(`Current dir: ${process.cwd()}`);
     dict = JSON.parse(await readFile('data/words.json', 'utf8'));
     solutions = JSON.parse(await readFile('data/solutions.json', 'utf8'));
   });
@@ -25,7 +24,6 @@ suite("Wordle Guess", () => {
     const clue = 'xx!x!';
 
     const words = wordle.possibleWords(guess, clue, subset);
-    console.log(words);
     assert.equal(words.length, 1);
     assert.equal(words[0], 'abbey');
   });

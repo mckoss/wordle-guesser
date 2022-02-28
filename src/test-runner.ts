@@ -5,7 +5,10 @@ import { exit, argv } from 'process';
 import { Wordle, isValidClue } from './wordle.js';
 import { analyze, rankExpected, rankStat, rankWorst } from './wordle-guess.js';
 
+import { MultiSet } from './multiset.js';
+
 const DEFAULT_GUESS = 'raise';
+const DEFAULT_SAMPLE = 20;
 
 async function main(args: string[]) {
   let firstGuess = DEFAULT_GUESS;
@@ -13,7 +16,10 @@ async function main(args: string[]) {
   let hardMode = false;
   let testWordsFilename = 'solutions';
   let sample = false;
-  let sampleSize = 20;
+  let sampleSize = DEFAULT_SAMPLE;
+  let showStats = false;
+  let silent = false;
+  const histogram = new MultiSet<number>();
 
   const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[];
   const soln = JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[];
@@ -31,6 +37,10 @@ async function main(args: string[]) {
         hardMode = true;
       } else if (name === 'start') {
         firstGuess = value;
+      } else if (name === 'stats') {
+        showStats = true;
+      } else if (name === 'silent') {
+        silent = true;
       } else if (name === 'sample') {
         sample = true;
         if (value !== '') {
@@ -63,6 +73,20 @@ async function main(args: string[]) {
     }
   }
 
+  if (showStats) {
+    let expected = 0;
+    for (let guess of histogram) {
+      expected += guess * histogram.count(guess) / histogram.size;
+    }
+    console.log(`Total Words: ${histogram.size}\n` +
+      `Average guesses: ${expected.toFixed(2)}`);
+
+    let buckets = Array.from(histogram).sort();
+    for (let guess of buckets) {
+      console.log(`${guess}: ${histogram.count(guess)}`);
+    }
+  }
+
   function testWord(word: string) {
     try {
       wordle.setWord(word);
@@ -88,7 +112,10 @@ async function main(args: string[]) {
       guesses.push(guess + (subset.has(guess) ? '!' : ''));
 
       if (clue === '!!!!!') {
-        console.log([word, guesses.join('-'), guessCount].join(','));
+        if (!silent) {
+          console.log([word, guesses.join('-'), guessCount].join(','));
+        }
+        histogram.add(guessCount);
         break;
       }
 
@@ -109,7 +136,7 @@ async function main(args: string[]) {
 
 function help(msg?: string) {
   if (msg) {
-    console.error(msg + '\n');
+    console.error(msg);
   }
 
   console.log(`
@@ -125,8 +152,10 @@ Options:
   --hard         In hard mode - only guess words that remain possible.
   --expected     Rank guesses by expected size of partitions.
   --worst        Rank guesses by worst-case size of partitions.
-  --sample=N     Only use a sample subset of the test words (default 100).
+  --sample=N     Only use a sample subset of the test words (default ${DEFAULT_SAMPLE}).
   --start=<word> Default first guess is ${{DEFAULT_GUESS}}.
+  --silent       Don't print out each guess.
+  --stats        Show stats and histogram of guesses.
 `);
 
   exit(msg === undefined ? 0 : 1);

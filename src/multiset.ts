@@ -2,8 +2,13 @@ export { MultiSet };
 
 class MultiSet<T> {
   elements:Map<T, number> = new Map();
+  _size = 0;
 
   constructor() {
+  }
+
+  [Symbol.iterator]() {
+    return this.elements.keys();
   }
 
   add(element: T) {
@@ -12,6 +17,7 @@ class MultiSet<T> {
     } else {
       this.elements.set(element, 1);
     }
+    this._size++;
   }
 
   remove(element: T) {
@@ -26,10 +32,15 @@ class MultiSet<T> {
     } else {
       this.elements.set(element, count - 1);
     }
+    this._size--;
   }
 
-  size(): number {
+  get unique(): number {
     return this.elements.size;
+  }
+
+  get size(): number {
+    return this._size;
   }
 
   has(element: T): boolean {
@@ -59,14 +70,14 @@ class MultiSet<T> {
     return elt!;
   }
 
-  // The expected frequency of a randomly chosen element (since P(S) * size(S)
-  // = size(S)/N * size(S).
+  // The expected frequency of a randomly chosen element (since P(S) * count(S)
+  // = count(S)/N * count(S).
   expectedSize(): number {
     let sumSquare = 0;
     let sum = 0;
-    for (let size of this.elements.values()) {
-      sumSquare += size ** 2;
-      sum += size;
+    for (let count of this.elements.values()) {
+      sumSquare += count ** 2;
+      sum += count;
     }
     return sumSquare / sum;
   }

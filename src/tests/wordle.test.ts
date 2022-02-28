@@ -10,7 +10,6 @@ suite("Wordle!", () => {
   let wordle: Wordle;
 
   suiteSetup(() => {
-    console.log(process.cwd());
     const data = readFileSync('data/solutions.json').toString();
     dict = JSON.parse(data);
   });
