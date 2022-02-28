@@ -175,26 +175,36 @@ The output format is a CSV file with 3 columns
 - Number of guesses it took to find.
 
 ```
-robin,raise!-(4-E1.0-M1-S4)-robin!,2
-friar,raise!-(4-E1.5-M2-S2)-briar!-(1-E1.0-M1-S1)-friar!,3
-mirth,raise!-(23-E1.9-M3-S12)-droit!-(3-E1.7-M2-S1)-birth!-(2-E1.0-M1-S2)-girth!-(1-E1.0-M1-S1)-mirth!,5
-quart,raise!-(78-E4.7-M9-S13)-tronc-(4-E1.0-M1-S4)-altar!-(1-E1.0-M1-S1)-quart!,4
-brake,raise!-(26-E3.8-M6-S4)-grace!-(6-E1.3-M2-S4)-drake!-(1-E1.0-M1-S1)-brake!,4
-cease,raise!-(8-E1.8-M2-S2)-cease!,2
-tried,raise!-(12-E2.2-M4-S6)-fried!-(4-E1.0-M1-S4)-capot-(1-E1.0-M1-S1)-tried!,4
-mover,raise!-(102-E8.7-M16-S15)-outer!-(16-E3.0-M5-S2)-chowk-(5-E1.0-M1-S5)-balmy-(1-E1.0-M1-S1)-mover!,5
-anger,raise!-(34-E3.5-M7-S8)-tread!-(7-E1.0-M1-S7)-learn!-(1-E1.0-M1-S1)-anger!,4
-rabid,raise!-(6-E1.3-M2-S4)-rabid!,2
-roast,raise!-(1-E1.0-M1-S1)-roast!,2
-burly,raise!-(103-E4.8-M11-S19)-cloot-(3-E1.0-M1-S3)-dryly!-(1-E1.0-M1-S1)-burly!,4
-paler,raise!-(28-E3.6-M7-S7)-empty-(2-E1.0-M1-S2)-paler!,3
-duvet,raise!-(121-E5.0-M14-S20)-betel!-(5-E1.0-M1-S5)-comet!-(1-E1.0-M1-S1)-duvet!,4
-offer,raise!-(102-E8.7-M16-S15)-outer!-(5-E1.8-M2-S1)-odder!-(2-E1.0-M1-S2)-offer!,4
-ripen,raise!-(8-E2.0-M3-S3)-riper!-(1-E1.0-M1-S1)-ripen!,3
-sally,raise!-(20-E2.3-M4-S8)-salon!-(3-E1.0-M1-S3)-sally!,3
-flown,raise!-(168-E6.3-M15-S19)-could!-(5-E1.0-M1-S5)-bloom!-(1-E1.0-M1-S1)-flown!,4
-group,raise!-(103-E4.8-M11-S19)-cloot-(11-E1.5-M2-S5)-frond!-(2-E1.0-M1-S2)-group!,4
-abide,raise!-(5-E1.4-M2-S3)-alike!-(2-E1.0-M1-S2)-abide!,3
+ready,roate-(4-E1.0-M1-S4)-acold-(1-E1.0-M1-S1)-ready!,3
+broke,roate-(19-E2.4-M5-S8)-phons-(5-E1.0-M1-S5)-bovid-(1-E1.0-M1-S1)-broke!,4
+aware,roate-(23-E3.2-M5-S5)-crags-(3-E1.0-M1-S3)-blare!-(1-E1.0-M1-S1)-aware!,4
+noose,roate-(22-E1.6-M3-S11)-gusli-(3-E1.0-M1-S3)-moose!-(1-E1.0-M1-S1)-noose!,4
+cargo,roate-(28-E2.8-M5-S7)-armor!-(2-E1.0-M1-S2)-cargo!,3
+pride,roate-(39-E2.7-M5-S12)-piums-(3-E1.0-M1-S3)-ached-(1-E1.0-M1-S1)-pride!,4
+rebus,roate-(21-E1.8-M3-S8)-lupin-(2-E1.0-M1-S2)-rebus!,3
+lefty,roate-(12-E1.3-M2-S8)-plesh-(1-E1.0-M1-S1)-lefty!,3
+knock,roate-(66-E2.8-M5-S18)-snool-(2-E1.0-M1-S2)-knock!,3
+dowdy,roate-(71-E4.7-M8-S12)-bludy-(5-E1.0-M1-S5)-hawms-(1-E1.0-M1-S1)-dowdy!,4
+theme,roate-(17-E1.4-M2-S11)-cuish-(2-E1.0-M1-S2)-theme!,3
+print,roate-(29-E1.7-M3-S15)-crust!-(2-E1.0-M1-S2)-drift!-(1-E1.0-M1-S1)-print!,4
+sieve,roate-(83-E3.0-M6-S23)-sling-(1-E1.0-M1-S1)-sieve!,3
+bleak,roate-(55-E2.9-M6-S11)-penal!-(2-E1.0-M1-S2)-bleak!,3
+queer,roate-(102-E6.9-M18-S15)-feued-(1-E1.0-M1-S1)-queer!,3
+steam,roate-(25-E2.2-M4-S9)-cleat!-(4-E1.0-M1-S4)-adsum-(1-E1.0-M1-S1)-steam!,4
+tenet,roate-(56-E2.6-M6-S16)-sleet!-(2-E1.0-M1-S2)-beget!-(1-E1.0-M1-S1)-tenet!,4
+smell,roate-(106-E3.7-M7-S20)-lenes-(6-E1.3-M2-S4)-bumph-(1-E1.0-M1-S1)-smell!,4
+equip,roate-(106-E3.7-M7-S20)-lenes-(3-E1.0-M1-S3)-edify!-(1-E1.0-M1-S1)-equip!,4
+giddy,roate-(195-E5.6-M13-S23)-slimy!-(13-E1.6-M2-S5)-panda-(2-E1.0-M1-S2)-biddy!-(1-E1.0-M1-S1)-giddy!,5
+
+Algorithm: stat, margin: 0.15
+Start word: roate
+Total Words: 20
+Average guesses: 3.60
+3: 9
+4: 10
+5: 1
+5-guess 1st clues:
+XXXXX: 1
 ```
 
 How to read each line:
