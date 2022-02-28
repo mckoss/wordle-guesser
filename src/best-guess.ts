@@ -26,9 +26,11 @@ async function main(args: string[]) {
         telemetry(true);
       } else if (name === 'top') {
         showTop = true;
-        top = parseInt(value, 10);
-        if (isNaN(top) || top < 1) {
-          help(`Invalid top value: ${value}`);
+        if (value !== '') {
+          top = parseInt(value);
+          if (isNaN(top) || top < 1) {
+            help(`Invalid top value: ${value}`);
+          }
         }
       } else {
         help(`Unknown option: ${option}`);
@@ -63,6 +65,7 @@ Options:
   --expected   Rank guesses by expected size of partitions.
   --worst      Rank guesses by worst-case size of partitions.
   --telemetry  Sample words during processing.
+  --top=N      Show the top N guesses (default 10).
 `);
 
   exit(msg === undefined ? 0 : 1);

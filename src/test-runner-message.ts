@@ -11,6 +11,8 @@ type Message = {
 };
 
 type Result = {
+  word: string,
+  clues: string[],
   row: string,
   count: number
 };

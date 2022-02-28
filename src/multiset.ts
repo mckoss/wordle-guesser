@@ -94,4 +94,9 @@ class MultiSet<T> {
     return result;
   }
 
+  toString(): string {
+    const results = Array.from(this.elements.keys()).map(k => `${k}: ${this.count(k)}`);
+    return results.join('\n');
+  }
+
 }

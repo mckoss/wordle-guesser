@@ -51,12 +51,15 @@ was to play two colors of two marbles each).
 # Questions I Hope to Answer
 
 - What is the best "first guess" for Wordle?
-  - **RAISE** - This is the best first guess given the Wordle dictionaries. No
-    matter the response, it leaves no more than **168** words in the possibility
-    set and and expected size of only **61** possible remaining words.  There
-    are **132** possible clue patterns that can be given in response (compare to
+  - **ROATE** - This is the best first guess given the Wordle dictionaries. No
+    matter the response, it leaves no more than **195** words in the possibility
+    set and and expected size of only **60.4** possible remaining words.  There
+    are **126** possible clue patterns that can be given in response (compare to
     `3^5 = 243` possible theoretical patterns for any random string of 5
     letters).
+    - But note that `roate` is NOT a possible solution to Wordle!  The 2nd best
+      first guess is solution-word `raise` (dividing the words into **132**
+      partitions, the largest of which has only **168** words - expected size: **61**).
 - For each of the possible responses, what are the best 2nd guesses?
   See [decision-tree](./data/decision-tree.json).
 - What is the expected number of guesses in a randomly selected Wordle
@@ -65,13 +68,11 @@ was to play two colors of two marbles each).
   in an average of 3.49 guesses.  The worst case seems to be 6.
 - What is the hardest word to guess using this algorithm and how many guesses
   are needed?
-  - There are 62 words that require 5 guesses: booty, boxer, dilly, fewer,
-  fight, funky, funny, fuzzy, goner, graze, grown, happy, hilly, hotly, hover,
-  jaunt, jazzy, jiffy, jolly, lever, lover, madly, mammy, merry, might, moody,
-  mummy, nanny, newer, paddy, perky, pitch, pivot, plant, plank, poker, plump,
-  poppy, power, preen, purer, punch, puppy, putty, queer, tatty, taunt, tiger,
-  tight, upper, vaunt, waver, weave, watch, wimpy, willy, winch, witty, wreak,
-  woven, wound, wrong
+  - There are only 39 words that require 5 guesses: brook, folly, funny, fuzzy,
+    giddy, goner, golly, gully, happy, jaunt, jazzy, jolly, judge, jiffy, liver,
+    mammy, merry, nanny, ninny, paddy, piggy, pluck, pound, pulpy, puppy, shell,
+    shrew, sneer, tatty, taunt, tight, vaunt, viper, wager, watch, waver, willy,
+    winch, wreak
 - Without knowing the responses a-priori, what would be the best 2 or 3 words to
   guess first?
 

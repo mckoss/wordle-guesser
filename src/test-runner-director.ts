@@ -8,7 +8,7 @@ import { Pool } from './worker-pool.js';
 
 import { Message, Result, RankFunctionName } from './test-runner-message.js';
 
-const DEFAULT_GUESS = 'raise';
+const DEFAULT_GUESS = 'roate';
 const DEFAULT_SAMPLE = 20;
 
 const NUM_PROCS = 10;
@@ -66,11 +66,16 @@ async function main(args: string[]) {
 
   const tests = JSON.parse(await readFile(`data/${testWordsFilename}.json`, 'utf8')) as string[];
 
+  const clue5 = new MultiSet<string>();
+
   const pool = new Pool<Message, Result>(NUM_PROCS, './node/test-runner-worker.js', (result) => {
     if (!silent) {
       console.log(result.row);
     }
     histogram.add(result.count);
+    if (result.count === 5) {
+      clue5.add(result.clues[0]);
+    }
   });
 
   if (sample) {
@@ -92,6 +97,9 @@ async function main(args: string[]) {
     for (let guess of histogram) {
       expected += guess * histogram.count(guess) / histogram.size;
     }
+    console.log(`Algorithm: ${rankFunction}, margin: ${insetMargin}`);
+    console.log(`Start word: ${firstGuess}`);
+
     console.log(`Total Words: ${histogram.size}\n` +
       `Average guesses: ${expected.toFixed(2)}`);
 
@@ -99,6 +107,8 @@ async function main(args: string[]) {
     for (let guess of buckets) {
       console.log(`${guess}: ${histogram.count(guess)}`);
     }
+
+    console.log(`5-guess 1st clues:\n${clue5}`);
   }
 }
 

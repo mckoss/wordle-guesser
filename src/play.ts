@@ -7,7 +7,7 @@ import { exit } from 'process';
 import { Wordle, isValidClue } from './wordle.js';
 import { analyze, rankExpected, rankStat, rankWorst } from './wordle-guess.js';
 
-const DEFAULT_GUESS = 'raise';
+const DEFAULT_GUESS = 'roate';
 
 async function main(args: string[]) {
   let guess = DEFAULT_GUESS;

@@ -5,7 +5,7 @@ import { parentPort } from 'worker_threads';
 import { Wordle } from './wordle.js';
 import { analyze, rankExpected, rankStat, rankWorst, RankFunction, setMargin } from './wordle-guess.js';
 
-import { Message } from './test-runner-message.js';
+import { Message, Result } from './test-runner-message.js';
 
 import { MultiSet } from './multiset.js';
 
@@ -28,36 +28,38 @@ async function init() {
       message.hardMode);
   });
 
-  function output(row: string, count: number) {
-    parentPort!.postMessage({ row, count });
+  function output(word: string, clues: string[] | null, row: string, count: number) {
+    parentPort!.postMessage({ word, clues, row, count } as Result);
   }
 
   function testWord(word: string, firstGuess: string, rankFunction: RankFunction, hardMode = false) {
     try {
       wordle.setWord(word);
     } catch(e) {
-      output([word, 'not-in-dict', '#N/A'].join(','), 0);
+      output(word, null, [word, 'not-in-dict', '#N/A'].join(','), 0);
       return;
     }
 
     let subset = new Set(soln);
 
     if (!subset.has(word)) {
-      output([word, 'not-in-solution-set', '#N/A'].join(','), 0);
+      output(word, null, [word, 'not-in-solution-set', '#N/A'].join(','), 0);
       return;
     }
 
     let guess = firstGuess;
-    let guesses: string[] = [];
+    const guesses: string[] = [];
     let guessCount = 0;
+    const clues: string[] = [];
 
     while (true) {
       const clue = wordle.makeGuess(guess);
+      clues.push(clue);
       guessCount++;
       guesses.push(guess + (subset.has(guess) ? '!' : ''));
 
       if (clue === '!!!!!') {
-        output([word, guesses.join('-'), guessCount].join(','), guessCount);
+        output(word, clues, [word, guesses.join('-'), guessCount].join(','), guessCount);
         return;
       }
 
