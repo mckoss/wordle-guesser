@@ -3,7 +3,7 @@ import { exit, argv } from 'process';
 import { parentPort } from 'worker_threads';
 
 import { Wordle } from './wordle.js';
-import { analyze, rankExpected, rankStat, rankWorst, RankFunction } from './wordle-guess.js';
+import { analyze, rankExpected, rankStat, rankWorst, RankFunction, setMargin } from './wordle-guess.js';
 
 import { Message } from './test-runner-message.js';
 
@@ -21,6 +21,7 @@ async function init() {
   const wordle = new Wordle(dict);
 
   parentPort!.on("message", (message: Message) => {
+    setMargin(message.insetMargin);
     testWord(message.word,
       message.firstGuess,
       rankFunctions.get(message.rankFunction)!,

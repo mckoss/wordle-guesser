@@ -3,7 +3,7 @@ import { MultiSet } from './multiset.js';
 import { Top } from './top.js';
 import { stat } from 'fs';
 
-export { analyze, telemetry, rankExpected, rankStat, rankWorst, RankFunction };
+export { analyze, telemetry, rankExpected, rankStat, rankWorst, RankFunction, setMargin };
 
 interface SetRep {
   clue: Clue;
@@ -33,6 +33,12 @@ function rankExpected(a: GuessStats, b: GuessStats): boolean {
   return a.expected < b.expected;
 }
 
+let INSET_MARGIN = 0.15;
+
+function setMargin(margin: number) {
+  INSET_MARGIN = margin;
+}
+
 // Return true if a "is better" than b.
 function rankStat(a: GuessStats, b: GuessStats): boolean {
   if (a.inSubset === b.inSubset) {
@@ -40,9 +46,9 @@ function rankStat(a: GuessStats, b: GuessStats): boolean {
   }
 
   if (a.inSubset) {
-    return a.expected < b.expected + 0.5;
+    return a.expected < b.expected + INSET_MARGIN;
   } else {
-    return a.expected + 0.5 < b.expected;
+    return a.expected + INSET_MARGIN < b.expected;
   }
 }
 

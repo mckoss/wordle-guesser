@@ -12,6 +12,7 @@ const DEFAULT_GUESS = 'raise';
 const DEFAULT_SAMPLE = 20;
 
 const NUM_PROCS = 10;
+const INSET_MARGIN = 0.15;
 
 async function main(args: string[]) {
   let firstGuess = DEFAULT_GUESS;
@@ -23,6 +24,7 @@ async function main(args: string[]) {
   let silent = false;
   const histogram = new MultiSet<number>();
   let rankFunction: RankFunctionName = 'stat';
+  let insetMargin = INSET_MARGIN;
 
   for (const option of args) {
     if (option.startsWith('--')) {
@@ -39,6 +41,11 @@ async function main(args: string[]) {
         firstGuess = value;
       } else if (name === 'stats') {
         showStats = true;
+      } else if (name === 'margin') {
+        insetMargin = parseFloat(value);
+        if (isNaN(insetMargin)) {
+          help(`--stats=${value} is not a number`);
+        }
       } else if (name === 'silent') {
         silent = true;
       } else if (name === 'sample') {
@@ -69,12 +76,12 @@ async function main(args: string[]) {
   if (sample) {
     while (sampleSize > 0) {
       let i = Math.floor(Math.random() * tests.length);
-      await pool.call({ word: tests[i], firstGuess, rankFunction, hardMode });
+      await pool.call({ word: tests[i], firstGuess, rankFunction, insetMargin, hardMode });
       sampleSize--;
     }
   } else {
     for (const word of tests) {
-      await pool.call({ word, firstGuess, rankFunction, hardMode });
+      await pool.call({ word, firstGuess, rankFunction, insetMargin, hardMode });
     }
   }
 
@@ -117,6 +124,8 @@ Options:
   --start=<word> Default first guess is ${{DEFAULT_GUESS}}.
   --silent       Don't print out each guess.
   --stats        Show stats and histogram of guesses.
+  --margin=N     Set the margin of benefit for in-solution word for default ranking function
+                 (default ${INSET_MARGIN}).
 `);
 
   exit(msg === undefined ? 0 : 1);

@@ -6,6 +6,7 @@ type Message = {
   word: string,
   firstGuess: string,
   rankFunction: RankFunctionName,
+  insetMargin: number,
   hardMode: boolean
 };
 

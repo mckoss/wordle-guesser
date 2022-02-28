@@ -58,16 +58,22 @@ was to play two colors of two marbles each).
     `3^5 = 243` possible theoretical patterns for any random string of 5
     letters).
 - For each of the possible responses, what are the best 2nd guesses?
+  See [decision-tree](./data/decision-tree.json).
 - What is the expected number of guesses in a randomly selected Wordle
   puzzle using this algorithm?
-  - **3.53** - With the current tuning, this algorithm finds the hidden word
-  in an average of 3.5 guesses.  The worst case seems to be 6.
+  - **3.49** - With the current tuning, this algorithm finds the hidden word
+  in an average of 3.49 guesses.  The worst case seems to be 6.
 - What is the hardest word to guess using this algorithm and how many guesses
   are needed?
-  - gooey, greed, jolly, merry, pitch, power, punch, tight, vaunt, witty, wreak
-    (all requiring 6 guesses).
-- Without known the responses a-priori, what would be the best 2 or 3 words to
-  guess first.
+  - There are 62 words that require 5 guesses: booty, boxer, dilly, fewer,
+  fight, funky, funny, fuzzy, goner, graze, grown, happy, hilly, hotly, hover,
+  jaunt, jazzy, jiffy, jolly, lever, lover, madly, mammy, merry, might, moody,
+  mummy, nanny, newer, paddy, perky, pitch, pivot, plant, plank, poker, plump,
+  poppy, power, preen, purer, punch, puppy, putty, queer, tatty, taunt, tiger,
+  tight, upper, vaunt, waver, weave, watch, wimpy, willy, winch, witty, wreak,
+  woven, wound, wrong
+- Without knowing the responses a-priori, what would be the best 2 or 3 words to
+  guess first?
 
 # Using this repo
 
