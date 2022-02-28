@@ -3,7 +3,7 @@ import { MultiSet } from './multiset.js';
 import { Top } from './top.js';
 import { stat } from 'fs';
 
-export { analyze, telemetry, rankExpected, rankStat, rankWorst };
+export { analyze, telemetry, rankExpected, rankStat, rankWorst, RankFunction };
 
 interface SetRep {
   clue: Clue;

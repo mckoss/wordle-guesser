@@ -1,17 +1,20 @@
+import { prompt } from './prompt.js';
 import { readFile } from 'fs/promises';
 import { exit, argv } from 'process';
 
-import { Wordle } from './wordle.js';
-import { analyze, rankExpected, rankStat, rankWorst } from './wordle-guess.js';
-
 import { MultiSet } from './multiset.js';
+
+import { Pool } from './worker-pool.js';
+
+import { Message, Result, RankFunctionName } from './test-runner-message.js';
 
 const DEFAULT_GUESS = 'raise';
 const DEFAULT_SAMPLE = 20;
 
+const NUM_PROCS = 10;
+
 async function main(args: string[]) {
   let firstGuess = DEFAULT_GUESS;
-  let rankFunction = rankStat;
   let hardMode = false;
   let testWordsFilename = 'solutions';
   let sample = false;
@@ -19,9 +22,7 @@ async function main(args: string[]) {
   let showStats = false;
   let silent = false;
   const histogram = new MultiSet<number>();
-
-  const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[];
-  const soln = JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[];
+  let rankFunction: RankFunctionName = 'stat';
 
   for (const option of args) {
     if (option.startsWith('--')) {
@@ -29,9 +30,9 @@ async function main(args: string[]) {
       if (name === 'help') {
         help();
       } else if (name === 'expected') {
-        rankFunction = rankExpected;
+        rankFunction = name;
       } else if (name === 'worst') {
-        rankFunction = rankWorst;
+        rankFunction = name;
       } else if (name === 'hard') {
         hardMode = true;
       } else if (name === 'start') {
@@ -58,19 +59,26 @@ async function main(args: string[]) {
 
   const tests = JSON.parse(await readFile(`data/${testWordsFilename}.json`, 'utf8')) as string[];
 
-  const wordle = new Wordle(dict);
+  const pool = new Pool<Message, Result>(NUM_PROCS, './node/test-runner-worker.js', (result) => {
+    if (!silent) {
+      console.log(result.row);
+    }
+    histogram.add(result.count);
+  });
 
   if (sample) {
     while (sampleSize > 0) {
       let i = Math.floor(Math.random() * tests.length);
-      testWord(tests[i]);
+      await pool.call({ word: tests[i], firstGuess, rankFunction, hardMode });
       sampleSize--;
     }
   } else {
     for (const word of tests) {
-      testWord(word);
+      await pool.call({ word, firstGuess, rankFunction, hardMode });
     }
   }
+
+  await pool.complete();
 
   if (showStats) {
     let expected = 0;
@@ -83,52 +91,6 @@ async function main(args: string[]) {
     let buckets = Array.from(histogram).sort();
     for (let guess of buckets) {
       console.log(`${guess}: ${histogram.count(guess)}`);
-    }
-  }
-
-  function testWord(word: string) {
-    try {
-      wordle.setWord(word);
-    } catch(e) {
-      console.log([word, 'not-in-dict', '#N/A'].join(','));
-      return;
-    }
-
-    let subset = new Set(soln);
-
-    if (!subset.has(word)) {
-      console.log([word, 'not-in-solution-set', '#N/A'].join(','));
-      return;
-    }
-
-    let guess = firstGuess;
-    let guesses = [];
-    let guessCount = 0;
-
-    while (true) {
-      const clue = wordle.makeGuess(guess);
-      guessCount++;
-      guesses.push(guess + (subset.has(guess) ? '!' : ''));
-
-      if (clue === '!!!!!') {
-        if (!silent) {
-          console.log([word, guesses.join('-'), guessCount].join(','));
-        }
-        histogram.add(guessCount);
-        break;
-      }
-
-      const words = wordle.possibleWords(guess, clue, subset);
-
-      // console.log(`${word} guess ${guess} => ${clue}(${words.length})`);
-      subset = new Set(words);
-      const guessStats = analyze(dict, 1, subset, rankFunction, hardMode)[0];
-      guess = guessStats.guess;
-
-      // Embed stats about the current state of knowledge.
-      // (universe, expected, max, singletons)
-      guesses.push(`(${words.length}-E${guessStats.expected.toFixed(1)}-` +
-        `M${guessStats.maxSet.size}-S${guessStats.singletons})`);
     }
   }
 }
@@ -160,4 +122,4 @@ Options:
   exit(msg === undefined ? 0 : 1);
 }
 
-main(argv.slice(2));
+main(process.argv.slice(2));
