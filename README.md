@@ -76,6 +76,48 @@ was to play two colors of two marbles each).
 - Without knowing the responses a-priori, what would be the best 2 or 3 words to
   guess first?
 
+
+## Tweaking the algorithm to optimize either the average or maximum number of guesses.
+
+Is there a solution to Wordle that solves for EVERY word with no more than 4
+guesses?  It seems possible, as there are only 39 words that require 5 from the
+current algorithm.
+
+```
+$ test-runner --stats --silent
+
+Algorithm: stat, margin: 0.15
+Start word: roate
+Total Words: 2315
+Average guesses: 3.48
+2: 60
+3: 1119
+4: 1097
+5: 39
+
+5-guess 1st clues:
+??XXX: 1
+X!XXX: 4
+XXXXX: 12
+?!XX?: 1
+XX?XX: 5
+XX??X: 4
+XXXX!: 1
+?XXX?: 5
+XXXX?: 1
+XX?!X: 1
+XXX?X: 1
+?X?X?: 3
+```
+
+If we are to admit no more than 4 guesses to any word, then the 2nd guess has to
+ensure that every third guess reduces the set of possible words to no more than
+1 word for each clue.
+
+One plan would be to *pivot* the second guess away from the default algorithms
+heuristic, to see if any of the resulting decision tree has either a smaller
+maximum depth, or a better average depth.
+
 # Using this repo
 
 ```
@@ -84,6 +126,8 @@ $ npm install
 $ build
 $ npm test
 ```
+
+There are several commands implemented here to investigate Wordle.
 
 # Node Command-line Programs
 
@@ -94,7 +138,24 @@ $ play
 This program will make guesses - you provide the "clue" patterns for each guess.
 
 ```
-$ test-runner
+$ test-runner --help
+
+Usage:
+  test-runner [options] [test-words-file]
+
+  test-words-file: JSON file containing a list of words to test as array.
+
+Options:
+  --help         Show this help message.
+  --hard         In hard mode - only guess words that remain possible.
+  --expected     Rank guesses by expected size of partitions.
+  --worst        Rank guesses by worst-case size of partitions.
+  --sample=N     Only use a sample subset of the test words (default 20).
+  --start=<word> Default first guess is [object Object].
+  --silent       Don't print out each guess.
+  --stats        Show stats and histogram of guesses.
+  --margin=N     Set the margin of benefit for in-solution word for default ranking function
+                 (default 0.15).
 ```
 
 This outputs some statistical data on the program making guesses against
@@ -102,8 +163,8 @@ a word list.  By default - it reads `data/test-words.json`.  A command
 line option can be used to run against the full Wordle solution set:
 
 ```
-$ test-runner solutions              # Test against the whole solutions.json list
-$ test-runner --sample 20 solutions  # Take a random sample of 20 words
+$ test-runner                   # Test against the whole solutions.json list
+$ test-runner --sample=20       # Take a random sample of 20 words
 ```
 
 The output format is a CSV file with 3 columns
@@ -155,6 +216,22 @@ world,raise!-(103-E4.8-M11-S19)-cloot-(2-E1.0-M1-S2)-lorry!-(1-E1.0-M1-S1)-world
   a better guess than the alternative in-solution words.
 - `4` - The final score: how many guesses it took to find the hidden word.
 
+```
+$ best-guess --help
+
+Evaluate the best first word for a Wordle game.
+
+Usage:
+  best-guess [options]
+
+Options:
+  --help       Show this help message.
+  --hard       In hard mode - only guess words that remain possible.
+  --expected   Rank guesses by expected size of partitions.
+  --worst      Rank guesses by worst-case size of partitions.
+  --telemetry  Sample words during processing.
+  --top=N      Show the top N guesses (default 10).
+```
 
 # Data Wrangling
 
