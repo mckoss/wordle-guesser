@@ -83,4 +83,16 @@ class Wordle {
     this.word = saveWord;
     return words;
   }
+
+  // Return all possible clue patterns for the given guess and subset of possible
+  // words.
+  possibleClues(guess: string, subset: Set<string>): Clue[] {
+    const saveWord = this.word;
+    const clues = new Set<string>();
+
+    for (let word of subset) {
+    }
+    this.word = saveWord;
+    return Array.from(clues);
+  }
 }
