@@ -85,14 +85,21 @@ class Wordle {
   }
 
   // Return all possible clue patterns for the given guess and subset of possible
-  // words.
-  possibleClues(guess: string, subset: Set<string>): Clue[] {
+  // words.  Return of map of clues to each partition of words.
+  allClues(guess: string, subset: Set<string>): Map<Clue, Set<string>> {
     const saveWord = this.word;
-    const clues = new Set<string>();
+    const clues = new Map<Clue, Set<string>>();
 
     for (let word of subset) {
+      this.setWordFast(word);
+      const clue = this.makeGuess(guess);
+      if (!clues.has(clue)) {
+        clues.set(clue, new Set());
+      }
+      clues.get(clue)!.add(word);
     }
+
     this.word = saveWord;
-    return Array.from(clues);
+    return clues;
   }
 }
