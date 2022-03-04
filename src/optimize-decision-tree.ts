@@ -189,13 +189,14 @@ for (let i = 1; i < stats.length; i++) {
   console.log(stats[i].toString(i) + '\n');
 }
 
+console.log(`First guess: ${root.guess}`);
 console.log(`Expected guesses: ${LevelStats.expectedGuesses(stats).toFixed(2)}`);
 const [level, count] = LevelStats.maxDepth(stats);
-console.log(`Max depth: ${count} words at level ${level}`);
+console.log(`Max guesses: ${level} for ${count} words`);
 
-console.log("Clues for 2nd guess for max-depth (5) nodes:");
+console.log(`Clues for 2nd guess for ${level}-guess words:`);
 for (const [clue, child] of root.children!.entries()) {
-  if (child.depth === 4) {
-    console.log(`${clue}: ${child.countDepth(4)}.`);
+  if (child.depth === level - 1) {
+    console.log(`${clue}: ${child.countDepth(4)} using ${child.guess}`);
   }
 }
