@@ -26,7 +26,7 @@ if (args[0] === '--sample') {
 
 const wordle = new Wordle(dict);
 
-const firstGuess = 'raise';
+const firstGuess = 'roate';
 
 const decisions = new StringTree(firstGuess);
 const startRef = decisions.getStartRef();
@@ -60,7 +60,7 @@ function testWord(word: string) {
     exit(1);
   }
 
-  let guess = 'raise';
+  let guess = firstGuess;
 
   let ref = startRef;
 
