@@ -293,7 +293,9 @@ async function main(args: string[]) {
     }
   }
 
-  console.log(stringify(root.toJSON()));
+  if (dump) {
+    console.log(stringify(root.toJSON()));
+  }
 }
 
 function help(msg?: string) {
