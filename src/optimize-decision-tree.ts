@@ -16,6 +16,7 @@ const firstGuess = 'roate';
 
 let silent = false;
 let dump = false;
+let table = false;
 
 // Stats for the guesses and partitions of remaining words
 // at a given level of the decision tree.
@@ -253,6 +254,15 @@ class WordleNode {
   }
 }
 
+// Dump out the 2nd level of patterns and best guess followed
+// by the possible words.
+function writeTable(root: WordleNode) {
+  console.log(`First guess: ${root.guess}`);
+  for (const [clue, child] of root.children!) {
+    console.log(`${clue}: ${child.guess} ${Array.from(child.words).join(' ')}`);
+  }
+}
+
 async function main(args: string[]) {
   for (const option of args) {
     if (option.startsWith('--')) {
@@ -263,6 +273,8 @@ async function main(args: string[]) {
         silent = true;
       } else if (name === 'dump') {
         dump = true;
+      } else if (name === 'table') {
+        table = true;
       } else {
         help(`Unknown option: ${option}`);
       }
@@ -296,6 +308,10 @@ async function main(args: string[]) {
   if (dump) {
     console.log(stringify(root.toJSON()));
   }
+
+  if (table) {
+    writeTable(root);
+  }
 }
 
 function help(msg?: string) {
@@ -315,7 +331,7 @@ Options:
   --help         Show this help message.
   --silent       Don't print progress messages or statistics.
   --dump         Print the tree of guesses.
-  --mods         Print the 2nd guess mods needed to optimize the default algo.
+  --table        Print table of patterns with best 2nd guess and possible words.
 `);
 
   exit(msg === undefined ? 0 : 1);
