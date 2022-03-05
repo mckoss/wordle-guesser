@@ -114,7 +114,7 @@ class WordleNode {
     const maxDepth = this.depth;
     let count = this.countDepth(maxDepth);
 
-    console.log(`Optimizable node: ${this.guess} has ${count} ${maxDepth}-guess words.`);
+    console.log(`Optimizable node: ${this.guess} has ${count} ${maxDepth+1}-guess words.`);
 
     // Save the best choice of guess
     let bestGuess = this.guess;
