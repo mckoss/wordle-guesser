@@ -93,7 +93,7 @@ class WordleNode {
 
     let guesses: GuessStats[];
 
-    let numOptions = level === 2 ? 10 : 1;
+    let numOptions = level === 2 ? 50 : 1;
 
     // Find the best guess for this node.
     guesses = analyze(dict, numOptions, this.words);
