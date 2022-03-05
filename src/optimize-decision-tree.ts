@@ -4,7 +4,7 @@ import { exit, argv } from 'process';
 import { stringify } from 'wide-json';
 
 import { Wordle, isValidClue, Clue } from './wordle.js';
-import { analyze } from './wordle-guess.js';
+import { analyze, GuessStats } from './wordle-guess.js';
 import { StringTree } from './string-tree.js';
 import { stat } from 'fs';
 
@@ -41,11 +41,11 @@ class LevelStats {
     result.push(`Remaining words: ${this.words}`);
     result.push(`Number of partitions: ${this.countPartition}`);
     result.push(`Largest partition size: ${this.maxPartition} words`);
-    result.push(`Expected partition size: ${this.expectedPartitionSize().toFixed(2)} words`);
+    result.push(`Expected partition size: ${this.expectedPartitionSize.toFixed(2)} words`);
     return result.join('\n');
   }
 
-  expectedPartitionSize(): number {
+  get expectedPartitionSize(): number {
     return this.numSquaredPartition / this.words;
   }
 
@@ -85,17 +85,65 @@ class WordleNode {
   // This function tries several alternative of the 2nd level nodes to see
   // if there are alternatives with fewer words at the max depth.
   expandNode(level = 1) {
-    let numOptions = level === 2 ? 5 : 1;
-    // Find the best guess for this node if we don't have one already.
-    if (this.guess === undefined) {
-      const {guess, numSets} = analyze(dict, numOptions, this.words)[0];
-      this.guess = guess;
-      if (numSets === 1) {
-        return;
-      }
+    // Guess already pre-determined.
+    if (this.guess !== undefined) {
+      this.children = this.computeChildren(level, this.guess);
+      return;
+    }
+
+    let guesses: GuessStats[];
+
+    let numOptions = level === 2 ? 10 : 1;
+
+    // Find the best guess for this node.
+    guesses = analyze(dict, numOptions, this.words);
+    this.guess = guesses[0].guess;
+
+    // This is a terminal node - guess the only possible word.
+    if (this.words.size === 1) {
+      return;
     }
 
     this.children = this.computeChildren(level, this.guess);
+
+    // Don't bother optimizing this node.
+    if (level !== 2 || this.depth < 4) {
+      return;
+    }
+
+    const maxDepth = this.depth;
+    let count = this.countDepth(maxDepth);
+
+    console.log(`Optimizable node: ${this.guess} has ${count} ${maxDepth}-guess words.`);
+
+    // Save the best choice of guess
+    let bestGuess = this.guess;
+    let bestChildren = this.children;
+
+    for (let i = 1; i < guesses.length; i++) {
+      const newGuess = guesses[i]
+      this.children = this.computeChildren(level, guesses[i].guess);
+
+      if (this.depth < maxDepth) {
+        console.log(`Eliminated ${maxDepth + 1}-guess words using ${guesses[i].guess} ` +
+          `instead of ${bestGuess}.`);
+        this.guess = guesses[i].guess;
+        return;
+      }
+
+      const newCount = this.countDepth(maxDepth);
+
+      if (newCount < count) {
+        console.log(`Reduced count of ${maxDepth + 1}-guess words from ${count} to ${newCount} ` +
+          `using ${guesses[i].guess} instead of ${bestGuess}.`);
+        bestGuess = guesses[i].guess;
+        bestChildren = this.children;
+        count = newCount;
+      }
+    }
+
+    this.guess = bestGuess;
+    this.children = bestChildren;
   }
 
   computeChildren(level: number, guess: string): Map<Clue, WordleNode> {
