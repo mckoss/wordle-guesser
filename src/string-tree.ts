@@ -2,7 +2,7 @@
 // Nodes can either be string types, or an Object that has "child"
 // nodes like { "value": { key: value, .... }
 
-export { StringTree };
+export { StringTree, TreeNode, ChildNodes };
 
 import { stringify } from 'wide-json';
 

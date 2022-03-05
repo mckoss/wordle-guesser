@@ -5,7 +5,7 @@ import { stringify } from 'wide-json';
 
 import { Wordle, isValidClue, Clue } from './wordle.js';
 import { analyze, GuessStats } from './wordle-guess.js';
-import { StringTree } from './string-tree.js';
+import { StringTree, TreeNode, ChildNodes } from './string-tree.js';
 import { stat } from 'fs';
 
 const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[];
@@ -13,6 +13,9 @@ const soln = new Set(JSON.parse(await readFile('./data/solutions.json', 'utf8'))
 
 const wordle = new Wordle(dict);
 const firstGuess = 'roate';
+
+let silent = false;
+let dump = false;
 
 // Stats for the guesses and partitions of remaining words
 // at a given level of the decision tree.
@@ -114,7 +117,9 @@ class WordleNode {
     const maxDepth = this.depth;
     let count = this.countDepth(maxDepth);
 
-    console.log(`Optimizable node: ${this.guess} has ${count} ${maxDepth+1}-guess words.`);
+    if (!silent) {
+      console.log(`Optimizable node: ${this.guess} has ${count} ${maxDepth+1}-guess words.`);
+    }
 
     // Save the best choice of guess
     let bestGuess = this.guess;
@@ -125,8 +130,10 @@ class WordleNode {
       this.children = this.computeChildren(level, guesses[i].guess);
 
       if (this.depth < maxDepth) {
-        console.log(`Eliminated ${maxDepth + 1}-guess words using ${guesses[i].guess} ` +
-          `instead of ${bestGuess}.`);
+        if (!silent) {
+          console.log(`Eliminated ${maxDepth + 1}-guess words using ${guesses[i].guess} ` +
+           `instead of ${bestGuess}.`);
+        }
         this.guess = guesses[i].guess;
         return;
       }
@@ -134,8 +141,10 @@ class WordleNode {
       const newCount = this.countDepth(maxDepth);
 
       if (newCount < count) {
-        console.log(`Reduced count of ${maxDepth + 1}-guess words from ${count} to ${newCount} ` +
-          `using ${guesses[i].guess} instead of ${bestGuess}.`);
+        if (!silent) {
+          console.log(`Reduced count of ${maxDepth + 1}-guess words from ${count} to ${newCount} ` +
+           `using ${guesses[i].guess} instead of ${bestGuess}.`);
+        }
         bestGuess = guesses[i].guess;
         bestChildren = this.children;
         count = newCount;
@@ -227,24 +236,87 @@ class WordleNode {
 
     return stats;
   }
-}
 
-const root = new WordleNode(firstGuess, soln);
-root.expandNode();
-const stats = root.getNodeStats();
+  toJSON(): TreeNode {
+    if (this.words.size === 1) {
+      return this.guess!;
+    }
 
-for (let i = 1; i < stats.length; i++) {
-  console.log(stats[i].toString(i) + '\n');
-}
+    const result = {} as ChildNodes;
+    const node = { [this.guess!]: result };
 
-console.log(`First guess: ${root.guess}`);
-console.log(`Expected guesses: ${LevelStats.expectedGuesses(stats).toFixed(2)}`);
-const [level, count] = LevelStats.maxDepth(stats);
-console.log(`Max guesses: ${level} for ${count} words`);
+    for (const [clue, child] of this.children!) {
+      result[clue] = child.toJSON();
+    }
 
-console.log(`Clues for 2nd guess for ${level}-guess words:`);
-for (const [clue, child] of root.children!.entries()) {
-  if (child.depth === level - 1) {
-    console.log(`${clue}: ${child.countDepth(4)} using ${child.guess}`);
+    return node as TreeNode;
   }
 }
+
+async function main(args: string[]) {
+  for (const option of args) {
+    if (option.startsWith('--')) {
+      const [, name, value] = option.match(/^--([^=]+)=?(.*)$/) || [];
+      if (name === 'help') {
+        help();
+      } else if (name === 'silent') {
+        silent = true;
+      } else if (name === 'dump') {
+        dump = true;
+      } else {
+        help(`Unknown option: ${option}`);
+      }
+    } else {
+      help(`Unknown argument: ${option}`);
+    }
+  }
+
+  const root = new WordleNode(firstGuess, soln);
+  root.expandNode();
+  const stats = root.getNodeStats();
+
+  if (!silent) {
+    for (let i = 1; i < stats.length; i++) {
+      console.log(stats[i].toString(i) + '\n');
+    }
+
+    console.log(`First guess: ${root.guess}`);
+    console.log(`Expected guesses: ${LevelStats.expectedGuesses(stats).toFixed(2)}`);
+    const [level, count] = LevelStats.maxDepth(stats);
+    console.log(`Max guesses: ${level} for ${count} words`);
+
+    console.log(`Clues for 2nd guess for ${level}-guess words:`);
+    for (const [clue, child] of root.children!.entries()) {
+      if (child.depth === level - 1) {
+        console.log(`${clue}: ${child.countDepth(4)} using ${child.guess}`);
+      }
+    }
+  }
+
+  console.log(stringify(root.toJSON()));
+}
+
+function help(msg?: string) {
+  if (msg) {
+    console.error(msg);
+  }
+
+  console.log(`
+Optimize clues to minimize the number of words that require the maximum number of guesses.
+
+Usage:
+  test-runner [options] [test-words-file]
+
+  test-words-file: JSON file containing a list of words to test as array.
+
+Options:
+  --help         Show this help message.
+  --silent       Don't print progress messages or statistics.
+  --dump         Print the tree of guesses.
+  --mods         Print the 2nd guess mods needed to optimize the default algo.
+`);
+
+  exit(msg === undefined ? 0 : 1);
+}
+
+main(process.argv.slice(2));
