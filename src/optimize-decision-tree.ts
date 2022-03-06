@@ -14,9 +14,11 @@ const soln = new Set(JSON.parse(await readFile('./data/solutions.json', 'utf8'))
 const wordle = new Wordle(dict);
 const firstGuess = 'roate';
 
+// Command line options.
 let silent = false;
 let dump = false;
 let table = false;
+let mods = false;
 
 // Stats for the guesses and partitions of remaining words
 // at a given level of the decision tree.
@@ -88,10 +90,10 @@ class WordleNode {
   // guesses.
   // This function tries several alternative of the 2nd level nodes to see
   // if there are alternatives with fewer words at the max depth.
-  expandNode(level = 1) {
+  expandNode(level = 1, optimize = false) {
     // Guess already pre-determined.
     if (this.guess !== undefined) {
-      this.children = this.computeChildren(level, this.guess);
+      this.children = this.computeChildren(level, this.guess, optimize);
       return;
     }
 
@@ -108,10 +110,10 @@ class WordleNode {
       return;
     }
 
-    this.children = this.computeChildren(level, this.guess);
+    this.children = this.computeChildren(level, this.guess, optimize);
 
     // Don't bother optimizing this node.
-    if (level !== 2 || this.depth < 4) {
+    if (!optimize || level !== 2 || this.depth < 4) {
       return;
     }
 
@@ -128,7 +130,7 @@ class WordleNode {
 
     for (let i = 1; i < guesses.length; i++) {
       const newGuess = guesses[i]
-      this.children = this.computeChildren(level, guesses[i].guess);
+      this.children = this.computeChildren(level, guesses[i].guess, optimize);
 
       if (this.depth < maxDepth) {
         if (!silent) {
@@ -156,7 +158,7 @@ class WordleNode {
     this.children = bestChildren;
   }
 
-  computeChildren(level: number, guess: string): Map<Clue, WordleNode> {
+  computeChildren(level: number, guess: string, optimize: boolean): Map<Clue, WordleNode> {
     const children = new Map<Clue, WordleNode>();
 
     const clues = wordle.allClues(guess, this.words);
@@ -166,7 +168,7 @@ class WordleNode {
       }
       const child = new WordleNode(undefined, words);
       children.set(clue, child);
-      child.expandNode(level + 1);
+      child.expandNode(level + 1, optimize);
     }
 
     return children;
@@ -212,6 +214,27 @@ class WordleNode {
     return count;
   }
 
+  wordsAtDepth(depth: number): string[] {
+    if (depth <= 0) {
+      return [];
+    }
+    if (depth === 1) {
+      return this.inSolution ? [this.guess!] : [];
+    }
+
+    if (this.children === undefined) {
+      return [];
+    }
+
+    let words: string[] = [];
+
+    for (let child of this.children.values()) {
+      words = words.concat(child.wordsAtDepth(depth - 1));
+    }
+
+    return words;
+  }
+
   getNodeStats(level = 1, stats?: LevelStats[]) : LevelStats[] {
     if (!stats) {
       stats = [];
@@ -252,6 +275,15 @@ class WordleNode {
 
     return node as TreeNode;
   }
+
+  // Return clues and corresponding guesses of top node.
+  topClues() {
+    const result = new Map<Clue, string>();
+    for (const [clue, child] of this.children!) {
+      result.set(clue, child.guess!);
+    }
+    return result;
+  }
 }
 
 // Dump out the 2nd level of patterns and best guess followed
@@ -275,6 +307,8 @@ async function main(args: string[]) {
         dump = true;
       } else if (name === 'table') {
         table = true;
+      } else if (name === 'mods') {
+        mods = true;
       } else {
         help(`Unknown option: ${option}`);
       }
@@ -283,8 +317,12 @@ async function main(args: string[]) {
     }
   }
 
+  const baseTree = new WordleNode(firstGuess, soln);
+  baseTree.expandNode(1, false);
+  const baseClues = baseTree.topClues();
+
   const root = new WordleNode(firstGuess, soln);
-  root.expandNode();
+  root.expandNode(1, true);
   const stats = root.getNodeStats();
 
   if (!silent) {
@@ -303,6 +341,9 @@ async function main(args: string[]) {
         console.log(`${clue}: ${child.countDepth(4)} using ${child.guess}`);
       }
     }
+
+    console.log(`Words requiring ${level}-guesses:`);
+    console.log(root.wordsAtDepth(level).join(' '));
   }
 
   if (dump) {
@@ -311,6 +352,26 @@ async function main(args: string[]) {
 
   if (table) {
     writeTable(root);
+  }
+
+  if (mods) {
+    interface Mod {
+      clue: Clue;
+      algoGuess: string;
+      optGuess: string;
+    };
+
+    const result: Mod[] = [];
+
+    const updatedClues = root.topClues();
+    for (const [clue, guess] of baseClues) {
+      const newGuess = updatedClues.get(clue)!;
+      if (guess !== newGuess) {
+        result.push({ clue, algoGuess: guess, optGuess: newGuess });
+      }
+    }
+
+    console.log(JSON.stringify(result, null, 2));
   }
 }
 
@@ -332,6 +393,7 @@ Options:
   --silent       Don't print progress messages or statistics.
   --dump         Print the tree of guesses.
   --table        Print table of patterns with best 2nd guess and possible words.
+  --mods         Print the non-default clues and guesses for the 2nd level.
 `);
 
   exit(msg === undefined ? 0 : 1);
