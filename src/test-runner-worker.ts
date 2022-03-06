@@ -5,6 +5,8 @@ import { parentPort } from 'worker_threads';
 import { Wordle } from './wordle.js';
 import { analyze, rankExpected, rankStat, rankWorst, RankFunction, setMargin } from './wordle-guess.js';
 
+import { optimizations } from './optimizations.js';
+
 import { Message, Result } from './test-runner-message.js';
 
 import { MultiSet } from './multiset.js';
@@ -67,7 +69,12 @@ async function init() {
 
       subset = new Set(words);
       const guessStats = analyze(dict, 1, subset, rankFunction, hardMode)[0];
-      guess = guessStats.guess;
+
+      if (guessCount === 1 && firstGuess === 'roate' && optimizations.has(clue)) {
+        guess = optimizations.get(clue)!;
+      } else {
+        guess = guessStats.guess;
+      }
 
       // Embed stats about the current state of knowledge.
       // (universe, expected, max, singletons)

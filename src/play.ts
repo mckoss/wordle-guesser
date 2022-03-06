@@ -7,6 +7,8 @@ import { exit } from 'process';
 import { Wordle, isValidClue } from './wordle.js';
 import { analyze, rankExpected, rankStat, rankWorst } from './wordle-guess.js';
 
+import { optimizations } from './optimizations.js';
+
 const DEFAULT_GUESS = 'roate';
 
 async function main(args: string[]) {
@@ -72,7 +74,15 @@ async function main(args: string[]) {
     const bestGuess = analyze(dict, 1, subset, rankFunction, hardMode);
     console.log(JSON.stringify(bestGuess));
 
-    guess = bestGuess[0].guess;
+    if (guesses === 1 && optimizations.has(clue)) {
+      guess = optimizations.get(clue)!;
+      console.log(`Rather than use the algorithmically chosen '${bestGuess[0].guess}' ` +
+        `I'm going to use a word that minimizes the total number of 5-guess ` +
+        `words.`);
+    } else {
+      guess = bestGuess[0].guess;
+    }
+
     guesses++;
 
     console.log(`I going to guess '${guess}', now.`);
