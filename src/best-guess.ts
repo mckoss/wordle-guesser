@@ -3,11 +3,12 @@ import { exit } from 'process';
 import { analyze, telemetry, rankExpected, rankStat, rankWorst } from './wordle-guess.js';
 import { Wordle } from './wordle.js';
 
-import { MultiTrial } from './best-guess-message.js';
+import { Request, MultiTrial } from './best-guess-message.js';
+import { shuffle } from './shuffle.js';
 
 import { Pool } from './worker-pool.js';
 
-const dict: string[] = JSON.parse(await readFile('data/words.json', 'utf8'));
+let dict: string[] = JSON.parse(await readFile('data/words.json', 'utf8'));
 const solutions = new Set(JSON.parse(await readFile('data/solutions.json', 'utf8')) as string[]);
 
 let multi = 1;
@@ -34,6 +35,8 @@ async function main(args: string[]) {
         hardMode = true;
       } else if (name === 'telemetry') {
         telemetry(true);
+      } else if (name === 'solutionsOnly') {
+        dict = Array.from(solutions);
       } else if (name === 'top') {
         showTop = true;
         if (value !== '') {
@@ -85,49 +88,53 @@ async function main(args: string[]) {
 }
 
 // Try all combinations of first two guesses to determine:
-// - Lowest expected word count.
-// - Smallest maximum word count.
+// - Smallest maximum word count with the lowest expected word count.
 // - List of words remaining.
 // Start out using smaller solution dictionary.
 async function twoWords() {
   let count = 0;
-  let lastPercent = 0;
-  const totalCombinations = (solutions.size * (solutions.size + 1)) / 2;
+  let lastPercent: string | undefined;
+  let limit = 25;
 
-  const pool = new Pool<string[], MultiTrial>(NUM_PROCS, './node/best-guess-worker.js', (trial) => {
-    if (bestExpected === undefined || trial.expected < bestExpected.expected) {
-      bestExpected = trial;
-      console.log(`${count}. New best expected: ${trialOutput(bestExpected)}`);
+  shuffle(dict);
+
+  const totalCombinations = (dict.length * (dict.length + 1)) / 2;
+
+  let bestMax: MultiTrial | undefined;
+
+  const pool = new Pool<Request, MultiTrial>(NUM_PROCS, './node/best-guess-worker.js', (trial) => {
+    if (trial.max < limit) {
+      limit = trial.max;
     }
-    if (bestMax === undefined || trial.max < bestMax.max) {
+    if (bestMax === undefined || trial.max < bestMax.max ||
+        trial.max === bestMax.max && trial.expected < bestMax.expected) {
       bestMax = trial;
       console.log(`${count}. New best max: ${trialOutput(bestMax)}`);
     }
     count++;
-    const percent = Math.round(count / totalCombinations * 100);
-    if (percent > lastPercent) {
+    const percent = (count / totalCombinations * 100).toFixed(1);
+    if (percent !== lastPercent) {
       lastPercent = percent;
       console.log(`${percent}% complete ...`);
     }
   });
 
-  const dict = Array.from(solutions);
-
-  let bestExpected: MultiTrial | undefined;
-  let bestMax: MultiTrial | undefined;
-
   for (let i = 0; i < dict.length; i++) {
     const guesses = [dict[i]];
     for (let j = i + 1; j < dict.length; j++) {
       guesses[1] = dict[j];
-      await pool.call(guesses);
+      await pool.call({ guesses, limit });
     }
   }
 
   await pool.complete();
 
-  outputGuesses('Min-Max', bestMax!);
-  outputGuesses('Expected', bestExpected!);
+  outputGuesses('Best Max', bestMax!);
+
+  // For those patterns that contain more than 2 words, derive
+  // a 3rd guess.
+
+  const twoGuesses = bestMax!.guesses;
 }
 
 function trialOutput(trial: MultiTrial): string {
@@ -186,6 +193,7 @@ Options:
   --telemetry           Sample words during processing.
   --top=N               Show the top N guesses (default 10).
   --multi=N             Optimize for combination of N words (default 2).
+  --solutionsOnly       Only consider words from solutions dictionary.
   --table=guess1,guess2 Show the solution table for a multi-guess solution.
 `);
 
