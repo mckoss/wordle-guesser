@@ -11,6 +11,7 @@ const dict: string[] = JSON.parse(await readFile('data/words.json', 'utf8'));
 const solutions = new Set(JSON.parse(await readFile('data/solutions.json', 'utf8')) as string[]);
 
 let multi = 1;
+let table: string[] | undefined;
 
 const NUM_PROCS = 8;
 
@@ -50,6 +51,13 @@ async function main(args: string[]) {
             help(`Invalid multi value: ${value}`);
           }
         }
+      } else if (name === 'table') {
+        table = value.split(',');
+        for (const guess of table) {
+          if (guess.length !== 5) {
+            help(`Invalid table value - 5-letter word guesses: ${value}`);
+          }
+        }
       } else {
         help(`Unknown option: ${option}`);
       }
@@ -60,6 +68,11 @@ async function main(args: string[]) {
 
   if (multi === 2) {
     await twoWords();
+    return;
+  }
+
+  if (table !== undefined) {
+    outputTable(table);
     return;
   }
 
@@ -78,6 +91,8 @@ async function main(args: string[]) {
 // Start out using smaller solution dictionary.
 async function twoWords() {
   let count = 0;
+  let lastPercent = 0;
+  const totalCombinations = (solutions.size * (solutions.size + 1)) / 2;
 
   const pool = new Pool<string[], MultiTrial>(NUM_PROCS, './node/best-guess-worker.js', (trial) => {
     if (bestExpected === undefined || trial.expected < bestExpected.expected) {
@@ -89,6 +104,11 @@ async function twoWords() {
       console.log(`${count}. New best max: ${trialOutput(bestMax)}`);
     }
     count++;
+    const percent = Math.round(count / totalCombinations * 100);
+    if (percent > lastPercent) {
+      lastPercent = percent;
+      console.log(`${percent}% complete ...`);
+    }
   });
 
   const dict = Array.from(solutions);
@@ -106,11 +126,45 @@ async function twoWords() {
 
   await pool.complete();
 
-  console.log(`${count} combinations`);
+  outputGuesses('Min-Max', bestMax!);
+  outputGuesses('Expected', bestExpected!);
 }
 
 function trialOutput(trial: MultiTrial): string {
   return JSON.stringify(trial, null, 2);
+}
+
+function outputGuesses(title: string, trial: MultiTrial) {
+  console.log(`${title}: ${trial.guesses.join(', ')}\n`);
+  console.log(`  Expected: ${trial.expected}\n`);
+  console.log(`  Max: ${trial.max}\n`);
+}
+
+function outputTable(guesses: string[]) {
+  const table = guessTable(guesses);
+
+  for (const row of table) {
+    console.log(`  ${row.pattern}: ${row.words.join(' ')}`);
+  }
+}
+
+function guessTable(guesses: string[]) : { pattern: string, words: string[] }[] {
+  const wordle = new Wordle(dict);
+  const words = new Map<string, string[]>();
+
+  for (const word of solutions) {
+    wordle.setWordFast(word);
+    const key = guesses.map(guess => wordle.makeGuess(guess)).join('-');
+    if (!words.has(key)) {
+      words.set(key, []);
+    }
+    words.get(key)!.push(word);
+  }
+
+  const patterns = Array.from(words.keys());
+  patterns.sort();
+
+  return patterns.map(pattern => { return { pattern, words: words.get(pattern)! } });
 }
 
 function help(msg?: string) {
@@ -125,13 +179,14 @@ Usage:
   best-guess [options]
 
 Options:
-  --help       Show this help message.
-  --hard       In hard mode - only guess words that remain possible.
-  --expected   Rank guesses by expected size of partitions.
-  --worst      Rank guesses by worst-case size of partitions.
-  --telemetry  Sample words during processing.
-  --top=N      Show the top N guesses (default 10).
-  --multi=N    Optimize for combination of N words (default 2).
+  --help                Show this help message.
+  --hard                In hard mode - only guess words that remain possible.
+  --expected            Rank guesses by expected size of partitions.
+  --worst               Rank guesses by worst-case size of partitions.
+  --telemetry           Sample words during processing.
+  --top=N               Show the top N guesses (default 10).
+  --multi=N             Optimize for combination of N words (default 2).
+  --table=guess1,guess2 Show the solution table for a multi-guess solution.
 `);
 
   exit(msg === undefined ? 0 : 1);
