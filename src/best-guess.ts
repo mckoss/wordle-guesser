@@ -139,8 +139,6 @@ function outputGuesses(title: string, trial: MultiTrial) {
   console.log(`${title}: ${trial.guesses.join(', ')}`);
   console.log(`  Expected: ${trial.expected}`);
   console.log(`  Max: ${trial.max}`);
-  console.log(typeof trial.histogram[0]);
-  console.log(JSON.stringify(trial.histogram));
   console.log(`  Histogram: ${countsToString(trial.histogram)}`);
 }
 
@@ -154,23 +152,47 @@ function countsToString(counts: number[]) {
   return result.join(' ');
 }
 
-async function outputTable(guesses: string[]) {
-  const table = guessTable(guesses);
+type TableRow = { pattern: string, words: string[] };
 
+// Generate a table with the first two guess words, with only the
+// patterns that have no more that two solution words.
+//
+//
+async function outputTable(guesses: string[]) {
+  let table = guessTable(guesses.slice(0, 2), solutions, 2);
+
+  // Isolate words that have more than two solutions words.
+  const multiWordSolutions = new Set(solutions);
   for (const row of table) {
-    console.log(`  ${row.pattern}: ${row.words.join(' ')}`);
+    for (const word of row.words) {
+      multiWordSolutions.delete(word);
+    }
   }
+
+  console.log(`Two-guess solutions: ${guesses.slice(0, 2).join(', ')} ` +
+    `(${solutions.size - multiWordSolutions.size} words)`);
+  printTable(table);
+
+  table = guessTable(guesses, multiWordSolutions);
+
+  console.log(`\nThree-guess solutions: ${guesses.join(', ')} ${multiWordSolutions.size} words`);
+  printTable(table);
 
   const pool = new Pool<Request, MultiTrial>(NUM_PROCS, './node/best-guess-worker.js', (trial) => {
     outputGuesses('Distribution', trial);
   });
 
   pool.call({ guesses, limit: 2000 });
-
   await pool.complete();
+
+  function printTable(table: TableRow[]) {
+    for (const row of table) {
+      console.log(`  ${row.pattern}: ${row.words.join(' ')}`);
+    }
+  }
 }
 
-function guessTable(guesses: string[]) : { pattern: string, words: string[] }[] {
+function guessTable(guesses: string[], solutions: Set<string>, wordLimit = 2000) : TableRow[] {
   const wordle = new Wordle(dict);
   const words = new Map<string, string[]>();
 
@@ -183,7 +205,8 @@ function guessTable(guesses: string[]) : { pattern: string, words: string[] }[] 
     words.get(key)!.push(word);
   }
 
-  const patterns = Array.from(words.keys());
+  let patterns = Array.from(words.keys());
+  patterns = patterns.filter(pattern => words.get(pattern)!.length <= wordLimit);
   patterns.sort();
 
   return patterns.map(pattern => { return { pattern, words: words.get(pattern)! } });
