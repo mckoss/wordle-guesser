@@ -9,6 +9,7 @@ class Pool<In, Out> {
   callback: (message: Out) => void;
   completePromise: Promise<void> | undefined;
   completeResolver: (() => void) | undefined;
+  killOnCompletion = true;
 
   constructor(numWorkers: number, script: string, callback: (message: Out) => void) {
     this.callback = callback;
@@ -41,8 +42,12 @@ class Pool<In, Out> {
   async checkWaiting() {
     if (this.waiting.length === 0) {
       if (this.busyPool.size === 0 && this.completeResolver) {
-        this.killWorkers();
         this.completeResolver();
+        if (this.killOnCompletion) {
+          this.killWorkers();
+        } else {
+          this.resetCompletion();
+        }
       }
       return;
     }
@@ -72,13 +77,20 @@ class Pool<In, Out> {
     return worker;
   }
 
-  async complete(): Promise<void> {
+  async complete(keepWorkers = false): Promise<void> {
+    if (keepWorkers) {
+      this.killOnCompletion = false;
+    }
     if (this.busyPool.size === 0) {
       return;
     }
     if (this.completeResolver) {
       return this.completePromise;
     }
+    return this.resetCompletion();
+  }
+
+  resetCompletion() : Promise<void> {
     this.completePromise = new Promise<void>((resolve, reject) => {
       this.completeResolver = resolve;
     });

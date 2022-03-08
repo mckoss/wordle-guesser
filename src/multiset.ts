@@ -99,4 +99,17 @@ class MultiSet<T> {
     return results.join('\n');
   }
 
+  histogram(): number[] {
+    const result: number[] = [];
+
+    for (let [_, count] of this.elements) {
+      if (result[count] === undefined) {
+        result[count] = 0;
+      }
+      result[count]++;
+    }
+
+    return result;
+  }
+
 }

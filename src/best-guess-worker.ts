@@ -25,13 +25,14 @@ function testGuesses(guesses: string[], limit: number) : MultiTrial {
     const key = guesses.map(guess => wordle.makeGuess(guess)).join('-');
     clues.add(key);
     if (clues.count(key) > limit) {
-      return { guesses, expected: 0, max: limit + 1 };
+      return { guesses, expected: 0, histogram: [], max: limit + 1 };
     }
   }
 
   return {
     guesses,
     expected: clues.expectedSize(),
-    max: clues.count(clues.mostFrequent())
+    max: clues.count(clues.mostFrequent()),
+    histogram: clues.histogram(),
   };
 }

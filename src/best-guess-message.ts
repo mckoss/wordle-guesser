@@ -10,4 +10,5 @@ interface MultiTrial {
   guesses: string[];
   expected: number;
   max: number;
+  histogram: number[];
 }

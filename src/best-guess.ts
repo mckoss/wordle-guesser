@@ -109,7 +109,7 @@ async function twoWords() {
     if (bestMax === undefined || trial.max < bestMax.max ||
         trial.max === bestMax.max && trial.expected < bestMax.expected) {
       bestMax = trial;
-      console.log(`${count}. New best max: ${trialOutput(bestMax)}`);
+      outputGuesses(` ${count}. New best guess`, bestMax);
     }
     count++;
     const percent = (count / totalCombinations * 100).toFixed(1);
@@ -127,24 +127,32 @@ async function twoWords() {
     }
   }
 
+  await pool.complete(true);
+
+  outputGuesses('Best Two', bestMax!);
+
+  // Search for the best following guesses, given the best
+  // first two guesses.
+
+  console.log(`Now searching for best following guesses ...`);
+  count = 0;
+
+  const guesses = bestMax!.guesses;
+  for (let i = 0; i < dict.length; i++) {
+    guesses[2] = dict[i];
+    await pool.call({ guesses, limit });
+  }
+
   await pool.complete();
 
-  outputGuesses('Best Max', bestMax!);
-
-  // For those patterns that contain more than 2 words, derive
-  // a 3rd guess.
-
-  const twoGuesses = bestMax!.guesses;
-}
-
-function trialOutput(trial: MultiTrial): string {
-  return JSON.stringify(trial, null, 2);
+  outputGuesses('Best Three', bestMax!);
 }
 
 function outputGuesses(title: string, trial: MultiTrial) {
-  console.log(`${title}: ${trial.guesses.join(', ')}\n`);
-  console.log(`  Expected: ${trial.expected}\n`);
-  console.log(`  Max: ${trial.max}\n`);
+  console.log(`${title}: ${trial.guesses.join(', ')}`);
+  console.log(`  Expected: ${trial.expected}`);
+  console.log(`  Max: ${trial.max}`);
+  console.log(`  Histogram: ${trial.histogram.map((count) => `${count}`).join(' ')}`);
 }
 
 function outputTable(guesses: string[]) {
