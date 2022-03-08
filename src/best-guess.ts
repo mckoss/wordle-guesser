@@ -58,7 +58,7 @@ async function main(args: string[]) {
         table = value.split(',');
         for (const guess of table) {
           if (guess.length !== 5) {
-            help(`Invalid table value - 5-letter word guesses: ${value}`);
+            help(`Invalid table value - 5-letter word guesses: ${guess}`);
           }
         }
       } else {
@@ -70,7 +70,7 @@ async function main(args: string[]) {
   }
 
   if (multi === 2) {
-    await twoWords();
+    await multiWordSearch();
     return;
   }
 
@@ -90,15 +90,15 @@ async function main(args: string[]) {
 // Try all combinations of first two guesses to determine:
 // - Smallest maximum word count with the lowest expected word count.
 // - List of words remaining.
-// Start out using smaller solution dictionary.
-async function twoWords() {
+// What 3 words
+async function multiWordSearch() {
   let count = 0;
   let lastPercent: string | undefined;
   let limit = 25;
 
   shuffle(dict);
 
-  const totalCombinations = (dict.length * (dict.length + 1)) / 2;
+  const totalCombinations = (x => x * (x - 1) * (x - 2) / 6)(dict.length);
 
   let bestMax: MultiTrial | undefined;
 
@@ -112,7 +112,7 @@ async function twoWords() {
       outputGuesses(` ${count}. New best guess`, bestMax);
     }
     count++;
-    const percent = (count / totalCombinations * 100).toFixed(1);
+    const percent = (count / totalCombinations * 100).toFixed(2);
     if (percent !== lastPercent) {
       lastPercent = percent;
       console.log(`${percent}% complete ...`);
@@ -123,27 +123,14 @@ async function twoWords() {
     const guesses = [dict[i]];
     for (let j = i + 1; j < dict.length; j++) {
       guesses[1] = dict[j];
-      await pool.call({ guesses, limit });
+      for (let k = j + 1; k < dict.length; k++) {
+        guesses[2] = dict[k];
+        await pool.call({ guesses, limit });
+      }
     }
   }
 
   await pool.complete(true);
-
-  outputGuesses('Best Two', bestMax!);
-
-  // Search for the best following guesses, given the best
-  // first two guesses.
-
-  console.log(`Now searching for best following guesses ...`);
-  count = 0;
-
-  const guesses = bestMax!.guesses;
-  for (let i = 0; i < dict.length; i++) {
-    guesses[2] = dict[i];
-    await pool.call({ guesses, limit });
-  }
-
-  await pool.complete();
 
   outputGuesses('Best Three', bestMax!);
 }
@@ -152,15 +139,35 @@ function outputGuesses(title: string, trial: MultiTrial) {
   console.log(`${title}: ${trial.guesses.join(', ')}`);
   console.log(`  Expected: ${trial.expected}`);
   console.log(`  Max: ${trial.max}`);
-  console.log(`  Histogram: ${trial.histogram.map((count) => `${count}`).join(' ')}`);
+  console.log(typeof trial.histogram[0]);
+  console.log(JSON.stringify(trial.histogram));
+  console.log(`  Histogram: ${countsToString(trial.histogram)}`);
 }
 
-function outputTable(guesses: string[]) {
+function countsToString(counts: number[]) {
+  const result:string[] = [];
+  for (let i = 0; i < counts.length; i++) {
+    if (counts[i] !== 0) {
+      result.push(`${i}:${counts[i]}`);
+    }
+  }
+  return result.join(' ');
+}
+
+async function outputTable(guesses: string[]) {
   const table = guessTable(guesses);
 
   for (const row of table) {
     console.log(`  ${row.pattern}: ${row.words.join(' ')}`);
   }
+
+  const pool = new Pool<Request, MultiTrial>(NUM_PROCS, './node/best-guess-worker.js', (trial) => {
+    outputGuesses('Distribution', trial);
+  });
+
+  pool.call({ guesses, limit: 2000 });
+
+  await pool.complete();
 }
 
 function guessTable(guesses: string[]) : { pattern: string, words: string[] }[] {

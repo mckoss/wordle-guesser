@@ -103,8 +103,8 @@ class MultiSet<T> {
     const result: number[] = [];
 
     for (let [_, count] of this.elements) {
-      if (result[count] === undefined) {
-        result[count] = 0;
+      for (let i = result.length; i <= count; i++) {
+        result[i] = 0;
       }
       result[count]++;
     }
