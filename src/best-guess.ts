@@ -5,6 +5,7 @@ import { Wordle } from './wordle.js';
 
 import { Request, MultiTrial } from './best-guess-message.js';
 import { shuffle } from './shuffle.js';
+import { choices, binomial } from './choices.js';
 
 import { Pool } from './worker-pool.js';
 
@@ -47,10 +48,11 @@ async function main(args: string[]) {
         }
       } else if (name === 'multi') {
         if (value === '') {
-          multi = 2;
+          multi = 3;
         } else {
           multi = parseInt(value);
-          if (isNaN(multi) || multi < 1) {
+          // Hard coding 3 for now.
+          if (isNaN(multi) || multi < 2) {
             help(`Invalid multi value: ${value}`);
           }
         }
@@ -69,7 +71,7 @@ async function main(args: string[]) {
     }
   }
 
-  if (multi === 2) {
+  if (multi > 1) {
     await multiWordSearch();
     return;
   }
@@ -87,18 +89,14 @@ async function main(args: string[]) {
   }
 }
 
-// Try all combinations of first two guesses to determine:
-// - Smallest maximum word count with the lowest expected word count.
-// - List of words remaining.
-// What 3 words
 async function multiWordSearch() {
   let count = 0;
-  let lastPercent: string | undefined;
-  let limit = 25;
+  let limit = multi === 2 ? 200 : 25;
+  let nextCount = 0;
 
   shuffle(dict);
 
-  const totalCombinations = (x => x * (x - 1) * (x - 2) / 6)(dict.length);
+  const totalCombinations = binomial(dict.length, multi);
 
   let bestMax: MultiTrial | undefined;
 
@@ -112,22 +110,16 @@ async function multiWordSearch() {
       outputGuesses(` ${count}. New best guess`, bestMax);
     }
     count++;
-    const percent = (count / totalCombinations * 100).toFixed(2);
-    if (percent !== lastPercent) {
-      lastPercent = percent;
+    const percent = (count / totalCombinations * 100).toFixed(4);
+    if (count >= nextCount) {
+      nextCount = count + 100000;
       console.log(`${percent}% complete ...`);
     }
   });
 
-  for (let i = 0; i < dict.length; i++) {
-    const guesses = [dict[i]];
-    for (let j = i + 1; j < dict.length; j++) {
-      guesses[1] = dict[j];
-      for (let k = j + 1; k < dict.length; k++) {
-        guesses[2] = dict[k];
-        await pool.call({ guesses, limit });
-      }
-    }
+  for (let indices of choices(dict.length, multi)) {
+    const guesses = indices.map(i => dict[i]);
+      await pool.call({ guesses, limit });
   }
 
   await pool.complete(true);
@@ -155,7 +147,7 @@ function countsToString(counts: number[]) {
 type TableRow = { pattern: string, words: string[] };
 
 // Generate a table with the first two guess words, with only the
-// patterns that have no more that two solution words.
+// patterns that have no more than two solution words.
 //
 //
 async function outputTable(guesses: string[]) {
@@ -230,7 +222,7 @@ Options:
   --worst               Rank guesses by worst-case size of partitions.
   --telemetry           Sample words during processing.
   --top=N               Show the top N guesses (default 10).
-  --multi=N             Optimize for combination of N words (default 2).
+  --multi=N             Optimize for combination of N words (default 3).
   --solutionsOnly       Only consider words from solutions dictionary.
   --table=guess1,guess2 Show the solution table for a multi-guess solution.
 `);
