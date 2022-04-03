@@ -1,0 +1,1796 @@
+Two-guess solutions: raise, bundt (819 words)
+  !!!!!-XXXXX: raise
+  !!!XX-XX?XX: rainy
+  !!?XX-?XX?X: rabid
+  !!?XX-?XXXX: rabbi
+  !!?XX-XXXX?: ratio
+  !!X?X-XXXXX: raspy
+  !!XX!-XX!XX: range
+  !!XX?-XX?XX: ramen raven
+  !!XX?-XXXXX: racer rarer
+  !!XXX-XX!!X: randy
+  !!XXX-XX!XX: ranch
+  !!XXX-XX?XX: rayon
+  !!XXX-XXX?X: radar
+  !!XXX-XXXX?: ratty
+  !??XX-XXXXX: rival
+  !?X!X-XXXX!: roast
+  !?XX?-?XXXX: rebar rehab
+  !?XX?-XX!XX: renal
+  !?XX?-XXX!X: ready
+  !?XX?-XXXX!: react
+  !?XXX-?!XXX: rumba
+  !?XXX-X!XXX: rural
+  !?XXX-XXXXX: roach royal
+  !X!X?-XX?XX: reign
+  !X!XX-XX?XX: rhino
+  !X?!!-XX!XX: rinse
+  !X???-XX?XX: resin risen
+  !X???-XXXXX: riser
+  !X??X-XXXXX: risky
+  !X?X!-XXX?X: ridge
+  !X?X!-XXXXX: rifle
+  !X?X?-XX?XX: ripen
+  !X?X?-XXX?X: rider
+  !X?XX-?X?XX: robin
+  !X?XX-XXX?X: rigid
+  !X?XX-XXXX!: right
+  !X?XX-XXXXX: rigor
+  !XX!!-X?XXX: reuse rouse
+  !XX!X-XXXX!: roost
+  !XX??-??XXX: rebus
+  !XX??-XXXX!: reset
+  !XX?X-X!XX?: rusty
+  !XXX!-X!XXX: rupee
+  !XXX!-X?XX?: route
+  !XXX!-XXXXX: rhyme
+  !XXX?-??XX!: rebut
+  !XXX?-?XXXX: rebel
+  !XXX?-X!X?X: ruder
+  !XXX?-X!XXX: ruler
+  !XXX?-X??XX: rerun
+  !XXX?-X?XX!: recut
+  !XXX?-X?XXX: recur
+  !XXX?-XX!XX: renew
+  !XXX?-XXX!X: reedy
+  !XXX?-XXX?X: rodeo
+  !XXXX-?!XXX: rugby
+  !XXXX-?XXX!: robot
+  !XXXX-X!X!X: ruddy
+  !XXXX-X!XXX: rumor
+  !XXXX-X???X: round
+  !XXXX-X?XXX: rough
+  !XXXX-XXX!X: rowdy
+  !XXXX-XXXX?: rotor
+  !XXXX-XXXXX: rocky roomy
+  ?!!XX-XX?XX: cairn
+  ?!!XX-XXX?X: dairy
+  ?!!XX-XXXXX: fairy hairy
+  ?!?XX-XX??X: nadir
+  ?!?XX-XXXX?: tapir
+  ?!X!!-XXXXX: parse
+  ?!X!X-XXXXX: harsh marsh
+  ?!X??-XX!XX: saner
+  ?!X??-XXXXX: safer
+  ?!X?X-XXXX?: satyr
+  ?!X?X-XXXXX: savor
+  ?!XX!-!XXXX: barge
+  ?!XX?-!XXXX: baker baler
+  ?!XXX-!X?XX: baron
+  ?!XXX-?XXXX: labor
+  ?!XXX-XX!XX: manor
+  ?!XXX-XXX!?: tardy
+  ?!XXX-XXX!X: hardy
+  ?!XXX-XXXX!: carat tarot
+  ?!XXX-XXXX?: party warty
+  ??!!!-XXXXX: arise
+  ??!X!-XXXXX: afire
+  ??!XX-!XXXX: briar
+  ??!XX-XXX??: triad
+  ??!XX-XXXX?: trial
+  ??!XX-XXXXX: friar
+  ????X-XXXX?: stair
+  ???X!-XXXX?: irate
+  ???X?-XXX?X: aider
+  ???XX-!X?XX: brain
+  ???XX-!XX?X: braid
+  ???XX-XX??X: drain
+  ???XX-XX?X?: train
+  ???XX-XX?XX: grain
+  ???XX-XXX?X: acrid diary
+  ???XX-XXXX!: trait
+  ???XX-XXXX?: tiara trail
+  ??X!!-XXXXX: arose erase
+  ??X!X-!XXXX: brash brass
+  ??X!X-XXXX?: artsy trash
+  ??X?!-XX?XX: snare
+  ??X?!-XXXX?: stare
+  ??X?X-X!XXX: sugar
+  ??X?X-XX!XX: sonar
+  ??X?X-XX?XX: arson snarl
+  ??X?X-XXX?X: shard
+  ??X?X-XXXX!: smart start
+  ??XX!-X?XXX: argue azure
+  ??XX!-XX?XX: crane
+  ??XX!-XXX!?: trade
+  ??XX!-XXX!X: grade
+  ??XX?-!XX?X: beard bread
+  ??XX?-!XXXX: break
+  ??XX?-?XX?X: debar
+  ??XX?-?XXXX: amber zebra
+  ??XX?-XXX??: tread
+  ??XXX-!X??X: brand
+  ??XXX-!X?XX: brawn
+  ??XXX-!XX?X: board broad
+  ??XXX-???XX: urban
+  ??XXX-??XXX: umbra
+  ??XXX-?XXX!: abort
+  ??XXX-X!!XX: lunar
+  ??XXX-X!X?X: guard
+  ??XXX-X!XX!: quart
+  ??XXX-X?X?X: fraud
+  ??XXX-X?XX?: ultra
+  ??XXX-XX?X!: grant
+  ??XXX-XXX?!: draft
+  ?X!!X-!XXXX: brisk
+  ?X!!X-XXXX!: wrist
+  ?X!?!-XXXXX: shire spire
+  ?X!??-XXXXX: skier
+  ?X!?X-XXXX!: shirt skirt
+  ?X!X!-!X?XX: brine
+  ?X!X!-!XX!X: bride
+  ?X!X!-!XXXX: bribe
+  ?X!X!-?XXX?: tribe
+  ?X!X!-X??XX: urine
+  ?X!X!-XXX!X: pride
+  ?X!X!-XXX?X: drive
+  ?X!X?-!XXXX: brief
+  ?X!X?-XXX??: tried
+  ?X!XX-!XXXX: brick
+  ?X!XX-X!XXX: quirk
+  ?X!XX-XX??X: drink grind
+  ?X!XX-XX?X!: print
+  ?X!XX-XX?XX: wring
+  ?X!XX-XXX?!: drift
+  ?X!XX-XXX??: third
+  ?X!XX-XXX?X: drill
+  ?X!XX-XXXX!: flirt
+  ?X?!X-XXXX!: first
+  ?X???-XX?XX: siren
+  ?X??X-X?XXX: virus
+  ?X??X-XXXX?: strip
+  ?X??X-XXXXX: sprig visor
+  ?X?X!-?XXXX: fibre
+  ?X?X!-XXX?X: dirge
+  ?X?X!-XXXXX: eerie
+  ?X?X?-?XXXX: fiber
+  ?X?X?-XX!?X: diner
+  ?X?X?-XX?X!: inert
+  ?X?X?-XX?X?: inter
+  ?X?X?-XX?XX: infer nicer
+  ?X?X?-XXXX!: merit
+  ?X?XX-!XXX?: birth
+  ?X?XX-!XXXX: birch broil
+  ?X?XX-?XXX!: orbit
+  ?X?XX-X!X?X: lurid
+  ?X?XX-X!XXX: curio
+  ?X?XX-X??XX: incur
+  ?X?XX-X?X?X: druid
+  ?X?XX-X?XX!: fruit
+  ?X?XX-XX!XX: minor
+  ?X?XX-XX?X?: intro
+  ?X?XX-XX?XX: groin irony
+  ?X?XX-XXX?!: droit
+  ?X?XX-XXX??: dirty
+  ?X?XX-XXXX?: girth mirth
+  ?XX!!-X!?XX: nurse
+  ?XX!!-X!XXX: curse purse
+  ?XX!!-XXXX?: terse
+  ?XX!?-XXX?X: dress
+  ?XX!?-XXXX!: crest wrest
+  ?XX!X-!!XX!: burst
+  ?XX!X-!?XXX: brush
+  ?XX!X-X?XX!: crust trust
+  ?XX!X-X?XX?: truss
+  ?XX!X-X?XXX: crush
+  ?XX!X-XXX?X: dross
+  ?XX!X-XXXX?: torso
+  ?XX!X-XXXXX: cross gross
+  ?XX?!-X!XXX: surge
+  ?XX?!-XX?XX: snore
+  ?XX?!-XXXX?: store
+  ?XX??-?XXXX: sober
+  ?XX??-X!XXX: super surer
+  ?XX??-X?XXX: serum usher
+  ?XX??-XX?X?: stern
+  ?XX??-XX?XX: sneer
+  ?XX??-XXXX?: ester steer
+  ?XX?X-??XXX: scrub shrub
+  ?XX?X-X!XXX: surly
+  ?XX?X-X??XX: spurn
+  ?XX?X-X?XX!: spurt strut
+  ?XX?X-X?XX?: torus
+  ?XX?X-XX?X!: snort
+  ?XX?X-XXX?X: sword
+  ?XX?X-XXXX!: short sport
+  ?XX?X-XXXXX: sorry
+  ?XXX!-!?XX?: brute
+  ?XXX!-!X?XX: borne
+  ?XXX!-!XXXX: broke
+  ?XXX!-?XXXX: ombre probe
+  ?XXX!-X??XX: prune
+  ?XXX!-X?X!X: crude prude
+  ?XXX!-X?XX?: truce
+  ?XXX!-XX!XX: genre
+  ?XXX!-XX??X: drone
+  ?XXX!-XXX!X: erode horde
+  ?XXX!-XXX?X: drove
+  ?XXX?-!!XXX: buyer
+  ?XXX?-!?XXX: bluer
+  ?XXX?-!XX?X: breed
+  ?XXX?-!XXX!: beret
+  ?XXX?-!XXX?: berth
+  ?XXX?-!XXXX: berry boxer
+  ?XXX?-?!XX?: tuber
+  ?XXX?-?XX?X: derby
+  ?XXX?-?XXXX: cyber ember
+  ?XXX?-X!XX?: outer
+  ?XXX?-X???X: under
+  ?XXX?-X?X?X: demur udder
+  ?XXX?-X?XX!: erupt
+  ?XXX?-X?XX?: truer utter
+  ?XXX?-XX!X?: tenor
+  ?XXX?-XX!XX: goner owner
+  ?XXX?-XX?!X: nerdy
+  ?XXX?-XX???: trend
+  ?XXX?-XX?X?: enter entry
+  ?XXX?-XXX!X: credo
+  ?XXX?-XXX??: deter
+  ?XXXX-!!?X!: burnt
+  ?XXXX-!!XXX: burly
+  ?XXXX-!??X!: brunt
+  ?XXXX-!?XX!: blurt
+  ?XXXX-!?XXX: blurb
+  ?XXXX-!X?XX: brown
+  ?XXXX-!XX?X: brood
+  ?XXXX-!XXX?: broth
+  ?XXXX-!XXXX: brook broom
+  ?XXXX-?!XX?: turbo
+  ?XXXX-??XXX: crumb
+  ?XXXX-?XXX?: throb
+  ?XXXX-X!XX?: tumor tutor
+  ?XXXX-X???X: drunk
+  ?XXXX-X??X!: grunt
+  ?XXXX-X??X?: trunk
+  ?XXXX-X?X?X: gourd proud
+  ?XXXX-XX!?X: donor
+  ?XXXX-XX!XX: honor
+  ?XXXX-XX??X: drown frond
+  ?XXXX-XX?X!: front
+  ?XXXX-XX?X?: north thorn
+  ?XXXX-XXX!X: wordy
+  ?XXXX-XXXX!: crypt
+  X!!!X-XXX?X: daisy
+  X!!!X-XXXX!: waist
+  X!!?X-XX?X!: saint
+  X!!X!-XX?XX: naive
+  X!!X!-XXXXX: maize waive
+  X!!XX-XXX?X: daily
+  X!!XX-XXXX?: faith
+  X!!XX-XXXXX: gaily
+  X!??X-!X?XX: basin
+  X!??X-XX?X?: satin
+  X!?XX-?X?XX: cabin
+  X!?XX-?XXX!: habit
+  X!?XX-XXX?X: valid vapid
+  X!?XX-XXXX!: tacit
+  X!?XX-XXXX?: cacti patio
+  X!X!!-X?XXX: cause pause
+  X!X!X-XX!XX: pansy
+  X!X!X-XXXX?: patsy
+  X!X?!-!XXX?: baste
+  X!X?!-X?XX?: saute
+  X!X?!-X?XXX: sauce
+  X!X?!-XXXXX: salve
+  X!X??-XXXXX: easel
+  X!X?X-!XXXX: basal
+  X!X?X-X??XX: sauna
+  X!X?X-X?XXX: saucy
+  X!X?X-XX!!X: sandy
+  X!X?X-XX?X?: nasty
+  X!X?X-XXX?X: sadly salad
+  X!XX!-!XX?X: badge
+  X!XX!-!XXX?: bathe
+  X!XX!-?XXX?: table
+  X!XX!-X?XX?: haute
+  X!XX!-XX!?X: dance
+  X!XX!-XXX?X: ladle
+  X!XX!-XXXX?: lathe latte
+  X!XX?-!XXXX: bagel
+  X!XX?-?XXXX: label
+  X!XX?-XX!XX: panel
+  X!XX?-XX??X: laden
+  X!XX?-XX?X?: eaten taken
+  X!XX?-XXX?!: cadet
+  X!XX?-XXXX!: facet valet
+  X!XX?-XXXX?: matey
+  X!XXX-!?XXX: bayou
+  X!XXX-!X!XX: banal banjo
+  X!XXX-!X?X?: baton
+  X!XXX-!X?XX: bacon
+  X!XXX-!XX!X: bawdy
+  X!XXX-!XX?X: badly
+  X!XXX-!XXX?: batch batty
+  X!XXX-!XXXX: baggy balmy
+  X!XXX-?XXX?: tabby taboo
+  X!XXX-X???!: daunt
+  X!XXX-X??XX: fauna
+  X!XXX-X?X!X: gaudy
+  X!XXX-X?X??: datum
+  X!XXX-X?XXX: caulk laugh
+  X!XXX-XX!X?: tango tangy
+  X!XXX-XXXX!: yacht
+  X?!!X-XXXXX: amiss
+  X?!?!-XXX!X: aside
+  X?!X!-?XX!X: abide
+  X?!X!-XX?XX: anime
+  X?!X?-XX?XX: alien
+  X?!XX-?XXXX: alibi
+  X?!XX-XXXX?: amity
+  X??!X-X!XXX: quasi
+  X???!-XXXXX: aisle
+  X????-XXXXX: sepia
+  X???X-XX?X?: stain
+  X???X-XX?XX: slain snail
+  X???X-XXX??: staid
+  X???X-XXXX?: vista
+  X???X-XXXXX: sigma swami
+  X??X!-XX?XX: inane
+  X??X!-XXXXX: image
+  X??X?-XXX?X: ideal media
+  X??X?-XXXXX: email
+  X??XX-?XXX?: tibia
+  X??XX-X!X?!: audit
+  X??XX-X!X?X: audio
+  X??XX-X!XXX: quail
+  X??XX-XX!XX: final ninja
+  X??XX-XX??X: admin
+  X??XX-XX?X!: giant
+  X??XX-XX?X?: antic titan
+  X??XX-XXX?!: admit
+  X??XX-XXX??: tidal
+  X??XX-XXXX!: await plait
+  X??XX-XXXX?: attic vital
+  X?X!!-??XXX: abuse
+  X?X!!-?XXXX: abase
+  X?X!!-X?XXX: amuse
+  X?X!!-XXXX?: tease
+  X?X!?-!XXX!: beast
+  X?X!?-XXXXX: leash
+  X?X!X-!XXX!: blast boast
+  X?X!X-?XXXX: abyss
+  X?X!X-X!XXX: quash
+  X?X!X-XX?X!: angst
+  X?X!X-XX?XX: gnash
+  X?X!X-XXXX!: coast toast
+  X?X!X-XXXX?: stash
+  X?X?!-X!XXX: suave
+  X?X?!-X?XXX: usage
+  X?X?!-XX?XX: snake
+  X?X?!-XXX!X: shade spade
+  X?X??-XX??X: sedan
+  X?X??-XX?XX: ashen sneak
+  X?X??-XXX??: stead
+  X?X??-XXXX!: asset sweat
+  X?X?X-??XXX: scuba
+  X?X?X-X!XXX: sumac
+  X?X?X-X?X?X: squad
+  X?X?X-X?XX!: squat
+  X?X?X-X?XXX: usual
+  X?X?X-XX???: stand
+  X?X?X-XX?X!: scant slant
+  X?X?X-XX?X?: stank
+  X?X?X-XXX!X: shady
+  X?X?X-XXX?X: scald
+  X?XX!-!XX!X: blade
+  X?XX!-!XXXX: blame blaze
+  X?XX!-?XX!X: abode
+  X?XX!-?XX?X: adobe
+  X?XX!-?XXX?: abate
+  X?XX!-?XXXX: above amble
+  X?XX!-X!XXX: quake
+  X?XX!-X?XX?: acute
+  X?XX!-XX?!X: anode
+  X?XX!-XX?X?: atone
+  X?XX!-XXX!X: evade glade
+  X?XX!-XXX?X: adage
+  X?XX?-!X?XX: began
+  X?XX?-!XX!X: beady
+  X?XX?-!XXX!: begat bleat
+  X?XX?-!XXXX: beach bleak
+  X?XX?-?XX?X: abled
+  X?XX?-?XXXX: abbey kebab
+  X?XX?-X?XXX: equal
+  X?XX?-XX??X: amend knead
+  X?XX?-XXX!X: heady
+  X?XX?-XXX?!: adept dealt
+  X?XX?-XXX??: death delta
+  X?XXX-!X??X: bland
+  X?XXX-!X?XX: blank
+  X?XXX-!XXX!: bloat
+  X?XXX-!XXXX: black bylaw
+  X?XXX-?!XX?: tubal
+  X?XXX-??XX!: about
+  X?XXX-??XXX: album
+  X?XXX-?XXX!: abbot
+  X?XXX-?XXXX: aback
+  X?XXX-X!!X?: aunty junta
+  X?XXX-X!?XX: human
+  X?XXX-X!XX?: quota
+  X?XXX-X?!XX: annul
+  X?XXX-X?X?!: adult
+  X?XXX-X?X?X: aloud
+  X?XXX-X?XXX: afoul awful
+  X?XXX-XX!?X: gonad
+  X?XXX-XX!X?: tonal tonga
+  X?XXX-XX!XX: annoy zonal
+  X?XXX-XX??X: gland nomad
+  X?XXX-XX?X!: chant plant
+  X?XXX-XX?X?: thank twang
+  X?XXX-XXX?!: adapt adopt
+  X?XXX-XXX??: today
+  XX!!!-X!XXX: guise
+  XX!!!-XX?XX: noise
+  XX!!!-XXXXX: poise
+  XX!!?-XXXX!: exist heist
+  XX!!X-!XXXX: bliss
+  XX!!X-XX?XX: noisy
+  XX!!X-XXXXX: swish whisk
+  XX!?!-X!XX?: suite
+  XX!?!-XX?!X: snide
+  XX!?!-XXX!X: slide
+  XX!?!-XXXX?: smite spite
+  XX!??-XXX?X: shied spied
+  XX!??-XXXXX: spiel
+  XX!?X-X!?XX: suing
+  XX!?X-X??XX: using
+  XX!?X-XX?X!: stint
+  XX!?X-XX?X?: sting stink
+  XX!X!-X!X!X: guide
+  XX!X!-X!XX?: quite
+  XX!X!-X!XXX: guile juice
+  XX!X!-X??X?: unite
+  XX!X!-X?XX?: utile
+  XX!X!-XX?X?: twine
+  XX!X?-!X?XX: being
+  XX!X?-X!XX!: quiet
+  XX!X?-XX??X: deign
+  XX!X?-XXX?!: edict
+  XX!X?-XXX??: deity
+  XX!X?-XXX?X: edify plied
+  XX!X?-XXXX!: evict
+  XX!X?-XXXX?: thief
+  XX!X?-XXXXX: chief weigh
+  XX!XX-!!X?X: build
+  XX!XX-!!XX!: built
+  XX!XX-!X??X: blind
+  XX!XX-!X?XX: blink
+  XX!XX-!XXX?: blitz
+  XX!XX-!XXXX: blimp
+  XX!XX-?XXXX: climb
+  XX!XX-X!X?X: guild
+  XX!XX-X!XX!: guilt quilt
+  XX!XX-X??X?: unity
+  XX!XX-X??XX: unify union
+  XX!XX-X?XXX: opium
+  XX!XX-XX??X: doing dying
+  XX!XX-XXX?!: idiot
+  XX!XX-XXX?X: child idiom
+  XX!XX-XXXX!: twixt
+  XX!XX-XXXX?: thick thigh
+  XX?!X-XXX?!: midst
+  XX?!X-XXXX?: tipsy
+  XX??!-X?XXX: issue
+  XX??!-XX!XX: since singe
+  XX??!-XXXXX: siege sieve
+  XX???-XX!XX: sinew
+  XX???-XX?X?: stein
+  XX???-XXXX!: islet
+  XX???-XXXXX: sheik
+  XX??X-!X?XX: bison
+  XX??X-??XXX: squib
+  XX??X-X!XXX: music sushi
+  XX??X-X?!XX: minus
+  XX??X-X?XXX: ficus
+  XX??X-XX!XX: sonic
+  XX??X-XXX?X: disco solid
+  XX?X!-!X!XX: binge
+  XX?X!-??XXX: imbue
+  XX?X!-X!XX?: cutie
+  XX?X!-X??X?: untie
+  XX?X!-X?XXX: pique
+  XX?X!-XX?XX: niche niece
+  XX?X!-XXX!?: tilde
+  XX?X!-XXX!X: diode
+  XX?X!-XXX?X: midge
+  XX?X?-!X?XX: begin
+  XX?X?-!XXX!: befit
+  XX?X?-!XXXX: bicep
+  XX?X?-?XX?!: debit
+  XX?X?-?XXXX: libel
+  XX?X?-X?!XX: ennui
+  XX?X?-X?XXX: equip
+  XX?X?-XX!?X: denim
+  XX?X?-XX!XX: linen piney
+  XX?X?-XX?X!: inept inlet
+  XX?X?-XXX??: fetid tepid
+  XX?X?-XXXX!: eight filet
+  XX?X?-XXXX?: ethic piety
+  XX?XX-!X!XX: bingo
+  XX?XX-!XX!X: biddy
+  XX?XX-!XXX!: bigot
+  XX?XX-!XXX?: bitty
+  XX?XX-!XXXX: billy
+  XX?XX-?!XXX: cubic pubic
+  XX?XX-?X?XX: inbox
+  XX?XX-?XXXX: limbo
+  XX?XX-X!!X?: tunic
+  XX?XX-X!!XX: fungi
+  XX?XX-X!?XX: cumin
+  XX?XX-X!X?X: humid lucid
+  XX?XX-X!XX?: tulip
+  XX?XX-X!XXX: pupil
+  XX?XX-X???X: undid
+  XX?XX-X??X?: until
+  XX?XX-X??XX: unzip
+  XX?XX-X?X?X: fluid
+  XX?XX-XX!!X: windy
+  XX?XX-XX!?X: dingo dingy
+  XX?XX-XX?X!: ingot night
+  XX?XX-XX?X?: toxin
+  XX?XX-XX?XX: login
+  XX?XX-XXX!X: giddy
+  XX?XX-XXX?!: digit
+  XXX!!-?XXXX: obese
+  XXX!!-X!XXX: pulse
+  XXX!!-XX!?X: dense
+  XXX!!-XX!X?: tense
+  XXX!!-XX!XX: sense
+  XXX!!-XX?XX: noose
+  XXX!!-XXXX?: these those
+  XXX!?-!XXXX: bless
+  XXX!?-X!XX!: guest quest
+  XXX!?-X!XXX: guess
+  XXX!?-XXXX!: chest
+  XXX!X-!?XXX: blush
+  XXX!X-!XXX!: boost
+  XXX!X-!XXXX: bossy
+  XXX!X-X!XXX: fussy hussy
+  XXX!X-X?XX!: joust
+  XXX!X-XXXX!: ghost
+  XXX?!-X??XX: ensue
+  XXX?!-X?XXX: segue
+  XXX?!-XX?X?: stone
+  XXX??-!!X?X: bused
+  XXX??-!XXX!: beset
+  XXX??-X??X!: unset
+  XXX??-X?XX!: upset
+  XXX??-X?XX?: fetus setup
+  XXX??-XX??X: spend
+  XXX??-XXX!X: seedy
+  XXX??-XXX??: steed
+  XXX??-XXX?X: speed
+  XXX?X-!!XXX: bushy
+  XXX?X-!?!XX: bonus
+  XXX?X-!XXXX: bosom
+  XXX?X-X!!XX: sunny
+  XXX?X-X!X??: dusty
+  XXX?X-X!X?X: dusky
+  XXX?X-X???X: sound
+  XXX?X-X??X?: stung stunk
+  XXX?X-X?X!?: study
+  XXX?X-XX!?X: synod
+  XXX?X-XX?X?: stony
+  XXX?X-XXX??: stood
+  XXX?X-XXX?X: scold
+  XXX?X-XXXX!: shoot
+  XXXX!-!!X?X: budge
+  XXXX!-!!XX?: butte
+  XXXX!-!!XXX: bugle bulge
+  XXXX!-!?XXX: boule
+  XXXX!-?X?XX: noble
+  XXXX!-?XXXX: globe
+  XXXX!-X!!?X: dunce
+  XXXX!-X!!XX: lunge ounce
+  XXXX!-X!??X: nudge
+  XXXX!-X!X?X: fudge judge
+  XXXX!-X!XX?: quote tulle
+  XXXX!-X!XXX: fugue queue
+  XXXX!-X?!XX: venue
+  XXXX!-X???X: undue
+  XXXX!-X??XX: uncle
+  XXXX!-X?X!?: etude
+  XXXX!-X?X!X: elude
+  XXXX!-X?X?X: deuce
+  XXXX!-X?XX?: chute flute
+  XXXX?-!??XX: begun
+  XXXX?-!X!XX: bench boney
+  XXXX?-!X??X: blend
+  XXXX?-!XX?X: bleed
+  XXXX?-!XXX!: beget
+  XXXX?-!XXX?: betel
+  XXXX?-??X?!: debut
+  XXXX?-??X?X: debug
+  XXXX?-?X?XX: ebony
+  XXXX?-?XX?X: embed
+  XXXX?-?XXXX: elbow
+  XXXX?-X!?XX: lumen queen
+  XXXX?-X!X?!: duvet
+  XXXX?-X!XXX: quell
+  XXXX?-X???X: unfed unwed
+  XXXX?-X??X!: unmet
+  XXXX?-X?X?X: clued
+  XXXX?-X?XX!: exult
+  XXXX?-XX!X!: tenet
+  XXXX?-XX!X?: tenth
+  XXXX?-XX?!X: needy
+  XXXX?-XX?X!: event knelt
+  XXXX?-XX?X?: often token
+  XXXX?-XXX!?: teddy
+  XXXX?-XXX!X: weedy
+  XXXX?-XXX?!: depot dwelt
+  XXXXX-!!!XX: bunch bunny
+  XXXXX-!!X!X: buddy
+  XXXXX-!!XX?: butch
+  XXXXX-!???X: bound
+  XXXXX-!??X!: blunt
+  XXXXX-!?XXX: bluff bough
+  XXXXX-!X!XX: bongo
+  XXXXX-!X??X: blond
+  XXXXX-!X?XX: blown
+  XXXXX-!XX?X: blood
+  XXXXX-?!XXX: gumbo jumbo
+  XXXXX-??X?!: doubt
+  XXXXX-??XX?: thumb
+  XXXXX-??XXX: plumb
+  XXXXX-?X?XX: nobly
+  XXXXX-?XXXX: hobby lobby
+  XXXXX-X!!X?: junto
+  XXXXX-X!?X?: nutty
+  XXXXX-X!X!?: outdo
+  XXXXX-X!X!X: muddy
+  XXXXX-X!X??: dutch
+  XXXXX-X!XX!: ought
+  XXXXX-X?!?!: donut
+  XXXXX-XX!!X: condo
+  XXXXX-XX!X?: month
+  XXXXX-XX!XX: conch lynch
+  XXXXX-XX??X: downy
+  XXXXX-XX?X?: notch thong
+  XXXXX-XXX!?: toddy
+
+Three-guess solutions: raise, bundt, clomp 1496 words
+  !!?XX-XXX?X-XX?XX: radio
+  !!?XX-XXX?X-XXXX?: rapid
+  !!?XX-XXX?X-XXXXX: radii
+  !!XXX-XXXXX-X?XX?: ralph
+  !!XXX-XXXXX-X?XXX: rally
+  !!XXX-XXXXX-XX?XX: razor
+  !!XXX-XXXXX-XXXXX: rajah
+  !?XX?-XXXXX-?XXX!: recap
+  !?XX?-XXXXX-?XXXX: reach
+  !?XX?-XXXXX-X?X?X: realm
+  !?XX?-XXXXX-X?XXX: regal relax relay
+  !?XX?-XXXXX-XXX?X: rearm
+  !?XX?-XXXXX-XXXX?: repay
+  !X?X?-XXXX!-XXX?X: remit
+  !X?X?-XXXX!-XXXXX: refit rivet
+  !X?X?-XXXXX-??XXX: relic
+  !X?X?-XXXXX-XXXX?: riper
+  !X?X?-XXXXX-XXXXX: river
+  !XXX!-X?XXX-XX?XX: rogue rouge
+  !XXX!-X?XXX-XXXXX: revue
+  !XXX?-XXXX?-?XXXX: retch
+  !XXX?-XXXX?-XX?XX: retro
+  !XXX?-XXXX?-XXXXX: retry
+  !XXX?-XXXXX-X?XX?: repel reply
+  !XXX?-XXXXX-X?XXX: revel
+  !XXX?-XXXXX-XX?XX: roger rover rower
+  !XXX?-XXXXX-XXXXX: refer
+  ?!XX!-XXXXX-!XXXX: carve
+  ?!XX!-XXXXX-?XXXX: farce
+  ?!XX!-XXXXX-X?XXX: large
+  ?!XX?-XXXX?-!XXXX: cater
+  ?!XX?-XXXX?-X?XXX: later
+  ?!XX?-XXXX?-XXX?X: tamer
+  ?!XX?-XXXX?-XXXX?: taper
+  ?!XX?-XXXX?-XXXXX: earth eater hater taker water
+  ?!XX?-XXXXX-!XXX?: caper
+  ?!XX?-XXXXX-X?XX?: paler
+  ?!XX?-XXXXX-X?XXX: early lager layer
+  ?!XX?-XXXXX-XXX?X: gamer harem maker
+  ?!XX?-XXXXX-XXXX?: paper parer payer
+  ?!XX?-XXXXX-XXXXX: eager gayer gazer wafer wager waver
+  ?!XXX-XXXXX-!??XX: carol
+  ?!XXX-XXXXX-!X?XX: cargo
+  ?!XXX-XXXXX-!XXXX: carry
+  ?!XXX-XXXXX-?X??X: macro
+  ?!XXX-XXXXX-?XX?X: march
+  ?!XXX-XXXXX-X??XX: valor
+  ?!XXX-XXXXX-X?XXX: larva
+  ?!XXX-XXXXX-XX??X: major mayor
+  ?!XXX-XXXXX-XX?X?: vapor
+  ?!XXX-XXXXX-XX?XX: favor
+  ?!XXX-XXXXX-XXX!X: karma
+  ?!XXX-XXXXX-XXX?X: marry
+  ?!XXX-XXXXX-XXXX?: harpy parka parry
+  ?!XXX-XXXXX-XXXXX: harry
+  ???XX-XXXXX-!XXXX: chair cigar circa
+  ???XX-XXXXX-?XXXX: vicar
+  ???XX-XXXXX-X!XXX: flair
+  ???XX-XXXXX-X?XXX: frail grail viral
+  ??X!X-XXXXX-!XXXX: crash crass
+  ??X!X-XXXXX-XXXX!: grasp
+  ??X!X-XXXXX-XXXXX: grass
+  ??X?!-XXXXX-?XXXX: scare
+  ??X?!-XXXXX-XXXX?: spare
+  ??X?!-XXXXX-XXXXX: share
+  ??X??-XXXXX-XXX?X: smear
+  ??X??-XXXXX-XXXX?: spear
+  ??X??-XXXXX-XXXXX: shear swear
+  ??X?X-XXXX?-XXXX!: strap
+  ??X?X-XXXX?-XXXXX: stark straw stray
+  ??X?X-XXXXX-?XX?X: scram
+  ??X?X-XXXXX-?XXX!: scrap
+  ??X?X-XXXXX-?XXXX: scarf scary
+  ??X?X-XXXXX-X??XX: solar
+  ??X?X-XXXXX-XXX?X: swarm
+  ??X?X-XXXXX-XXXX!: sharp
+  ??X?X-XXXXX-XXXX?: spark spray
+  ??X?X-XXXXX-XXXXX: shark
+  ??XX!-!XXXX-?XXXX: brace
+  ??XX!-!XXXX-X!XXX: blare
+  ??XX!-!XXXX-XXXXX: brake brave
+  ??XX!-XXX?X-XX!XX: adore
+  ??XX!-XXX?X-XXXX?: drape
+  ??XX!-XXX?X-XXXXX: drake
+  ??XX!-XXXX?-!XXXX: crate
+  ??XX!-XXXX?-?XXXX: trace
+  ??XX!-XXXX?-XXXXX: grate
+  ??XX!-XXXXX-!XXXX: crave craze
+  ??XX!-XXXXX-?XXXX: grace
+  ??XX!-XXXXX-X!XXX: flare glare
+  ??XX!-XXXXX-XXX!X: frame
+  ??XX!-XXXXX-XXXX?: grape
+  ??XX!-XXXXX-XXXXX: agree aware grave graze
+  ??XX?-XX?XX-X?XXX: learn
+  ??XX?-XX?XX-XXXXX: anger arena yearn
+  ??XX?-XXX?X-!XXXX: cedar
+  ??XX?-XXX?X-XXX?X: dream
+  ??XX?-XXX?X-XXXXX: dread heard
+  ??XX?-XXXX!-X!XXX: alert
+  ??XX?-XXXX!-XXXXX: avert great heart treat
+  ??XX?-XXXX?-X!XXX: alter
+  ??XX?-XXXX?-XXXXX: after extra teary terra
+  ??XX?-XXXXX-!!XXX: clear
+  ??XX?-XXXXX-!XX?X: cream
+  ??XX?-XXXXX-!XXXX: creak
+  ??XX?-XXXXX-X?XX?: pearl
+  ??XX?-XXXXX-X?XXX: feral
+  ??XX?-XXXXX-XX?X?: opera
+  ??XX?-XXXXX-XXXXX: freak weary wreak
+  ??XXX-!XXXX-X?XXX: brawl
+  ??XXX-!XXXX-XX?XX: borax bravo
+  ??XXX-?XXXX-!X?XX: cobra
+  ??XXX-?XXXX-XX?XX: abhor arbor
+  ??XXX-X!XXX-X?X?X: mural
+  ??XXX-X!XXX-XXXXX: augur quark
+  ??XXX-XX??X-XX!XX: adorn
+  ??XXX-XX??X-XXXXX: drank drawn grand
+  ??XXX-XX?XX-!XXXX: crank
+  ??XXX-XX?XX-?X!XX: acorn
+  ??XXX-XX?XX-XX!XX: groan
+  ??XXX-XX?XX-XX?X?: apron
+  ??XXX-XX?XX-XX?XX: organ
+  ??XXX-XX?XX-XXXX?: prank prawn
+  ??XXX-XX?XX-XXXXX: angry frank
+  ??XXX-XXX?X-!XXXX: chard
+  ??XXX-XXX?X-X?XXX: drawl
+  ??XXX-XXX?X-XX?XX: ardor hoard
+  ??XXX-XXX?X-XXX!X: drama
+  ??XXX-XXX?X-XXXXX: award dwarf
+  ??XXX-XXXX!-!XXXX: chart craft
+  ??XXX-XXXX!-?XXXX: tract
+  ??XXX-XXXX!-XXXX?: apart
+  ??XXX-XXXX!-XXXXX: graft
+  ??XXX-XXXX?-?X?XX: actor
+  ??XXX-XXXX?-?XXXX: track
+  ??XXX-XXXX?-X!XXX: altar
+  ??XXX-XXXX?-X?XXX: trawl
+  ??XXX-XXXX?-XX?XX: aorta
+  ??XXX-XXXX?-XXX!!: tramp
+  ??XXX-XXXX?-XXXXX: wrath
+  ??XXX-XXXXX-!??XX: coral
+  ??XXX-XXXXX-!?XXX: crawl
+  ??XXX-XXXXX-!X!XX: croak
+  ??XXX-XXXXX-!XX!!: cramp
+  ??XXX-XXXXX-!XX?X: charm
+  ??XXX-XXXXX-!XXXX: crack crazy
+  ??XXX-XXXXX-?XXXX: wrack
+  ??XXX-XXXXX-X!!XX: flora
+  ??XXX-XXXXX-X!X?X: alarm
+  ??XXX-XXXXX-X???X: molar moral
+  ??XXX-XXXXX-X??X?: polar
+  ??XXX-XXXXX-XX!!X: aroma
+  ??XXX-XXXXX-XX!XX: agora
+  ??XXX-XXXXX-XX??X: armor
+  ??XXX-XXXXX-XX?XX: arrow foray ovary
+  ??XXX-XXXXX-XXXX?: graph
+  ??XXX-XXXXX-XXXXX: array gravy wharf
+  ?X!!X-XXXXX-!XXX!: crisp
+  ?X!!X-XXXXX-XXX??: prism
+  ?X!!X-XXXXX-XXXXX: frisk
+  ?X!?X-XXXXX-X?XXX: swirl
+  ?X!?X-XXXXX-XXX?X: smirk
+  ?X!?X-XXXXX-XXXXX: shirk
+  ?X!X!-XXXX?-?XXXX: trice
+  ?X!X!-XXXX?-XXXX?: tripe
+  ?X!X!-XXXX?-XXXXX: trite write
+  ?X!X!-XXXXX-!XX!X: crime
+  ?X!X!-XXXXX-?XXX?: price
+  ?X!X!-XXXXX-XXX!?: prime
+  ?X!X!-XXXXX-XXX!X: grime
+  ?X!X!-XXXXX-XXXX?: gripe prize
+  ?X!X?-XXX?X-!XXXX: cried
+  ?X!X?-XXX?X-XXXX?: pried
+  ?X!X?-XXX?X-XXXXX: dried drier fried weird
+  ?X!X?-XXXXX-!XXXX: crier
+  ?X!X?-XXXXX-X!XX?: plier
+  ?X!X?-XXXXX-X!XXX: flier
+  ?X!X?-XXXXX-XXXXX: grief
+  ?X!XX-!X?XX-XXXXX: bring brink briny
+  ?X!XX-XXXX?-?XXXX: trick
+  ?X!XX-XXXX?-X?XXX: twirl
+  ?X!XX-XXXX?-XXXXX: fritz
+  ?X!XX-XXXXX-!XX!!: crimp
+  ?X!XX-XXXXX-!XXX!: chirp
+  ?X!XX-XXXXX-!XXXX: crick
+  ?X!XX-XXXXX-?XXX?: prick
+  ?X!XX-XXXXX-X?XXX: frill grill krill whirl
+  ?X!XX-XXXXX-XX?!?: primo
+  ?X!XX-XXXXX-XX?X?: prior
+  ?X!XX-XXXXX-XXX!X: grimy
+  ?X!XX-XXXXX-XXXX?: privy
+  ?X???-XXXXX-XXX?X: miser
+  ?X???-XXXXX-XXXXX: serif wiser
+  ?X?X?-XX!XX-X?XXX: liner
+  ?X?X?-XX!XX-XXX?X: miner
+  ?X?X?-XX!XX-XXXXX: finer inner
+  ?X?X?-XXX?X-!XXXX: cider
+  ?X?X?-XXX?X-X?XXX: idler
+  ?X?X?-XXX?X-XXXXX: diver wider
+  ?X?X?-XXXX?-XXX?X: timer
+  ?X?X?-XXXX?-XXXXX: their tiger
+  ?X?X?-XXXXX-X?XX?: peril
+  ?X?X?-XXXXX-X?XXX: filer liver
+  ?X?X?-XXXXX-XXXX?: piper viper
+  ?X?X?-XXXXX-XXXXX: fiery fixer giver
+  ?X?XX-XXXXX-!X!XX: choir
+  ?X?XX-XXXXX-??XXX: lyric
+  ?X?XX-XXXXX-?X??X: micro
+  ?X?XX-XXXXX-X?XXX: girly
+  ?X?XX-XXXXX-XX!XX: ivory
+  ?X?XX-XXXXX-XX?XX: vigor
+  ?XX!!-XXXXX-XX!X?: prose
+  ?XX!!-XXXXX-XX?XX: horse worse
+  ?XX!!-XXXXX-XXXXX: verse
+  ?XX!?-XXXXX-!XXXX: cress
+  ?XX!?-XXXXX-XX?XX: verso
+  ?XX!?-XXXXX-XXXX?: press
+  ?XX!?-XXXXX-XXXXX: fresh
+  ?XX!X-XXXX!-XX!XX: frost
+  ?XX!X-XXXX!-XX?XX: worst
+  ?XX!X-XXXX!-XXXXX: tryst
+  ?XX?!-XXXXX-?X!XX: score
+  ?XX?!-XXXXX-?XXXX: scree
+  ?XX?!-XXXXX-XX!X?: spore
+  ?XX?!-XXXXX-XX!XX: shore swore
+  ?XX?!-XXXXX-XXXX?: spree
+  ?XX?!-XXXXX-XXXXX: serve
+  ?XX??-XXXXX-?XXXX: screw
+  ?XX??-XXXXX-X??XX: loser
+  ?XX??-XXXXX-XX?X?: poser
+  ?XX??-XXXXX-XX?XX: sower
+  ?XX??-XXXXX-XXX??: sperm
+  ?XX??-XXXXX-XXXXX: sever sewer sheer shrew
+  ?XX?X-X?XXX-?X!XX: scour
+  ?XX?X-X?XXX-?XX?X: scrum
+  ?XX?X-X?XXX-X!XX!: slurp
+  ?XX?X-X?XXX-XXXX!: syrup usurp
+  ?XX?X-X?XXX-XXXXX: shrug
+  ?XX?X-XX?XX-?X!XX: scorn
+  ?XX?X-XX?XX-XX!XX: shorn sworn
+  ?XX?X-XXXX?-XX!?X: storm
+  ?XX?X-XXXX?-XX!XX: stork story
+  ?XXX!-X!XXX-!XXXX: curve
+  ?XXX!-X!XXX-XXXX?: puree purge
+  ?XXX!-XX?XX-!X!XX: crone
+  ?XXX!-XX?XX-XX!X?: prone
+  ?XXX!-XX?XX-XXXXX: nerve
+  ?XXX!-XXXX?-XX!X?: trope
+  ?XXX!-XXXX?-XX!XX: trove wrote
+  ?XXX!-XXXX?-XX?XX: forte
+  ?XXX!-XXXX?-XXXXX: there three
+  ?XXX!-XXXXX-!X!XX: chore
+  ?XXX!-XXXXX-!XX!X: creme
+  ?XXX!-XXXXX-!XXX?: crepe
+  ?XXX!-XXXXX-?X?XX: force
+  ?XXX!-XXXXX-XX!X?: grope prove
+  ?XXX!-XXXXX-XX!XX: froze grove
+  ?XXX!-XXXXX-XX?XX: forge gorge
+  ?XXX!-XXXXX-XXX?X: merge
+  ?XXX!-XXXXX-XXXXX: verge verve where
+  ?XXX?-X!XXX-XXXX?: purer
+  ?XXX?-X!XXX-XXXXX: queer query
+  ?XXX?-X?XXX-!?XXX: cruel
+  ?XXX?-X?XXX-?!XXX: ulcer
+  ?XXX?-X?XXX-X?X?X: lemur
+  ?XXX?-X?XXX-X?XXX: gruel
+  ?XXX?-X?XXX-XXX?X: femur
+  ?XXX?-X?XXX-XXXX?: upper
+  ?XXX?-XX?XX-XX?XX: heron
+  ?XXX?-XX?XX-XXXX?: preen
+  ?XXX?-XX?XX-XXXXX: green never newer
+  ?XXX?-XXX?X-!XXXX: creed
+  ?XXX?-XXX?X-?X?XX: decor
+  ?XXX?-XXX?X-?XXXX: decry
+  ?XXX?-XXX?X-X!?XX: older
+  ?XXX?-XXX?X-X!XXX: elder
+  ?XXX?-XXX?X-XX?XX: odder order
+  ?XXX?-XXX?X-XXXXX: defer dryer freed greed
+  ?XXX?-XXXX!-!XXX?: crept
+  ?XXX?-XXXX!-?XXXX: erect
+  ?XXX?-XXXX!-XX?XX: overt
+  ?XXX?-XXXX!-XXXXX: egret exert greet
+  ?XXX?-XXXX?-XX??X: metro
+  ?XXX?-XXXX?-XX?XX: other otter tower voter
+  ?XXX?-XXXX?-XXX?X: meter
+  ?XXX?-XXXX?-XXXXX: ether threw
+  ?XXX?-XXXXX-!!XXX: clerk
+  ?XXX?-XXXXX-!X?XX: corer cover cower
+  ?XXX?-XXXXX-!XXX!: creep
+  ?XXX?-XXXXX-!XXXX: cheer creek
+  ?XXX?-XXXXX-?XX?X: mercy
+  ?XXX?-XXXXX-?XXX?: perch
+  ?XXX?-XXXXX-?XXXX: wreck
+  ?XXX?-XXXXX-X!XXX: flyer
+  ?XXX?-XXXXX-X??XX: lover lower
+  ?XXX?-XXXXX-X?XX?: leper
+  ?XXX?-XXXXX-X?XXX: leery lever
+  ?XXX?-XXXXX-XX!XX: wooer
+  ?XXX?-XXXXX-XX??X: homer mover mower
+  ?XXX?-XXXXX-XX?X?: poker power
+  ?XXX?-XXXXX-XX?XX: error foyer hover joker offer
+  ?XXX?-XXXXX-XXX?X: merry
+  ?XXX?-XXXXX-XXXX?: hyper perky
+  ?XXX?-XXXXX-XXXXX: every ferry fever fewer freer jerky
+  ?XXXX-X!XXX-!?XXX: curly
+  ?XXXX-X!XXX-!XXXX: curry curvy
+  ?XXXX-X!XXX-??XXX: lurch
+  ?XXXX-X!XXX-XX??X: humor
+  ?XXXX-X!XXX-XX?XX: furor juror
+  ?XXXX-X!XXX-XXX?X: murky
+  ?XXXX-X!XXX-XXXXX: furry hurry
+  ?XXXX-X??XX-!XXXX: churn
+  ?XXXX-X??XX-XX??X: mourn
+  ?XXXX-X??XX-XXXXX: wrung
+  ?XXXX-X?XX!-!X?XX: court
+  ?XXXX-X?XX!-XX!XX: grout trout
+  ?XXXX-X?XX?-?XXXX: truck
+  ?XXXX-X?XX?-X?XXX: truly
+  ?XXXX-X?XX?-XXX!!: trump
+  ?XXXX-X?XX?-XXX?X: thrum
+  ?XXXX-X?XX?-XXXXX: truth
+  ?XXXX-X?XXX-!X!X!: croup
+  ?XXXX-X?XXX-!XX!!: crump
+  ?XXXX-X?XXX-?X?XX: occur
+  ?XXXX-X?XXX-X!!XX: flour
+  ?XXXX-X?XXX-XX!X!: group
+  ?XXXX-X?XXX-XX??X: forum
+  ?XXXX-X?XXX-XXXXX: gruff
+  ?XXXX-XX?XX-!X!XX: crony crown
+  ?XXXX-XX?XX-!X?XX: corny
+  ?XXXX-XX?XX-XX!X?: prong
+  ?XXXX-XX?XX-XX!XX: frown grown wrong
+  ?XXXX-XX?XX-XX??X: moron
+  ?XXXX-XX?XX-XX?XX: horny
+  ?XXXX-XXX?X-!X!XX: chord crowd
+  ?XXXX-XXX?X-X?!XX: droll drool
+  ?XXXX-XXX?X-X??XX: world
+  ?XXXX-XXX?X-X?XXX: dryly
+  ?XXXX-XXX?X-XX!X!: droop
+  ?XXXX-XXX?X-XX!XX: fjord
+  ?XXXX-XXX?X-XX?XX: dowry hydro
+  ?XXXX-XXXX?-?X?XX: torch
+  ?XXXX-XXXX?-X?!XX: troll
+  ?XXXX-XXXX?-XX!X!: troop
+  ?XXXX-XXXX?-XX!XX: froth
+  ?XXXX-XXXX?-XX??X: motor
+  ?XXXX-XXXX?-XX?XX: forth forty throw worth
+  ?XXXX-XXXXX-!??XX: color
+  ?XXXX-XXXXX-!X!XX: crock crook
+  ?XXXX-XXXXX-?X!XX: frock
+  ?XXXX-XXXXX-?X?X?: porch
+  ?XXXX-XXXXX-X!!XX: floor glory
+  ?XXXX-XXXXX-X?!X?: prowl
+  ?XXXX-XXXXX-X?!XX: growl
+  ?XXXX-XXXXX-X??XX: lorry
+  ?XXXX-XXXXX-X?XXX: wryly
+  ?XXXX-XXXXX-XX!?X: groom
+  ?XXXX-XXXXX-XX!X?: proof proxy
+  ?XXXX-XXXXX-XX???: morph
+  ?XXXX-XXXXX-XX?XX: forgo worry
+  ?XXXX-XXXXX-XXX?X: myrrh
+  X!!XX-XX?X!-XXXX?: paint
+  X!!XX-XX?X!-XXXXX: faint taint
+  X!??X-!XXXX-?XXXX: basic
+  X!??X-!XXXX-X?XXX: basil
+  X!??X-!XXXX-XXXXX: basis
+  X!?XX-XX!XX-?XX?X: manic
+  X!?XX-XX!XX-?XXX?: panic
+  X!?XX-XX!XX-XXX?X: mania
+  X!?XX-XXXXX-!?XXX: cavil
+  X!?XX-XXXXX-?XX?X: magic
+  X!?XX-XXXXX-XXX?X: mafia maxim
+  X!X!!-XXXXX-X?XX?: lapse
+  X!X!!-XXXXX-X?XXX: false
+  X!X!!-XXXXX-XXX?X: masse
+  X!X!X-XXXXX-X??XX: lasso
+  X!X!X-XXXXX-X?XX?: palsy
+  X!X!X-XXXXX-X?XXX: salsa
+  X!X!X-XXXXX-XXXXX: gassy sassy
+  X!X?!-XXXX?-!XXXX: caste
+  X!X?!-XXXX?-XXXX?: paste
+  X!X?!-XXXX?-XXXXX: haste taste waste
+  X!X?X-XX?XX-X??XX: salon
+  X!X?X-XX?XX-X?XXX: nasal
+  X!X?X-XX?XX-XX??X: mason
+  X!X?X-XXXX?-X?XXX: salty
+  X!X?X-XXXX?-XXXX?: pasta pasty
+  X!X?X-XXXX?-XXXXX: hasty tasty
+  X!X?X-XXXXX-X??XX: salvo
+  X!X?X-XXXXX-X?XXX: sally
+  X!X?X-XXXXX-XX?XX: savoy
+  X!X?X-XXXXX-XXXX?: sappy
+  X!X?X-XXXXX-XXXXX: savvy
+  X!XX!-?XXXX-!?XXX: cable
+  X!XX!-?XXXX-X?XXX: fable
+  X!XX!-?XXXX-XXX?X: maybe
+  X!XX!-X?XXX-X?XXX: value
+  X!XX!-X?XXX-XXX?X: mauve
+  X!XX!-X?XXX-XXXXX: gauge gauze vague
+  X!XX!-XX!XX-!X?XX: canoe
+  X!XX!-XX!XX-??XXX: lance
+  X!XX!-XX!XX-XXX?X: mange
+  X!XX!-XXXXX-!XXXX: cache
+  X!XX!-XXXXX-X?X??: maple
+  X!XX!-XXXXX-X?XXX: eagle halve valve
+  X!XX!-XXXXX-XXXX?: payee
+  X!XX!-XXXXX-XXXXX: gaffe
+  X!XX?-XX?XX-X?XXX: navel
+  X!XX?-XX?XX-XX?XX: oaken
+  X!XX?-XX?XX-XXXXX: haven waxen
+  X!XX?-XXXXX-!?X?X: camel
+  X!XX?-XXXXX-!X??X: cameo
+  X!XX?-XXXXX-!XXXX: cagey
+  X!XX?-XXXXX-X?XX?: lapel
+  X!XX?-XXXXX-X?XXX: gavel hazel
+  X!XXX-?XXXX-!?XXX: cabal
+  X!XXX-?XXXX-!XXXX: cabby
+  X!XXX-?XXXX-XX??X: mambo
+  X!XXX-X??X!-XXXXX: gaunt haunt jaunt taunt vaunt
+  X!XXX-X?XX!-!XXX?: caput
+  X!XXX-X?XX!-X?XXX: fault vault
+  X!XXX-X?XX!-XXX?X: gamut
+  X!XXX-XX!!X-!XXXX: candy
+  X!XXX-XX!!X-XXXXX: dandy handy
+  X!XXX-XX!XX-!?XXX: canal
+  X!XXX-XX!XX-!X?XX: canon
+  X!XXX-XX!XX-!XXXX: canny
+  X!XXX-XX!XX-?XXXX: fancy
+  X!XXX-XX!XX-X?X?X: manly
+  X!XXX-XX!XX-X?XXX: lanky
+  X!XXX-XX!XX-XX??X: mango
+  X!XXX-XX!XX-XXX?X: manga mangy
+  X!XXX-XX!XX-XXXXX: fanny nanny
+  X!XXX-XX?X?-X??XX: talon
+  X!XXX-XX?X?-X?XXX: natal
+  X!XXX-XX?X?-XXXXX: tawny
+  X!XXX-XX?XX-X?XXX: naval
+  X!XXX-XX?XX-XX?XX: wagon
+  X!XXX-XX?XX-XXXX?: pagan
+  X!XXX-XXX!X-!XXXX: caddy
+  X!XXX-XXX!X-XXXX?: paddy
+  X!XXX-XXX!X-XXXXX: daddy
+  X!XXX-XXX?X-X?X?X: madly
+  X!XXX-XXX?X-X?XXX: dally
+  X!XXX-XXX?X-XXX?X: madam
+  X!XXX-XXXX?-!XXXX: catch catty
+  X!XXX-XXXX?-??XXX: latch
+  X!XXX-XXXX?-?XX?X: match
+  X!XXX-XXXX?-?XXX?: patch
+  X!XXX-XXXX?-?XXXX: hatch tacky watch
+  X!XXX-XXXX?-X?XXX: fatal tally waltz
+  X!XXX-XXXX?-XXXX?: patty
+  X!XXX-XXXX?-XXXXX: fatty taffy tatty
+  X!XXX-XXXXX-!X?XX: cacao
+  X!XXX-XXXXX-?X??X: macho
+  X!XXX-XXXXX-?X?XX: havoc
+  X!XXX-XXXXX-?XX?X: macaw
+  X!XXX-XXXXX-?XXXX: wacky
+  X!XXX-XXXXX-X?XX?: papal
+  X!XXX-XXXXX-X?XXX: gayly
+  X!XXX-XXXXX-XXX!X: gamma magma mamma mammy
+  X!XXX-XXXXX-XXXX?: happy kappa
+  X!XXX-XXXXX-XXXXX: gawky jazzy kayak
+  X?!X!-XXXXX-X!XXX: alike alive
+  X?!X!-XXXXX-X?XXX: agile
+  X?!XX-XX?XX-!XXXX: china
+  X?!XX-XX?XX-X!XXX: align
+  X?!XX-XX?XX-XX?XX: axion
+  X?!XX-XX?XX-XXXX?: aping
+  X?!XX-XX?XX-XXXXX: aging avian
+  X?!XX-XXXXX-?!XXX: iliac
+  X?!XX-XXXXX-X??XX: voila
+  X?!XX-XXXXX-X?XXX: axial
+  X?!XX-XXXXX-XX??X: axiom
+  X??XX-XX?XX-!XXXX: chain
+  X??XX-XX?XX-X!XX?: plain
+  X??XX-XX?XX-X?XXX: anvil inlay
+  X??XX-XX?XX-XX?X?: piano
+  X??XX-XX?XX-XXXXX: again
+  X??XX-XXX?X-X!XX?: plaid
+  X??XX-XXX?X-XX!XX: avoid
+  X??XX-XXX?X-XXXX?: aphid
+  X??XX-XXXXX-!!X?X: claim
+  X??XX-XXXXX-??XXX: lilac
+  X??XX-XXXXX-X!XXX: flail
+  X??XX-XXXXX-X?!XX: viola
+  X??XX-XXXXX-X?XXX: avail villa
+  X??XX-XXXXX-XXXX?: pizza
+  X??XX-XXXXX-XXXXX: affix khaki
+  X?X!!-XXXXX-!XXXX: cease chase
+  X?X!!-XXXXX-X?XXX: lease
+  X?X!!-XXXXX-XXXX?: phase
+  X?X!?-XXXX!-X?XXX: least
+  X?X!?-XXXX!-XXXXX: feast yeast
+  X?X!X-XXXXX-!!XX!: clasp
+  X?X!X-XXXXX-!!XXX: clash class
+  X?X!X-XXXXX-!XX?X: chasm
+  X?X!X-XXXXX-X!XXX: flash flask glass slash
+  X?X!X-XXXXX-XXX??: spasm
+  X?X!X-XXXXX-XXX?X: amass smash
+  X?X!X-XXXXX-XXXXX: awash swash
+  X?X?!-XXXX?-X!XXX: slate
+  X?X?!-XXXX?-X?XXX: stale
+  X?X?!-XXXX?-XXXXX: skate stage stake state stave
+  X?X?!-XXXXX-??XXX: scale
+  X?X?!-XXXXX-?XXX?: space
+  X?X?!-XXXXX-X!XXX: slave
+  X?X?!-XXXXX-X?XXX: shale
+  X?X?!-XXXXX-XXX!X: shame
+  X?X?!-XXXXX-XXXX?: shape
+  X?X?!-XXXXX-XXXXX: shake shave
+  X?X??-XXXX?-X?XXX: steal
+  X?X??-XXXX?-XXX?X: steam
+  X?X??-XXXX?-XXXXX: steak
+  X?X??-XXXXX-XXXX?: speak
+  X?X??-XXXXX-XXXXX: askew essay
+  X?X?X-XX?XX-?XXXX: snack
+  X?X?X-XX?XX-X!XXX: slang
+  X?X?X-XX?XX-XXXX?: spank spawn
+  X?X?X-XX?XX-XXXXX: shank snaky
+  X?X?X-XXXX!-?X?XX: ascot
+  X?X?X-XXXX!-X?XX?: splat
+  X?X?X-XXXX!-X?XXX: shalt
+  X?X?X-XXXX!-XXXXX: shaft
+  X?X?X-XXXX?-?XXXX: stack
+  X?X?X-XXXX?-X?XXX: stalk stall
+  X?X?X-XXXX?-XXX!!: stamp
+  X?X?X-XXXX?-XXXXX: staff swath
+  X?X?X-XXXXX-!X?XX: chaos
+  X?X?X-XXXXX-?!XXX: slack
+  X?X?X-XXXXX-??XX!: scalp
+  X?X?X-XXXXX-??XXX: scaly
+  X?X?X-XXXXX-?XX!!: scamp
+  X?X?X-XXXXX-?XX?X: smack
+  X?X?X-XXXXX-?XXXX: shack
+  X?X?X-XXXXX-X?!XX: shoal
+  X?X?X-XXXXX-X?X??: psalm
+  X?X?X-XXXXX-X?X?X: small
+  X?X?X-XXXXX-X?XXX: shall shawl
+  X?X?X-XXXXX-XX?X?: soapy
+  X?X?X-XXXXX-XXX!!: swamp
+  X?X?X-XXXXX-XXXXX: assay shaky
+  X?XX!-XX?XX-X!!XX: alone
+  X?XX!-XX?XX-X!XX?: plane
+  X?XX!-XX?XX-X?XXX: angle ankle
+  X?XX!-XX?XX-XXXXX: knave
+  X?XX!-XXXX?-X!XX?: plate
+  X?XX!-XXXX?-X!XXX: elate
+  X?XX!-XXXX?-XX?XX: ovate
+  X?XX!-XXXX?-XXXXX: agate
+  X?XX!-XXXXX-!XXXX: chafe
+  X?XX!-XXXXX-?!XX?: place
+  X?XX!-XXXXX-?XXX?: peace
+  X?XX!-XXXXX-X!X!X: flame
+  X?XX!-XXXXX-X!XXX: algae flake glaze
+  X?XX!-XXXXX-X?X??: ample
+  X?XX!-XXXXX-X?XX?: apple
+  X?XX!-XXXXX-X?XXX: leave whale
+  X?XX!-XXXXX-XX!XX: awoke
+  X?XX!-XXXXX-XXX?X: amaze
+  X?XX!-XXXXX-XXXX?: agape
+  X?XX!-XXXXX-XXXXX: awake heave weave
+  X?XX?-XX!XX-X?XX?: penal
+  X?XX?-XX!XX-XXXX?: apnea
+  X?XX?-XX!XX-XXXXX: annex
+  X?XX?-XX?X!-?XXXX: enact
+  X?XX?-XX?X!-X?XXX: leant
+  X?XX?-XX?X!-XXX?X: meant
+  X?XX?-XX?X!-XXXXX: agent
+  X?XX?-XX?XX-!!XXX: clean
+  X?XX?-XX?XX-?X?XX: ocean
+  X?XX?-XX?XX-?XXX?: pecan
+  X?XX?-XX?XX-X!XXX: glean
+  X?XX?-XX?XX-X?XXX: angel
+  X?XX?-XX?XX-XXX!X: enema
+  X?XX?-XX?XX-XXXXX: hyena vegan
+  X?XX?-XXX?X-??XXX: decal
+  X?XX?-XXX?X-?XXXX: decay
+  X?XX?-XXX?X-X!XX?: plead
+  X?XX?-XXX?X-X?X?X: medal
+  X?XX?-XXX?X-X?XX?: pedal
+  X?XX?-XXX?X-X?XXX: delay
+  X?XX?-XXX?X-XXXXX: ahead
+  X?XX?-XXXX!-!!XXX: cleat
+  X?XX?-XXXX!-!XXXX: cheat
+  X?XX?-XXXX!-??XXX: eclat
+  X?XX?-XXXX!-?XXXX: exact
+  X?XX?-XXXX!-X!XX?: pleat
+  X?XX?-XXXX!-X?XX?: leapt
+  X?XX?-XXXX!-X?XXX: exalt
+  X?XX?-XXXX!-XXXXX: wheat
+  X?XX?-XXXX?-?XXXX: teach
+  X?XX?-XXXX?-X?X?X: metal
+  X?XX?-XXXX?-X?XX?: petal
+  X?XX?-XXXX?-X?XXX: fetal
+  X?XX?-XXXX?-XXX?X: meaty
+  X?XX?-XXXX?-XXXXX: heath theta tweak
+  X?XX?-XXXXX-!XXX!: cheap
+  X?XX?-XXXXX-??XXX: fecal leach
+  X?XX?-XXXXX-?XX?X: mecca
+  X?XX?-XXXXX-?XXX?: peach
+  X?XX?-XXXXX-X!X?X: gleam
+  X?XX?-XXXXX-X!XXX: alley
+  X?XX?-XXXXX-X?X?X: mealy
+  X?XX?-XXXXX-X?XXX: fella leafy leaky legal
+  X?XX?-XXXXX-XX??X: omega
+  X?XX?-XXXXX-XXXXX: heavy
+  X?XXX-X!XXX-?XXXX: quack
+  X?XXX-X!XXX-X?X?X: qualm
+  X?XXX-X!XXX-X?XX?: pupal
+  X?XXX-X!XXX-XXXXX: guava
+  X?XXX-XX?XX-!!XXX: clang clank
+  X?XXX-XX?XX-?XXXX: knack
+  X?XXX-XX?XX-X!!XX: along
+  X?XXX-XX?XX-X!XX?: plank
+  X?XXX-XX?XX-X!XXX: flank
+  X?XXX-XX?XX-XX!?X: among
+  X?XXX-XX?XX-XX!XX: agony
+  X?XXX-XX?XX-XX??X: woman
+  X?XXX-XXX?X-X???X: modal
+  X?XXX-XXX?X-XX?!X: dogma
+  X?XXX-XXX?X-XX?XX: vodka
+  X?XXX-XXXX!-X!!XX: aloft float gloat
+  X?XXX-XXXX!-X!?XX: allot
+  X?XXX-XXXX!-XX!XX: afoot
+  X?XXX-XXXX?-???XX: octal
+  X?XXX-XXXX?-X?!XX: atoll
+  X?XXX-XXXX?-X??XX: loath total
+  X?XXX-XXXX?-X?XX?: aptly
+  X?XXX-XXXX?-XX?X?: topaz
+  X?XXX-XXXXX-!!!XX: cloak
+  X?XXX-XXXXX-!!X!!: clamp
+  X?XXX-XXXXX-!!XXX: clack
+  X?XXX-XXXXX-!?XXX: chalk
+  X?XXX-XXXXX-!X?!X: comma
+  X?XXX-XXXXX-!X?XX: coach cocoa
+  X?XXX-XXXXX-!XX!!: champ
+  X?XXX-XXXXX-!XXXX: chaff
+  X?XXX-XXXXX-?!XXX: flack
+  X?XXX-XXXXX-???XX: focal local vocal
+  X?XXX-XXXXX-?X??X: mocha
+  X?XXX-XXXXX-?XXXX: whack
+  X?XXX-XXXXX-X!!XX: aloof
+  X?XXX-XXXXX-X!?XX: allow alloy
+  X?XXX-XXXXX-X!X!X: llama
+  X?XXX-XXXXX-X!XX?: alpha plaza
+  X?XXX-XXXXX-X!XXX: allay flaky
+  X?XXX-XXXXX-X??!X: loamy
+  X?XXX-XXXXX-X??X?: polka
+  X?XXX-XXXXX-X??XX: aglow koala loyal offal
+  X?XXX-XXXXX-X?X??: amply
+  X?XXX-XXXXX-X?XX?: apply
+  X?XXX-XXXXX-XX?!X: foamy
+  XX!!X-XXXX!-XX??X: moist
+  XX!!X-XXXX!-XX?XX: foist hoist joist
+  XX!!X-XXXX!-XXXXX: twist
+  XX!?!-XX?XX-XXXX?: snipe spine
+  XX!?!-XX?XX-XXXXX: shine swine
+  XX!?!-XXXXX-?!XXX: slice
+  XX!?!-XXXXX-?XXX?: spice
+  XX!?!-XXXXX-X!X!X: slime
+  XX!?!-XXXXX-X?X?X: smile
+  XX!?!-XXXXX-XXXX?: spike
+  XX!?!-XXXXX-XXXXX: seize
+  XX!?X-XX?XX-?X?XX: scion
+  XX!?X-XX?XX-X!XXX: sling slink
+  XX!?X-XX?XX-XXXX?: spiny
+  XX!?X-XX?XX-XXXXX: shiny sniff swing
+  XX!?X-XXXX!-X?XX?: spilt
+  XX!?X-XXXX!-X?XXX: stilt
+  XX!?X-XXXX!-XXXXX: shift swift
+  XX!?X-XXXX?-?XXXX: stick
+  XX!?X-XXXX?-X?XXX: still
+  XX!?X-XXXX?-XXX?X: smith
+  XX!?X-XXXX?-XXXXX: stiff
+  XX!?X-XXXXX-?!XXX: slick
+  XX!?X-XXXXX-?XXX?: spicy
+  XX!?X-XXXXX-X!X!X: slimy
+  XX!?X-XXXXX-X?XX?: spill
+  XX!?X-XXXXX-X?XXX: skill swill
+  XX!?X-XXXXX-XXX!!: skimp
+  XX!?X-XXXXX-XXXX?: spiky
+  XX!?X-XXXXX-XXXXX: skiff
+  XX!X!-XX?XX-XX?X?: opine
+  XX!X!-XX?XX-XX?XX: ovine
+  XX!X!-XX?XX-XXXXX: knife whine
+  XX!X!-XXX!X-!XXXX: chide
+  XX!X!-XXX!X-X!XXX: elide glide
+  XX!X!-XXX!X-XX?XX: oxide
+  XX!X!-XXXX?-?XXXX: twice
+  XX!X!-XXXX?-X!XXX: elite
+  XX!X!-XXXX?-XXXXX: white
+  XX!X!-XXXXX-!XX!X: chime
+  XX!X!-XXXXX-?X?XX: voice
+  XX!X!-XXXXX-X!?XX: olive
+  XX!X!-XXXXX-X?XXX: exile while
+  XX!X?-XX?XX-XXXXX: eking eying feign neigh
+  XX!XX-X!XXX-?XXXX: juicy quick
+  XX!XX-X!XXX-X?XXX: quill
+  XX!XX-XX?X!-X!XXX: flint glint
+  XX!XX-XX?X!-XX?X?: point
+  XX!XX-XX?X!-XX?XX: joint
+  XX!XX-XX?X?-XXXXX: thing think tying
+  XX!XX-XX?XX-!!XXX: cling clink
+  XX!XX-XX?XX-?XXXX: icing
+  XX!XX-XX?XX-X!XXX: fling
+  XX!XX-XX?XX-X?XXX: lying
+  XX!XX-XX?XX-XX?XX: going onion owing
+  XX!XX-XX?XX-XXXXX: vying whiny
+  XX!XX-XXXXX-!!XXX: click cliff
+  XX!XX-XXXXX-!?XXX: chili chill
+  XX!XX-XXXXX-!XXXX: chick
+  XX!XX-XXXXX-?!XXX: flick
+  XX!XX-XXXXX-??XXX: icily
+  XX!XX-XXXXX-?XXXX: which
+  XX!XX-XXXXX-XXXXX: whiff
+  XX?!X-XXXXX-XX!XX: kiosk
+  XX?!X-XXXXX-XXX?X: missy
+  XX?!X-XXXXX-XXXX?: gipsy
+  XX?!X-XXXXX-XXXXX: sissy
+  XX??X-XXXX!-X?XX?: split
+  XX??X-XXXX!-XX?X?: posit
+  XX??X-XXXX!-XXXXX: sight visit
+  XX??X-XXXX?-?X!XX: stoic
+  XX??X-XXXX?-XXXXX: sixth sixty
+  XX??X-XXXXX-X?!X?: spoil
+  XX??X-XXXXX-X?XXX: silky silly
+  XX??X-XXXXX-XXXX?: wispy
+  XX??X-XXXXX-XXXXX: fishy
+  XX?X!-!XXXX-X?XXX: belie bible bilge
+  XX?X!-!XXXX-XX!!X: biome
+  XX?X!-XX!XX-?XX?X: mince
+  XX?X!-XX!XX-?XXXX: wince
+  XX?X!-XX!XX-XXXXX: genie hinge
+  XX?X!-XXXX?-X?XXX: lithe title
+  XX?X!-XXXX?-XXXXX: tithe
+  XX?X!-XXXXX-?XXX?: piece
+  XX?X!-XXXXX-X?XXX: liege
+  XX?X!-XXXXX-XX??X: movie
+  XX?X!-XXXXX-XXXX?: pixie
+  XX?X?-XX??X-XXXXX: fiend index widen
+  XX?X?-XX?XX-X!XXX: elfin
+  XX?X?-XX?XX-X?XXX: liken
+  XX?X?-XX?XX-XXXXX: given vixen
+  XX?X?-XXX?X-?XX?X: medic
+  XX?X?-XXX?X-?XXXX: dicey
+  XX?X?-XXX?X-X?XXX: devil field wield yield
+  XX?X?-XXX?X-XX?XX: video
+  XX?X?-XXXXX-X?X??: impel
+  XX?X?-XXXXX-X?XX?: pixel
+  XX?X?-XXXXX-X?XXX: helix
+  XX?XX-X??X!-X?XXX: unlit
+  XX?XX-X??X!-XXXX?: input
+  XX?XX-X??X!-XXXXX: unfit
+  XX?XX-XX!X?-?X?XX: tonic
+  XX?XX-XX!X?-XX?X?: pinto
+  XX?XX-XX!X?-XXX?X: minty
+  XX?XX-XX!X?-XXXXX: ninth
+  XX?XX-XX!XX-!X?XX: conic
+  XX?XX-XX!XX-!XXXX: cinch cynic
+  XX?XX-XX!XX-?X?XX: ionic
+  XX?XX-XX!XX-?XXX?: pinch
+  XX?XX-XX!XX-?XXXX: finch winch
+  XX?XX-XX!XX-X??XX: lingo
+  XX?XX-XX!XX-X?XXX: vinyl
+  XX?XX-XX!XX-XXX?X: minim
+  XX?XX-XX!XX-XXXX?: pinky
+  XX?XX-XX!XX-XXXXX: kinky ninny
+  XX?XX-XXX??-?XXXX: ditch
+  XX?XX-XXX??-XX?XX: ditto
+  XX?XX-XXX??-XXX?X: timid
+  XX?XX-XXX??-XXXXX: ditty width
+  XX?XX-XXX?X-X?X?X: dimly
+  XX?XX-XXX?X-X?XX?: lipid
+  XX?XX-XXX?X-X?XXX: dilly idyll livid
+  XX?XX-XXX?X-XX!XX: ovoid
+  XX?XX-XXX?X-XX?XX: widow
+  XX?XX-XXX?X-XXXXX: dizzy vivid
+  XX?XX-XXXX!-X??X?: pilot
+  XX?XX-XXXX!-X?X?X: limit
+  XX?XX-XXXX!-X?XXX: light
+  XX?XX-XXXX!-XX??X: vomit
+  XX?XX-XXXX!-XX?X?: pivot
+  XX?XX-XXXX!-XXX?X: might
+  XX?XX-XXXX!-XXXXX: fight tight wight
+  XX?XX-XXXX?-?X?X?: optic topic
+  XX?XX-XXXX?-?X?XX: toxic
+  XX?XX-XXXX?-?XXX?: pitch
+  XX?XX-XXXX?-?XXXX: hitch itchy witch
+  XX?XX-XXXX?-X?XXX: filth
+  XX?XX-XXXX?-XX??X: motif
+  XX?XX-XXXX?-XXXX?: pithy
+  XX?XX-XXXX?-XXXXX: fifth fifty kitty witty
+  XX?XX-XXXXX-!?XXX: civil
+  XX?XX-XXXXX-!X??X: comic
+  XX?XX-XXXXX-!XXXX: civic
+  XX?XX-XXXXX-???XX: logic
+  XX?XX-XXXXX-?XX?X: mimic
+  XX?XX-XXXXX-?XXX?: picky
+  XX?XX-XXXXX-X??XX: folio igloo
+  XX?XX-XXXXX-X?X!X: filmy
+  XX?XX-XXXXX-X?X??: imply
+  XX?XX-XXXXX-X?X?X: milky
+  XX?XX-XXXXX-X?XXX: filly hilly vigil willy
+  XX?XX-XXXXX-XX?X?: hippo
+  XX?XX-XXXXX-XXX??: wimpy
+  XX?XX-XXXXX-XXXX?: hippy piggy
+  XX?XX-XXXXX-XXXXX: fizzy jiffy
+  XXX!!-X?XXX-X??XX: louse
+  XXX!!-X?XXX-XX??X: mouse
+  XXX!!-X?XXX-XX?XX: house
+  XXX!!-XXXXX-!!!XX: close
+  XXX!!-XXXXX-!X!XX: chose
+  XXX!!-XXXXX-!X?X?: copse
+  XXX!!-XXXXX-X?!XX: loose
+  XXX!!-XXXXX-XX!?X: moose
+  XXX!!-XXXXX-XX!XX: goose whose
+  XXX!!-XXXXX-XX?X?: posse
+  XXX!!-XXXXX-XXXXX: geese
+  XXX!?-XXXXX-!XXXX: chess
+  XXX!?-XXXXX-X!XXX: flesh
+  XXX!?-XXXXX-X?XXX: welsh
+  XXX!?-XXXXX-XX?X?: poesy
+  XXX!X-X?XXX-X!XX?: plush
+  XXX!X-X?XXX-X!XXX: flush slush
+  XXX!X-X?XXX-X??XX: lousy
+  XXX!X-X?XXX-XXXXX: shush
+  XXX!X-XXXXX-X!!XX: floss gloss slosh
+  XXX!X-XXXXX-XX??X: mossy
+  XXX!X-XXXXX-XXXX?: gypsy
+  XXX?!-XX?XX-?X!XX: scone
+  XXX?!-XX?XX-?XXXX: scene
+  XXX?!-XX?XX-XX!XX: shone
+  XXX?!-XXXX?-X?!XX: stole
+  XXX?!-XXXX?-X?XXX: style
+  XXX?!-XXXX?-XX!?X: smote
+  XXX?!-XXXX?-XX!XX: stoke stove
+  XXX?!-XXXXX-?X!X?: scope
+  XXX?!-XXXXX-X!!X?: slope
+  XXX?!-XXXXX-X??XX: solve
+  XXX?!-XXXXX-XX!?X: smoke
+  XXX?!-XXXXX-XX!X?: spoke
+  XXX?!-XXXXX-XX!XX: shove
+  XXX??-XX?X!-?XXXX: scent
+  XXX??-XX?X!-XX?XX: onset
+  XXX??-XX?X!-XXXX?: spent
+  XXX??-XX?XX-XX?XX: nosey
+  XXX??-XX?XX-XXX?X: semen
+  XXX??-XX?XX-XXXXX: seven sheen
+  XXX??-XXXX!-X!XX?: slept
+  XXX??-XXXX!-X!XXX: sleet
+  XXX??-XXXX!-X?X?X: smelt
+  XXX??-XXXX!-X?XX?: spelt
+  XXX??-XXXX!-XXXX?: swept
+  XXX??-XXXX!-XXXXX: sheet sweet
+  XXX??-XXXX?-X?XXX: steel
+  XXX??-XXXX?-XX?X?: pesto
+  XXX??-XXXX?-XX?XX: ethos
+  XXX??-XXXX?-XXXX!: steep
+  XXX??-XXXX?-XXXXX: testy zesty
+  XXX??-XXXXX-?XXX?: speck
+  XXX??-XXXXX-X!XX!: sleep
+  XXX??-XXXXX-X!XXX: sleek
+  XXX??-XXXXX-X?X?X: smell
+  XXX??-XXXXX-X?XX?: spell
+  XXX??-XXXXX-X?XXX: shelf shell swell
+  XXX??-XXXXX-XXXX!: sheep sweep
+  XXX??-XXXXX-XXXX?: pesky
+  XXX?X-X!XX?-X?XXX: lusty
+  XXX?X-X!XX?-XX?XX: gusto
+  XXX?X-X!XX?-XXX?X: musty
+  XXX?X-X!XX?-XXXXX: gusty
+  XXX?X-X!XXX-?XX?X: mucus
+  XXX?X-X!XXX-X?XX?: lupus
+  XXX?X-X!XXX-X?XXX: sulky sully
+  XXX?X-X!XXX-XXX?X: humus mushy musky
+  XXX?X-X!XXX-XXXX?: pushy
+  XXX?X-X!XXX-XXXXX: husky
+  XXX?X-X??X!-XX!XX: snout
+  XXX?X-X??X!-XXXXX: shunt stunt
+  XXX?X-X??XX-?XXXX: snuck
+  XXX?X-X??XX-X!XXX: slung slunk
+  XXX?X-X??XX-XXXX?: spunk
+  XXX?X-X??XX-XXXXX: skunk snuff swung
+  XXX?X-X?XX!-?X!XX: scout
+  XXX?X-X?XX!-XX!X?: spout
+  XXX?X-X?XX!-XX!XX: shout stout
+  XXX?X-X?XX?-?XXXX: stuck
+  XXX?X-X?XX?-XX?XX: south
+  XXX?X-X?XX?-XXX!!: stump
+  XXX?X-X?XX?-XXXXX: stuff
+  XXX?X-X?XXX-???XX: locus
+  XXX?X-X?XXX-?X?XX: focus
+  XXX?X-X?XXX-?XXXX: shuck
+  XXX?X-X?XXX-X!X!!: slump
+  XXX?X-X?XXX-X?XXX: skulk skull
+  XXX?X-XX?XX-XX!X!: snoop
+  XXX?X-XX?XX-XX!X?: spoon
+  XXX?X-XX?XX-XX!XX: shown snowy swoon
+  XXX?X-XXXX?-?X!XX: stock
+  XXX?X-XXXX?-X!!XX: sloth
+  XXX?X-XXXX?-X?!XX: stool
+  XXX?X-XXXX?-XX!!!: stomp
+  XXX?X-XXXX?-XX!X!: stoop
+  XXX?X-XXXX?-XX!XX: sooth sooty
+  XXX?X-XXXXX-??!XX: scowl
+  XXX?X-XXXXX-?X!?X: smock
+  XXX?X-XXXXX-?X!X!: scoop
+  XXX?X-XXXXX-?X!XX: scoff shock
+  XXX?X-XXXXX-X!!X!: sloop
+  XXX?X-XXXXX-X!XXX: slyly
+  XXX?X-XXXXX-X?!X?: spool
+  XXX?X-XXXXX-X?XXX: shyly
+  XXX?X-XXXXX-XX!?X: smoky
+  XXX?X-XXXXX-XX!X!: swoop
+  XXX?X-XXXXX-XX!X?: spoof spook
+  XXX?X-XXXXX-XX!XX: shook showy
+  XXX?X-XXXXX-XX?XX: soggy
+  XXXX!-!XXXX-X!!XX: bloke
+  XXXX!-!XXXX-X?XXX: belle
+  XXXX!-!XXXX-XX!XX: booze
+  XXXX!-X?XXX-!X?X?: coupe
+  XXXX!-X?XXX-X!X!?: plume
+  XXXX!-X?XXX-X!X!X: flume
+  XXXX!-X?XXX-X!XXX: fluke
+  XXXX!-X?XXX-XX?XX: gouge vogue
+  XXXX!-XX!XX-?XXX?: pence
+  XXXX!-XX!XX-?XXXX: fence hence
+  XXXX!-XX!XX-XXXX?: penne
+  XXXX!-XX?XX-!!!XX: clone
+  XXXX!-XX?XX-XX!!X: gnome
+  XXXX!-XX?XX-XX!X?: phone
+  XXXX!-XX?XX-XX!XX: ozone
+  XXXX!-XXX?X-X??XX: lodge
+  XXXX!-XXX?X-X?XXX: delve ledge
+  XXXX!-XXX?X-XX?XX: dodge
+  XXXX!-XXX?X-XXXXX: hedge wedge
+  XXXX!-XXXX?-XXX!X: theme thyme
+  XXXX!-XXXX?-XXXX?: tepee
+  XXXX!-XXXXX-!!!XX: clove
+  XXXX!-XXXXX-!?XXX: cycle
+  XXXX!-XXXXX-!X!XX: choke
+  XXXX!-XXXXX-?XX?X: emcee
+  XXXX!-XXXXX-X!!X?: elope
+  XXXX!-XXXXX-X!!XX: glove
+  XXXX!-XXXXX-X?!XX: whole
+  XXXX!-XXXXX-X?X?X: melee
+  XXXX!-XXXXX-XX!XX: evoke
+  XXXX!-XXXXX-XXX!X: femme
+  XXXX?-!XXXX-??XXX: belch
+  XXXX?-!XXXX-?XXXX: beech
+  XXXX?-!XXXX-X!XX!: bleep
+  XXXX?-!XXXX-X??XX: below bowel
+  XXXX?-!XXXX-X?XXX: belly bevel bezel
+  XXXX?-!XXXX-XXXXX: beefy
+  XXXX?-XX!XX-?XXXX: wench
+  XXXX?-XX!XX-XX??X: money venom
+  XXXX?-XX!XX-XX?XX: honey
+  XXXX?-XX!XX-XXXX?: penny
+  XXXX?-XX??X-X!?XX: olden
+  XXXX?-XX??X-XX??X: demon
+  XXXX?-XX??X-XX?XX: dozen endow
+  XXXX?-XX??X-XXXXX: kneed
+  XXXX?-XX?XX-!X?XX: coven
+  XXXX?-XX?XX-X???X: lemon melon
+  XXXX?-XX?XX-X??XX: felon novel
+  XXXX?-XX?XX-X?XXX: kneel newly
+  XXXX?-XX?XX-XX??X: women
+  XXXX?-XX?XX-XX?XX: enjoy envoy woken woven
+  XXXX?-XX?XX-XXX!X: enemy
+  XXXX?-XX?XX-XXX?X: hymen
+  XXXX?-XXX??-XX?XX: detox
+  XXXX?-XXX??-XXXX?: depth
+  XXXX?-XXX??-XXXXX: tweed
+  XXXX?-XXX?X-?X?XX: decoy
+  XXXX?-XXX?X-X???X: model
+  XXXX?-XXX?X-X??XX: dowel
+  XXXX?-XXX?X-X?XXX: dwell
+  XXXX?-XXX?X-XX??X: modem
+  XXXX?-XXX?X-XX?X?: dopey
+  XXXX?-XXXX!-!!XXX: cleft
+  XXXX?-XXXX!-!X??X: comet
+  XXXX?-XXXX!-!X?XX: covet
+  XXXX?-XXXX!-?!XXX: elect
+  XXXX?-XXXX!-?X?XX: octet
+  XXXX?-XXXX!-?XXXX: eject
+  XXXX?-XXXX!-X!XXX: fleet
+  XXXX?-XXXX!-XXXXX: theft tweet
+  XXXX?-XXXX?-?XXXX: fetch
+  XXXX?-XXXX?-X???X: motel
+  XXXX?-XXXX?-X??XX: extol hotel towel
+  XXXX?-XXXX?-X?XXX: lefty
+  XXXX?-XXXX?-XX???: tempo
+  XXXX?-XXXX?-XX??X: totem
+  XXXX?-XXXX?-XXX??: empty
+  XXXX?-XXXX?-XXXX?: petty
+  XXXX?-XXXX?-XXXXX: hefty jetty teeth
+  XXXX?-XXXXX-!??XX: cello
+  XXXX?-XXXXX-!X?XX: covey
+  XXXX?-XXXXX-!XXXX: check cheek
+  XXXX?-XXXXX-?!XXX: fleck
+  XXXX?-XXXXX-??XXX: excel leech welch
+  XXXX?-XXXXX-?X!X?: epoch
+  XXXX?-XXXXX-?X?XX: gecko
+  XXXX?-XXXXX-X!XXX: elegy
+  XXXX?-XXXXX-X???X: golem
+  XXXX?-XXXXX-X??XX: hello hovel vowel
+  XXXX?-XXXXX-X?XX!: whelp
+  XXXX?-XXXXX-X?XX?: expel
+  XXXX?-XXXXX-X?XXX: jelly jewel leggy level wheel
+  XXXX?-XXXXX-XX!X?: epoxy
+  XXXX?-XXXXX-XX!XX: gooey
+  XXXX?-XXXXX-XXXXX: geeky
+  XXXXX-!!XXX-X?XXX: bulky bully
+  XXXXX-!!XXX-XX??X: buxom
+  XXXXX-!!XXX-XXXXX: buggy
+  XXXXX-!XXX?-?X?XX: botch
+  XXXXX-!XXX?-XX!XX: booth booty
+  XXXXX-!XXXX-?!!XX: block
+  XXXXX-!XXXX-X!!?X: bloom
+  XXXXX-!XXXX-XX!XX: booby boozy
+  XXXXX-!XXXX-XX?XX: bobby
+  XXXXX-X!!XX-??XXX: lunch
+  XXXXX-X!!XX-?XX?X: munch
+  XXXXX-X!!XX-?XXX?: punch
+  XXXXX-X!!XX-?XXXX: hunch
+  XXXXX-X!!XX-XXXXX: funky funny hunky
+  XXXXX-X!X?X-?XXXX: duchy
+  XXXXX-X!X?X-X?XXX: dully
+  XXXXX-X!X?X-XXX!X: dummy
+  XXXXX-X!X?X-XXX??: dumpy
+  XXXXX-X!X?X-XXXX?: pudgy
+  XXXXX-X!XX?-?XXXX: hutch
+  XXXXX-X!XX?-XX!XX: quoth
+  XXXXX-X!XX?-XX?XX: outgo
+  XXXXX-X!XX?-XXXX?: putty
+  XXXXX-X!XXX-??X?X: mulch
+  XXXXX-X!XXX-??XXX: gulch lucky
+  XXXXX-X!XXX-?XX?X: mucky
+  XXXXX-X!XXX-X?X??: lumpy
+  XXXXX-X!XXX-X?XX?: pulpy
+  XXXXX-X!XXX-X?XXX: fully gully
+  XXXXX-X!XXX-XXX!X: gummy mummy
+  XXXXX-X!XXX-XXX??: humph jumpy
+  XXXXX-X!XXX-XXXX?: guppy puffy puppy
+  XXXXX-X!XXX-XXXXX: fuzzy
+  XXXXX-X???X-XX??X: mound
+  XXXXX-X???X-XX?X?: pound
+  XXXXX-X???X-XX?XX: found hound wound
+  XXXXX-X??X!-!X?XX: count
+  XXXXX-X??X!-?XXXX: uncut
+  XXXXX-X??X!-XX??X: mount
+  XXXXX-X??XX-!!XXX: clung
+  XXXXX-X??XX-!XXXX: chunk
+  XXXXX-X??XX-X!XX?: plunk
+  XXXXX-X??XX-X!XXX: flung flunk
+  XXXXX-X??XX-XX?XX: young
+  XXXXX-X?X?X-!!!XX: cloud
+  XXXXX-X?X?X-!??XX: could
+  XXXXX-X?X?X-X??XX: would
+  XXXXX-X?X?X-XX?XX: dough
+  XXXXX-X?XX!-!!!XX: clout
+  XXXXX-X?XX!-X!!XX: flout
+  XXXXX-X?XX!-X???X: moult
+  XXXXX-X?XX?-?X?XX: touch
+  XXXXX-X?XX?-XX??X: mouth
+  XXXXX-X?XX?-XX?X?: pouty
+  XXXXX-X?XX?-XX?XX: tough youth
+  XXXXX-X?XX?-XXX!!: thump
+  XXXXX-X?XXX-!!X!!: clump
+  XXXXX-X?XXX-!!XXX: cluck
+  XXXXX-X?XXX-!X?XX: couch cough
+  XXXXX-X?XXX-!XX!!: chump
+  XXXXX-X?XXX-!XXXX: chuck
+  XXXXX-X?XXX-?!XX?: pluck
+  XXXXX-X?XXX-?X?X?: pouch
+  XXXXX-X?XXX-?X?XX: vouch
+  XXXXX-X?XXX-X!X!!: plump
+  XXXXX-X?XXX-X!XXX: fluff
+  XXXXX-X?XXX-X?!XX: ghoul
+  XXXXX-X?XXX-X???X: mogul
+  XXXXX-XX?XX-!!!XX: clown
+  XXXXX-XX?XX-!??XX: colon
+  XXXXX-XX?XX-?X!XX: knock
+  XXXXX-XX?XX-X!!XX: flown
+  XXXXX-XX?XX-X?!XX: knoll
+  XXXXX-XX?XX-X??XX: nylon
+  XXXXX-XX?XX-XX!X?: phony
+  XXXXX-XX?XX-XX!XX: known
+  XXXXX-XX?XX-XXX??: nymph
+  XXXXX-XXX!X-X???X: moldy
+  XXXXX-XXX!X-XX!?X: moody
+  XXXXX-XXX!X-XX!XX: goody woody
+  XXXXX-XXX!X-XX?XX: dowdy howdy
+  XXXXX-XXX?X-X!!XX: flood
+  XXXXX-XXX?X-X??XX: dolly godly oddly
+  XXXXX-XXX?X-XX?XX: dodgy
+  XXXXX-XXXX?-!!!XX: cloth
+  XXXXX-XXXX?-X??XX: hotly lofty
+  XXXXX-XXXX?-XX!X?: photo
+  XXXXX-XXXX?-XX!XX: tooth
+  XXXXX-XXXX?-XX??X: motto
+  XXXXX-XXXXX-!!!XX: clock
+  XXXXX-XXXXX-!??XX: coyly
+  XXXXX-XXXXX-!X!XX: chock
+  XXXXX-XXXXX-!X??X: comfy
+  XXXXX-XXXXX-?!!XX: flock
+  XXXXX-XXXXX-?X!X?: pooch
+  XXXXX-XXXXX-X!!?X: gloom
+  XXXXX-XXXXX-X!XX?: glyph
+  XXXXX-XXXXX-X?!X?: loopy
+  XXXXX-XXXXX-X?!XX: wooly
+  XXXXX-XXXXX-X??X!: polyp
+  XXXXX-XXXXX-X??XX: folly golly holly jolly lowly
+  XXXXX-XXXXX-X?X??: lymph
+  XXXXX-XXXXX-XX!X!: whoop
+  XXXXX-XXXXX-XX!XX: goofy woozy
+  XXXXX-XXXXX-XX?X?: poppy
+  XXXXX-XXXXX-XX?XX: foggy
+  XXXXX-XXXXX-XXX!?: pygmy
+Distribution: raise, bundt, clomp
+  Expected: 1.5028077753779698
+  Max: 6
+  Histogram: 1:1604 2:213 3:57 4:18 5:6 6:2

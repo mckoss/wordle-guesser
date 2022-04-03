@@ -14,6 +14,7 @@ const solutions = new Set(JSON.parse(await readFile('data/solutions.json', 'utf8
 
 let multi = 1;
 let table: string[] | undefined;
+let multiStart: string[] | undefined;
 
 const NUM_PROCS = 8;
 
@@ -63,6 +64,16 @@ async function main(args: string[]) {
             help(`Invalid table value - 5-letter word guesses: ${guess}`);
           }
         }
+      } else if (name === 'multi-start') {
+        multiStart = value.split(',');
+        for (const guess of multiStart) {
+          if (guess.length !== 5) {
+            help(`Invalid table value - 5-letter word guesses: ${guess}`);
+          }
+        }
+        if (multi <= multiStart.length) {
+          multi = multiStart.length + 1;
+        }
       } else {
         help(`Unknown option: ${option}`);
       }
@@ -93,10 +104,11 @@ async function multiWordSearch() {
   let count = 0;
   let limit = multi === 2 ? 200 : 25;
   let nextCount = 0;
+  const searchWords = multiStart ? multi - multiStart.length : multi;
 
   shuffle(dict);
 
-  const totalCombinations = binomial(dict.length, multi);
+  const totalCombinations = binomial(dict.length, searchWords);
 
   let bestMax: MultiTrial | undefined;
 
@@ -117,9 +129,12 @@ async function multiWordSearch() {
     }
   });
 
-  for (let indices of choices(dict.length, multi)) {
-    const guesses = indices.map(i => dict[i]);
-      await pool.call({ guesses, limit });
+  for (let indices of choices(dict.length, searchWords)) {
+    let guesses = indices.map(i => dict[i]);
+    if (multiStart) {
+      guesses = multiStart.concat(guesses);
+    }
+    await pool.call({ guesses, limit });
   }
 
   await pool.complete(true);
@@ -223,6 +238,8 @@ Options:
   --telemetry           Sample words during processing.
   --top=N               Show the top N guesses (default 10).
   --multi=N             Optimize for combination of N words (default 3).
+  --multi-start=guess1,guess2,...
+                        Use suggested words for first guesses.
   --solutionsOnly       Only consider words from solutions dictionary.
   --table=guess1,guess2 Show the solution table for a multi-guess solution.
 `);
