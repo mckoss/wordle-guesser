@@ -4,18 +4,40 @@ export { makeSVG };
 
 let boxSize: number;
 const BOX_MARGIN = 4;
+const BOX_SPACING = 1.1;
 
-function makeSVG(svg: HTMLElement) {
-  const top = 20;
-  let pos = 20;
+const MARGIN = 2;
 
-  addBoxLetter(svg, 'A', pos, top, 'correct');
-  pos += boxSize * 1.1;
-  addBoxLetter(svg, 'B', pos, top, 'wrong');
-  pos += boxSize * 1.1;
-  addBoxLetter(svg, 'C', pos, top, 'has');
+type CLUE = 'X' | '?' | '!';
+
+const clueClasses = {
+  'X': 'wrong',
+  '?': 'has',
+  '!': 'correct'
+};
+
+async function makeSVG(svg: HTMLElement) {
+  measureBoxSize(svg);
+  console.log(`Box size: ${boxSize}`);
+
+  const top = MARGIN + boxSize / 2;
+  let pos = MARGIN + boxSize / 2;
+
+  const tree = await fetch('/data/decision-tree.json').then(r => r.json());
+  console.log(tree);
+
+  renderWord(svg, 'RAISE', 'X?!?X', pos, top);
+
   const link = downloadSVGLink(svg, 'wordle-solution.svg', 'Download SVG');
   document.body.appendChild(link);
+}
+
+function renderWord(svg: HTMLElement, word: string, clue: string, x: number, y:number) {
+  let pos = x;
+  for (let i = 0; i < word.length; i++) {
+    addBoxLetter(svg, word[i], pos, y, clueClasses[clue[i] as CLUE]);
+    pos += boxSize * BOX_SPACING;
+  }
 }
 
 function addBoxLetter(svg: HTMLElement, letter: string, x: number, y: number, cls: string) {
@@ -26,13 +48,17 @@ function addBoxLetter(svg: HTMLElement, letter: string, x: number, y: number, cl
   addBoxBackground(svg, t, cls);
 }
 
+function measureBoxSize(svg: HTMLElement) {
+  const t = svgElement('text') as SVGTextElement;
+  t.textContent = 'W';
+  svg.appendChild(t);
+  const rc = t.getBBox();
+  boxSize = Math.max(rc.width, rc.height) + BOX_MARGIN;
+  svg.removeChild(t);
+}
+
 function addBoxBackground(svg: HTMLElement, t: SVGTextElement, cls: string) {
   const rc = t.getBBox();
-
-  // Intialize box size from first measured letter.
-  if (boxSize === undefined) {
-    boxSize = Math.max(rc.width, rc.height) + BOX_MARGIN;
-  }
 
   // Center box around letter.
   rc.x -= (boxSize - rc.width) / 2;
