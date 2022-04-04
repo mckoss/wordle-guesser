@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./make-svg.css">
+  <title>Make SVG solution file.</title>
+</head>
+<body>
+  <svg id="wordle" viewBox="0 0 800 1024" xmlns="http://www.w3.org/2000/svg">
+    <style>
+      :root {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1rem;
+      }
+
+      text {
+        dominant-baseline: middle;
+        text-anchor: middle;
+        fill: white;
+      }
+
+      rect.correct {
+        fill: rgb(121, 168, 107);
+      }
+
+      rect.has {
+        fill: rgb(198, 181, 102	);
+      }
+
+      rect.wrong {
+        fill: rgb(121, 124, 126);
+      }
+    </style>
+    <rect class="correct" x="10" y="10" width="20" height="20"/>
+    <text x="20" y="22">A</text>
+  </svg>
+
+  <script type="module">
+    import { makeSVG } from './make-svg.js';
+    makeSVG(document.getElementById('wordle'));
+  </script>
+</body>
+</html>
