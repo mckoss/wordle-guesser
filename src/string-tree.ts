@@ -2,7 +2,7 @@
 // Nodes can either be string types, or an Object that has "child"
 // nodes like { "value": { key: value, .... }
 
-export { StringTree, TreeNode, ChildNodes };
+export { StringTree, TreeNode, ChildNodes, leafEntries };
 
 import { stringify } from 'wide-json';
 
@@ -26,6 +26,25 @@ function childNodes(node: TreeNode): ChildNodes {
 
 function makeNode(value: string): TreeNode {
   return { [value]: {} };
+}
+
+function *leafEntries(node: TreeNode): Generator<[string[], string]> {
+  const path: string[] = [];
+
+  yield *emitEntries(node);
+
+  function *emitEntries(node: TreeNode): Generator<[string[], string]> {
+    if (typeof node === 'string') {
+      yield [path.slice(), node];
+      return;
+    }
+
+    for (const key in node) {
+      path.push(key);
+      yield *emitEntries(node[key] as TreeNode);
+      path.pop();
+    }
+  }
 }
 
 class Ref {

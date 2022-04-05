@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 import { suite, suiteSetup, setup, test } from 'mocha';
 
-import { StringTree } from '../string-tree.js';
+import { StringTree, TreeNode, leafEntries } from '../string-tree.js';
 
 suite('String Tree', () => {
   test('constructor', () => {
@@ -30,5 +30,12 @@ suite('String Tree', () => {
     const childRef = ref.ensureChildNode('b', 'c');
     ref.ensureChildNode('d', 'e');
     assert.equal(tree.stringify(), '{ "a": { "b": "c", "d": "e" } }');
+  });
+
+  test('enumerate leaf nodes', () => {
+    const tree = { "a": { "b": "c", "d": "e" } } as TreeNode;
+
+    const leaves = Array.from(leafEntries(tree));
+    assert.deepEqual(leaves, [ [['a', 'b'], 'c'], [['a', 'd'], 'e'] ]);
   });
 });
