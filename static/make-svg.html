@@ -7,37 +7,42 @@
   <title>Make SVG solution file.</title>
 </head>
 <body>
-  <h1>Worldle Solution</h1>
-  <svg id="wordle" viewBox="0 0 1000 5000" xmlns="http://www.w3.org/2000/svg">
-    <style>
-      :root {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 0.5rem;
-      }
+  <div class="hidden">
+    <svg id="wordle-template" viewBox="0 0 1000 750" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        :root {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 0.5rem;
+        }
 
-      text {
-        dominant-baseline: middle;
-        text-anchor: middle;
-        fill: white;
-      }
+        text {
+          dominant-baseline: middle;
+          text-anchor: middle;
+          fill: white;
+        }
 
-      rect.correct {
-        fill: rgb(121, 168, 107);
-      }
+        rect.correct {
+          fill: rgb(121, 168, 107);
+        }
 
-      rect.has {
-        fill: rgb(198, 181, 102	);
-      }
+        rect.has {
+          fill: rgb(198, 181, 102	);
+        }
 
-      rect.wrong {
-        fill: rgb(121, 124, 126);
-      }
-    </style>
-  </svg>
+        rect.wrong {
+          fill: rgb(121, 124, 126);
+        }
+      </style>
+    </svg>
+  </div>
+
+  <div id="svgs">
+  </div>
 
   <script type="module">
     import { makeSVG } from './make-svg.js';
-    makeSVG(document.getElementById('wordle'));
+    makeSVG(document.getElementById('wordle-template'),
+      document.getElementById('svgs'));
   </script>
 </body>
 </html>

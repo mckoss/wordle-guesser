@@ -2,3 +2,18 @@ svg {
   display: block;
   border: 1px solid black;
 }
+
+@media print {
+  svg {
+    /* page-break-after: always; */
+    border: none;
+  }
+
+  a {
+    display: none;
+  }
+}
+
+div.hidden {
+  display: none;
+}

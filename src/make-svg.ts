@@ -5,10 +5,11 @@ import { Outliner } from './outliner.js';
 export { makeSVG };
 
 let boxSize: number;
+let boxSpacing: number;
 const BOX_MARGIN = 4;
-const BOX_SPACING = 1.1;
+const SPACING_RATIO = 1.1;
 
-const MARGIN = 2;
+const MARGIN = 10;
 
 type CLUE = 'X' | '?' | '!';
 
@@ -20,17 +21,23 @@ const clueClasses = {
 
 type TableRow = [string[], string];
 
-async function makeSVG(svg: HTMLElement) {
-  measureBoxSize(svg);
-  console.log(`Box size: ${boxSize}`);
+async function makeSVG(svgTemplate: HTMLElement, svgs: HTMLElement) {
+  let svg: HTMLElement;
 
-  let page = 0;
+  svg = newPage(svgTemplate);
+
+  measureBoxSize(svg);
+
+  let page = 1;
   let line = 0;
   let column = 0;
-  const pageMax = 750 - boxSize;
-  const lineMax = Math.floor(pageMax / boxSize / BOX_SPACING);
-  const columnSize = 10 * boxSize * BOX_SPACING;
-  const columnMax = Math.floor(1000 / columnSize);
+
+  const lineMax = Math.floor((750 - 2 * MARGIN - boxSize) / boxSpacing);
+  const columnSize = 9 * boxSpacing;
+  console.log(`Column size: ${columnSize}`);
+  const columnMax = Math.floor((1000 - MARGIN) / columnSize);
+
+  console.log(`Max lines: ${lineMax}, Num columns: ${columnMax}`);
 
   const table = await fetch('/data/decision-table.json').then(r => r.json()) as TableRow[];
 
@@ -42,42 +49,58 @@ async function makeSVG(svg: HTMLElement) {
       line = 0;
     }
     if (column >= columnMax) {
+      closePage(svg, page);
       page++;
       column = 0;
+      svg = newPage(svgTemplate);
     }
 
     let level = outline.level(row[0]);
     if (level % 2 === 1) {
       level--;
     }
+    if (line === 0) {
+      level = 0;
+    }
     for (let i = level; i < row[0].length; i += 2) {
       const word = row[0][i];
       const clue = row[0][i + 1];
       const indent = i / 2;
-      const [x, y] = wordPos(page, column, line, indent);
+      const [x, y] = wordPos(column, line, indent);
       renderWord(svg, word, clue, x, y);
       line++;
     }
-    const [x, y] = wordPos(page, column, line, row[0].length / 2);
+    const [x, y] = wordPos(column, line, row[0].length / 2);
     renderWord(svg, row[1], '!!!!!', x, y);
     line++;
   }
 
-  const link = downloadSVGLink(svg, 'wordle-solution.svg', 'Download SVG');
-  document.body.appendChild(link);
+  closePage(svg, page);
 
-  function wordPos(page: number, column: number, line: number, indent: number): [number, number] {
-    const x = MARGIN + column * columnSize + indent * boxSize * BOX_SPACING;
-    const y = MARGIN + page * pageMax + line * boxSize * BOX_SPACING;
+  function wordPos(column: number, line: number, indent: number): [number, number] {
+    const x = MARGIN + column * columnSize + indent * boxSpacing;
+    const y = MARGIN + line * boxSpacing;
     return [x, y];
   }
+}
+
+function newPage(svgTemplate: HTMLElement): HTMLElement {
+  let svg = svgTemplate.cloneNode(true) as HTMLElement;
+  svg.removeAttribute('id');
+  document.body.appendChild(svg);
+  return svg;
+}
+
+function closePage(svg: HTMLElement, page: number) {
+  const link = downloadSVGLink(svg, `wordle-solution-p${page}.svg`, `Download SVG Page ${page}`);
+  document.body.appendChild(link);
 }
 
 function renderWord(svg: HTMLElement, word: string, clue: string, x: number, y:number) {
   let pos = x;
   for (let i = 0; i < word.length; i++) {
     addBoxLetter(svg, word[i], pos, y, clueClasses[clue[i] as CLUE]);
-    pos += boxSize * BOX_SPACING;
+    pos += boxSpacing;
   }
 }
 
@@ -95,6 +118,7 @@ function measureBoxSize(svg: HTMLElement) {
   svg.appendChild(t);
   const rc = t.getBBox();
   boxSize = Math.max(rc.width, rc.height) + BOX_MARGIN;
+  boxSpacing = boxSize * SPACING_RATIO;
   svg.removeChild(t);
 }
 
