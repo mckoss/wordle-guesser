@@ -4,21 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./make-svg.css">
-  <title>Make SVG solution file.</title>
+  <title>Wordle Solution - &copy; 2022, Mike Koss.</title>
 </head>
 <body>
   <div class="hidden">
-    <svg id="wordle-template" viewBox="0 0 1000 750" xmlns="http://www.w3.org/2000/svg">
+    <svg id="wordle-template" viewBox="0 0 1000 750" width="1000" xmlns="http://www.w3.org/2000/svg">
       <style>
         :root {
           font-family: Arial, Helvetica, sans-serif;
-          font-size: 0.5rem;
+          font-size: 0.4rem;
+          font-weight: bold;
         }
 
         text {
           dominant-baseline: middle;
           text-anchor: middle;
           fill: white;
+          text-transform: uppercase;
         }
 
         rect.correct {
@@ -32,6 +34,24 @@
         rect.wrong {
           fill: rgb(121, 124, 126);
         }
+
+      @media print {
+        text.correct {
+          fill: black;
+        }
+
+        rect.correct {
+          fill: white;
+        }
+
+        rect.has {
+          fill: gray;
+        }
+
+        rect.wrong {
+          fill: black;
+        }
+      }
       </style>
     </svg>
   </div>

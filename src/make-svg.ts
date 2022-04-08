@@ -6,7 +6,7 @@ export { makeSVG };
 
 let boxSize: number;
 let boxSpacing: number;
-const BOX_MARGIN = 4;
+const BOX_MARGIN = 2;
 const SPACING_RATIO = 1.1;
 
 const MARGIN = 10;
@@ -108,6 +108,7 @@ function addBoxLetter(svg: HTMLElement, letter: string, x: number, y: number, cl
   const t = svgElement('text') as SVGTextElement;
   t.textContent = letter;
   positionElement(t, x, y);
+  t.setAttribute("class", cls);
   svg.appendChild(t);
   addBoxBackground(svg, t, cls);
 }
@@ -148,13 +149,13 @@ function svgElement(t: string, cls?: string): SVGElement {
 }
 
 function positionElement(e: SVGElement, x: number, y: number) {
-  e.setAttribute("x", x.toFixed(2));
-  e.setAttribute("y", y.toFixed(2));
+  e.setAttribute("x", x.toFixed(3));
+  e.setAttribute("y", y.toFixed(3));
 }
 
 function sizeElement(e: SVGElement, w: number, h: number) {
-  e.setAttribute("width", w.toFixed(2));
-  e.setAttribute("height", h.toFixed(2));
+  e.setAttribute("width", w.toFixed(3));
+  e.setAttribute("height", h.toFixed(3));
 }
 
 function newLine(): Text {
