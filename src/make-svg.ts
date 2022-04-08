@@ -39,7 +39,7 @@ async function makeSVG(svgTemplate: HTMLElement, svgs: HTMLElement) {
 
   console.log(`Max lines: ${lineMax}, Num columns: ${columnMax}`);
 
-  const table = await fetch('/data/decision-table.json').then(r => r.json()) as TableRow[];
+  const table = await fetch('./data/decision-table.json').then(r => r.json()) as TableRow[];
 
   const outline = new Outliner();
 

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./make-svg.css">
+  <title>Wordle Solution - &copy; 2022, Mike Koss.</title>
+</head>
+<body>
+  <div class="hidden">
+    <svg id="wordle-template" viewBox="0 0 1000 750" xmlns="http://www.w3.org/2000/svg">
+      <style>
+        :root {
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 0.4rem;
+          font-weight: bold;
+        }
+
+        text {
+          dominant-baseline: middle;
+          text-anchor: middle;
+          fill: white;
+          text-transform: uppercase;
+        }
+
+        rect.correct {
+          fill: rgb(121, 168, 107);
+        }
+
+        rect.has {
+          fill: rgb(198, 181, 102	);
+        }
+
+        rect.wrong {
+          fill: rgb(121, 124, 126);
+        }
+
+      <!-- @media print {
+        text.correct {
+          fill: black;
+        }
+
+        rect.correct {
+          fill: white;
+        }
+
+        rect.has {
+          fill: gray;
+        }
+
+        rect.wrong {
+          fill: black;
+        }
+      } -->
+      </style>
+    </svg>
+  </div>
+
+  <div id="svgs">
+  </div>
+
+  <script type="module">
+    import { makeSVG } from './make-svg.js';
+    makeSVG(document.getElementById('wordle-template'),
+      document.getElementById('svgs'));
+  </script>
+</body>
+</html>

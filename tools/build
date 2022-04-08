@@ -36,3 +36,9 @@ cp -R data/*.json node/data
 tree --dirsfirst node
 tree --dirsfirst browser
 
+mkdir -p public/data
+cp browser/make-svg.html public/wordle-solution.html
+cp browser/make-svg.css public
+cp browser/make-svg.js public
+cp browser/outliner.js public
+cp browser/data/decision-table.json public/data
