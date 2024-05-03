@@ -12,7 +12,7 @@ mkdir -p "$PROJ_DIR/bin"
 #
 # Add build tools to PATH
 #
-PATH="$(remove-dup-paths.mjs "$PROJ_DIR/bin:$PROJ_DIR/public/scripts:$(cd $PROJ_DIR; npm bin):$PATH")"
+PATH="$(remove-dup-paths.mjs "$PROJ_DIR/bin:$PROJ_DIR/public/scripts:$PROJ_DIR/node_modules/.bin:$PATH")"
 CDPATH="$(remove-dup-paths.mjs "$CDPATH:$PROJ_DIR/public")"
 
 #
