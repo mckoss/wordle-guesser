@@ -12,7 +12,8 @@ import { optimizations } from './optimizations.js';
 const DEFAULT_GUESS = 'roate';
 
 async function main(args: string[]) {
-  let guess = DEFAULT_GUESS;
+  let guesses: string[] = [];
+  let guess: string;
   let rankFunction = rankStat;
   let hardMode = false;
 
@@ -35,10 +36,15 @@ async function main(args: string[]) {
       }
     } else {
       guess = option;
-      if (dict.indexOf(guess) === -1) {
-        help(`Invalid guess: ${guess}`);
+      if (dict.indexOf(option) === -1) {
+        help(`Invalid guess: ${option}`);
       }
+      guesses.push(option);
     }
+  }
+
+  if (guesses.length === 0) {
+    guesses.push(DEFAULT_GUESS);
   }
 
   const wordle = new Wordle(dict);
@@ -50,8 +56,9 @@ async function main(args: string[]) {
   console.log("! - correct letter in correct position (Green in Wordle)");
   console.log("? - correct letter in wrong position (Yellow in Wordle)");
 
+  guess = guesses[0];
   console.log(`I guess '${guess}.'`);
-  let guesses = 1;
+  let countGuesses = 1;
 
   while (true) {
     const clue = (await prompt("Clue")).toUpperCase();
@@ -61,7 +68,7 @@ async function main(args: string[]) {
     }
 
     if (clue === '!!!!!') {
-      console.log(`I win. It took me ${guesses} guesses.`);
+      console.log(`I win. It took me ${countGuesses} guesses.`);
       exit(0);
     }
 
@@ -71,10 +78,17 @@ async function main(args: string[]) {
 
     subset = new Set(words);
 
+    if (countGuesses < guesses.length) {
+      guess = guesses[countGuesses];
+      console.log(`I'm going to guess '${guess}', now.`);
+      countGuesses++;
+      continue;
+    }
+
     const bestGuess = analyze(dict, 1, subset, rankFunction, hardMode);
     console.log(JSON.stringify(bestGuess));
 
-    if (guesses === 1 && optimizations.has(clue)) {
+    if (countGuesses === 1 && optimizations.has(clue)) {
       guess = optimizations.get(clue)!;
       console.log(`Rather than use the algorithmically chosen '${bestGuess[0].guess}' ` +
         `I'm going to use a word that minimizes the total number of 5-guess ` +
@@ -83,7 +97,7 @@ async function main(args: string[]) {
       guess = bestGuess[0].guess;
     }
 
-    guesses++;
+    countGuesses++;
 
     console.log(`I going to guess '${guess}', now.`);
     console.log("Because that will narrow it down to no more than " +
