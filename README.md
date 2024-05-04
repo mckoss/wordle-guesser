@@ -144,6 +144,8 @@ This program will make guesses - you provide the "clue" patterns for each guess.
 ```
 $ test-runner --help
 
+Exhaustive test of all words.
+
 Usage:
   test-runner [options] [test-words-file]
 
@@ -155,7 +157,7 @@ Options:
   --expected     Rank guesses by expected size of partitions.
   --worst        Rank guesses by worst-case size of partitions.
   --sample=N     Only use a sample subset of the test words (default 20).
-  --start=<word> Default first guess is [object Object].
+  --start=<word> Default first guess is 'roate'.
   --silent       Don't print out each guess.
   --stats        Show stats and histogram of guesses.
   --margin=N     Set the margin of benefit for in-solution word for default ranking function
