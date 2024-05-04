@@ -131,7 +131,7 @@ Options:
   --expected     Rank guesses by expected size of partitions.
   --worst        Rank guesses by worst-case size of partitions.
   --sample=N     Only use a sample subset of the test words (default ${DEFAULT_SAMPLE}).
-  --start=<word> Default first guess is ${{DEFAULT_GUESS}}.
+  --start=<word> Default first guess is '${DEFAULT_GUESS}'.
   --silent       Don't print out each guess.
   --stats        Show stats and histogram of guesses.
   --margin=N     Set the margin of benefit for in-solution word for default ranking function
