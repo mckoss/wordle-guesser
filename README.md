@@ -252,6 +252,26 @@ Options:
 Data massaging for the input files for the JavaScript programs here is all done
 in Python - see the [Jupyter Notebook](./tools/notebook.ipynb).
 
+```
+$ python -m venv .env        # Create a local Virtual Environment
+$ source .env/bin/activate   # Activate it
+
+# Confirm python 3 and pip are both coming from the environment:
+
+$ which python && python --version
+$ which pip
+
+$ pip install -r requirements.txt
+
+# Confirm Jupyter notebook installed
+
+$ which jupyter && jupyter --version
+
+# Run the notebook opening a browser window:
+
+$ jupyter notebook index.ipynb
+```
+
 I experimented with several English dictionaries to source word lists until
 being told about [this respository](https://github.com/AllValley/WordleDictionary).
 It seems to match the Wordle web site with 2,315 possible solution words
