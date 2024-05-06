@@ -1,0 +1,14 @@
+#!/bin/bash
+# build --- Build the project
+
+set -e
+TOOLS_DIR="$(unset CDPATH; cd $(dirname ${BASH_SOURCE[0]}) && pwd)"
+source $TOOLS_DIR/use
+
+cd $PROJ_DIR
+
+echo "Rebuilding decision tree (this may take a while)..."
+node node/make-decision-tree.js > data/decision-tree.json
+
+echo "Formatting decision table for SVG rendering..."
+node node/tree-to-table.js > data/decision-table.json
