@@ -57,9 +57,55 @@ was to play two colors of two marbles each).
     are **126** possible clue patterns that can be given in response (compare to
     `3^5 = 243` possible theoretical patterns for any random string of 5
     letters).
-    - But note that `roate` is NOT a possible solution to Wordle!  The 2nd best
-      first guess is solution-word `raise` (dividing the words into **132**
+    - But note that `ROATE` is NOT a possible solution to Wordle!  The 2nd best
+      first guess is solution-word `RAISE` (dividing the words into **132**
       partitions, the largest of which has only **168** words - expected size: **61**).
+    - *Update*: Since writing this, the is an [MIT Paper](https://auction-upload-files.s3.amazonaws.com/Wordle_Paper_Final.pdf) that performed a more exhaustive search rather than
+      the greedy algorithm used here.  It found that `SALET` yields an average
+      solution of 3.421 guesses.  And the Wordle bot (part of the official
+      NYT World analyzer) uses `CRANE` as it's starting word (which I compute
+      as yielding an average score of 3.45).
+
+        ```
+        Algorithm: stat, margin: 0.15
+        Start word: salet
+        Total Words: 2315
+        Average guesses: 3.44
+        2: 82
+        3: 1175
+        4: 1008
+        5: 49
+        6: 1
+        5-guess 1st clues:
+        X???X: 2
+        XXX!X: 16
+        XXXXX: 15
+        XX?XX: 2
+        XXX?X: 6
+        X?X?X: 1
+        X!XXX: 1
+        X!X!X: 2
+        X!XX?: 1
+        XXXX!: 1
+        XXXX?: 2
+
+        Algorithm: stat, margin: 0.15
+        Start word: crane
+        Total Words: 2315
+        Average guesses: 3.45
+        1: 1
+        2: 73
+        3: 1143
+        4: 1068
+        5: 30
+        5-guess 1st clues:
+        XXXXX: 11
+        X?XX?: 14
+        XX?XX: 1
+        X??X?: 3
+        XXX!X: 1
+        ```
+
 - For each of the possible responses, what are the best 2nd guesses?
   See [decision-tree](./data/decision-tree.json).
 - What is the expected number of guesses in a randomly selected Wordle
@@ -77,8 +123,9 @@ was to play two colors of two marbles each).
   - By replacing a few of the 2nd-guess words, this can be reduced to 22 words:
     savvy mamma jazzy watch vaunt paper jerky miner liver diver jiffy dimly
     hilly muddy hunky fuzzy mummy puppy wound vouch jolly goner
-- Without knowing the responses a-priori, what would be the best 2 or 3 words to
-  guess first?
+- Without knowing the responses a-priori, what would be the best 2 words to
+  guess first?  I calculate as `COLES` and `RIANT`.  This reduces to an average of
+  4.4 words possible after these predetermined guesses.
 
 
 ## Tweaking the algorithm to optimize either the average or maximum number of guesses.
@@ -241,12 +288,17 @@ Usage:
   best-guess [options]
 
 Options:
-  --help       Show this help message.
-  --hard       In hard mode - only guess words that remain possible.
-  --expected   Rank guesses by expected size of partitions.
-  --worst      Rank guesses by worst-case size of partitions.
-  --telemetry  Sample words during processing.
-  --top=N      Show the top N guesses (default 10).
+  --help                Show this help message.
+  --hard                In hard mode - only guess words that remain possible.
+  --expected            Rank guesses by expected size of partitions.
+  --worst               Rank guesses by worst-case size of partitions.
+  --telemetry           Sample words during processing.
+  --top=N               Show the top N guesses (default 10).
+  --multi=N             Optimize for combination of N words (default 3).
+  --multi-start=guess1,guess2,...
+                        Use suggested words for first guesses.
+  --solutionsOnly       Only consider words from solutions dictionary.
+  --table=guess1,guess2 Show the solution table for a multi-guess solution.
 ```
 
 # Data Wrangling
