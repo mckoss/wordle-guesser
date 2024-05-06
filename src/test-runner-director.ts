@@ -8,7 +8,7 @@ import { Pool } from './worker-pool.js';
 
 import { Message, Result, RankFunctionName } from './test-runner-message.js';
 
-const DEFAULT_GUESS = 'roate';
+const DEFAULT_GUESS = 'crane';
 const DEFAULT_SAMPLE = 20;
 
 const NUM_PROCS = 10;

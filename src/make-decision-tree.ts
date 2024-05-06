@@ -26,7 +26,7 @@ if (args[0] === '--sample') {
 
 const wordle = new Wordle(dict);
 
-const firstGuess = 'roate';
+const firstGuess = 'crane';
 
 const decisions = new StringTree(firstGuess);
 const startRef = decisions.getStartRef();

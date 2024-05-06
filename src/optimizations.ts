@@ -1,64 +1,40 @@
-// For first guess, 'roate', the following exceptions for the second guess
-// reduce the total number of 5-guess words from 39 to 22.
+// For first guess, 'crane', the following exceptions for the second guess
+// reduce the total number of 5-guess words to 30.
 
 export { optimizations };
 
-const optimizationTable = [
-  {
-    "clue": "XX?XX",
-    "algoGuess": "lysin",
-    "optGuess": "linds"
-  },
-  {
-    "clue": "XX??X",
-    "algoGuess": "clint",
-    "optGuess": "haunt"
-  },
-  {
-    "clue": "?X?X?",
-    "algoGuess": "balms",
-    "optGuess": "bawls"
-  },
-  {
-    "clue": "XX?!X",
-    "algoGuess": "snipy",
-    "optGuess": "cuspy"
-  },
-  {
-    "clue": "XXXX?",
-    "algoGuess": "lenes",
-    "optGuess": "bedel"
-  },
-  {
-    "clue": "XXXX!",
-    "algoGuess": "sling",
-    "optGuess": "nidus"
-  },
-  {
-    "clue": "?XXX?",
-    "algoGuess": "feued",
-    "optGuess": "feeds"
-  },
-  {
-    "clue": "XXXXX",
-    "algoGuess": "slimy",
-    "optGuess": "sculp"
-  },
-  {
-    "clue": "XXX?X",
-    "algoGuess": "shunt",
-    "optGuess": "stint"
-  },
-  {
-    "clue": "X!XXX",
-    "algoGuess": "bludy",
-    "optGuess": "scold"
-  },
-  {
-    "clue": "??XXX",
-    "algoGuess": "croon",
-    "optGuess": "crowd"
-  }
+const optimizationTable =
+[
+    {
+      "clue": "XX!X!",
+      "algoGuess": "stulm",
+      "optGuess": "stalk"
+    },
+    {
+      "clue": "XX?XX",
+      "algoGuess": "toils",
+      "optGuess": "talas"
+    },
+    {
+      "clue": "X??XX",
+      "algoGuess": "yarto",
+      "optGuess": "rorty"
+    },
+    {
+      "clue": "XX?X!",
+      "algoGuess": "mauls",
+      "optGuess": "pauls"
+    },
+    {
+      "clue": "XXXX?",
+      "algoGuess": "sleet",
+      "optGuess": "betel"
+    },
+    {
+      "clue": "X?XX?",
+      "algoGuess": "lotes",
+      "optGuess": "roist"
+    }
 ];
 
 const optimizations = new Map<string, string>();

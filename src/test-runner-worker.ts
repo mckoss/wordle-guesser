@@ -70,7 +70,7 @@ async function init() {
       subset = new Set(words);
       const guessStats = analyze(dict, 1, subset, rankFunction, hardMode)[0];
 
-      if (guessCount === 1 && firstGuess === 'roate' && optimizations.has(clue)) {
+      if (guessCount === 1 && firstGuess === 'crane' && optimizations.has(clue)) {
         guess = optimizations.get(clue)!;
       } else {
         guess = guessStats.guess;

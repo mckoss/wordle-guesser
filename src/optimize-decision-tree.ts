@@ -12,7 +12,7 @@ const dict = JSON.parse(await readFile('./data/words.json', 'utf8')) as string[]
 const soln = new Set(JSON.parse(await readFile('./data/solutions.json', 'utf8')) as string[]);
 
 const wordle = new Wordle(dict);
-const firstGuess = 'roate';
+let firstGuess = 'crane';
 
 // Command line options.
 let silent = false;
@@ -309,6 +309,8 @@ async function main(args: string[]) {
         table = true;
       } else if (name === 'mods') {
         mods = true;
+      } else if (name == 'start') {
+        firstGuess = value;
       } else {
         help(`Unknown option: ${option}`);
       }
@@ -384,9 +386,7 @@ function help(msg?: string) {
 Optimize clues to minimize the number of words that require the maximum number of guesses.
 
 Usage:
-  test-runner [options] [test-words-file]
-
-  test-words-file: JSON file containing a list of words to test as array.
+  optimize-decision-tree [options]
 
 Options:
   --help         Show this help message.
@@ -394,6 +394,7 @@ Options:
   --dump         Print the tree of guesses.
   --table        Print table of patterns with best 2nd guess and possible words.
   --mods         Print the non-default clues and guesses for the 2nd level.
+  --start=word   Use 'word' as the first guess. Default is '${firstGuess}'.
 `);
 
   exit(msg === undefined ? 0 : 1);

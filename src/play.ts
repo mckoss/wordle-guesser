@@ -9,7 +9,7 @@ import { analyze, rankExpected, rankStat, rankWorst } from './wordle-guess.js';
 
 import { optimizations } from './optimizations.js';
 
-const DEFAULT_GUESS = 'roate';
+const DEFAULT_GUESS = 'crane';
 
 async function main(args: string[]) {
   let guesses: string[] = [];
